@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
+
     has_one :calendar
-    has_and_belongs_to_many :trips, :join_table => :added_trips
+    has_and_belongs_to_many :trips, :join_table => :trips_users
     has_many :created_trips, :class_name => "Trip", :foreign_key => :creator_id
 	
     #has_many :votes

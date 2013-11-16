@@ -1,9 +1,5 @@
 LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
-  
-
-  resources :trips
-
-# The priority is based upon order of creation: first created -> highest priority.
+  # The priority is based upon order of creation: first created -> highest priority.
 # See how all your routes lay out with "rake routes".
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
@@ -13,7 +9,12 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
  root 'trips#index'
  resources :users
  resources :trips
-
+ resources :daterange
+  match 'users/show/:id' => 'users#show', :as => :user_show, via: [:get, :post]
+ match 'dateranges/create' => 'dateranges#create', :as => :create_daterange, via: [:get, :post]
+   get ':controller(/:action(/:id))(.:format)'
+  post ':controller(/:action(/:id))(.:format)'
+  
 # Example of regular route:
 #   get 'products/:id' => 'catalog#view'
 

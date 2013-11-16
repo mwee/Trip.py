@@ -1,12 +1,76 @@
-<h3>Dream Destinations: </h3>
-<% @current_user.destination %>  
+<div>
+	<h3>Dream Destinations: </h3>
+	<% if !current_user.destination.nil? %>
+	  <%= current_user.destination %>  
+	<% else %>
+		<%= form_for(current_user) do |f| %>
+			<div class="field">
+				<%= f.label :destination %><br>
+				<%= f.text_field :destination %>
+			</div>
+			<div>
+				<%= f.submit "Update" %>
+			</div>
+		<% end %>
+	<% end%>
+</div>
 
-<h3>Budget range: </h3>
-	<p> In country : $<%= @current_user.budget_in_min %> to $<%= @current_user.budget_in_max %>  </p>
-   <p> Out of country : $<%= @current_user.budget_out_min  %> to $<%= @current_user.budget_out_max %>  </p>
 
-<h3>Dates available: </h3>
-<% @current_user.calendar.daterange.each do |range| %>  
-	From <%= range.start_date %> To <%= range.start_date %> 
-	<br>
-<% end %>
+<div>
+	<h3>Budget range: </h3>
+	<% if !current_user.budget_in_min.nil? %>
+		<p> In country : $ <%= current_user.budget_in_min %> to $ <%= current_user.budget_in_max %>  </p>
+		<p> Out of country : $ <%= current_user.budget_out_min  %> to $ <%= current_user.budget_out_max %>  </p>
+	<% else %>
+      <p>Need to show the form here </p>
+	  <%= form_for(current_user) do |f| %>
+	     In country: 
+		  <div class="field">
+			<%= f.label :from %>
+			$ <%= f.text_field :budget_in_min %>
+		  </div>
+			<div class="field">
+			<%= f.label :_to %><br>
+			$ <%= f.text_field :budget_in_max %>
+		  </div>
+		  Out of country:
+		 <div class="field">
+			<%= f.label :from %>
+			$ <%= f.text_field :budget_out_min %>
+		  </div>
+		 <div class="field">
+			<%= f.label :_to %><br>
+			$ <%= f.text_field :budget_out_max %>
+		  </div>
+		 <div>
+			<%= f.submit "Update" %>
+		 </div>
+		 <% end %>
+	<% end %>
+</div>
+
+<div>
+    <h3>Availability: </h3>
+   	<% if !current_user.calendar.nil? %>
+	   <strong>Date:</strong>
+	   <% current_user.calendar.ranges.each do |range| %>  
+			From <%= range.start_date %> to <%= range.end_date %> 
+	  <% end %>
+	<% else %>
+		<%= form_for(create_daterange_path) do |f| %>
+			<div class="field">
+				<%= f.label :start_date %><br>
+				<%= f.date_select :start_date %>
+			</div>
+			<div class="field">
+				<%= f.label :end_date %><br>
+				<%= f.date_select :end_date %>
+			</div>
+			<div>
+				<%= submit_tag "Add the range", :controller => "daterange", :action => "create", :user_id => current_user.id  %>
+			</div>
+		<% end %>
+	<% end%>
+</div>
+
+
