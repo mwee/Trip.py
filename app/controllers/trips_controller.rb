@@ -4,7 +4,8 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @trips = Trip.all
+    @trips = User.find(session[:user_id]).created_trips  + User.find(session[:user_id]).trips  
+	
   end
 
   # GET /trips/1

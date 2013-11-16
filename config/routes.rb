@@ -11,7 +11,7 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
 
 # You can have the root of your site routed with "root"
  root 'trips#index'
- resources :users, :only => :show
+ resources :users
  resources :trips
 
 # Example of regular route:

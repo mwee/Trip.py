@@ -12,9 +12,9 @@
 	  <% if current_user %>
 		 Welcome <strong><%= current_user.name %></strong>!
 		 <%= link_to "Sign out", signout_path, id: "sign_out" %>
-			<h1 class="title">Your Profile</h1>
+			<h1 class="title">Your Profile</h1><!--should go to the users/show view-->
 			<h1 class="title">Your Friends</h1>
-			<h1 class="title">Your Trips</h1>		 
+			<h1 class="title">Your Trips</h1><!--should go to the trips/show view-->		 
 	  <% else %>
 		 <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
      <% end %>
