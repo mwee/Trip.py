@@ -1,0 +1,9 @@
+		<%= form_for(@user) do |f| %>
+			<div class="field">
+				<%= f.label :destination %><br>
+				<%= f.text_field :destination %>
+			</div>
+			<div>
+				<%= f.submit "Update" %>
+			</div>
+		<% end %>

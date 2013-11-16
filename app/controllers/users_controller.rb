@@ -6,12 +6,18 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
-	
+     @user = User.find(params[:id])	
   end
 
+  def edit_destination
+     @user = User.find(params[:id])
+  end
   
-    def update
+  def edit_budget
+     @user = User.find(params[:id])
+  end
+  
+  def update
     @user = User.find(params[:id])
     respond_to do |format|
       if @user.update(user_params)
@@ -28,7 +34,7 @@ class UsersController < ApplicationController
 
 # Never trust parameters from the scary internet, only allow the white list through.
  def user_params
-  params.require(:user).permit(:name, :email, :password, :destination, :budget_in_min, :budget_in_max, :budget_out_in, :budget_out_max)
+    params.require(:user).permit(:name, :email, :password, :destination, :budget_in_min, :budget_in_max, :budget_out_in, :budget_out_max)
  end
  
 #
