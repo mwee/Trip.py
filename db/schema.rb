@@ -13,6 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20131116184352) do
   
+  create_table "calendars", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+  
   create_table "dateranges", force: true do |t|
     t.date     "start_date"
     t.date     "end_date"
