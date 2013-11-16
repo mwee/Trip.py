@@ -10,8 +10,11 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
  resources :users
  resources :trips
  resources :daterange
-  match 'users/show/:id' => 'users#show', :as => :user_show, via: [:get, :post]
- match 'dateranges/create' => 'dateranges#create', :as => :create_daterange, via: [:get, :post]
+ 
+ match 'users/show/:id' => 'users#show', :as => :user_show, via: [:get, :post]
+ match 'users/edit_destination/:id' => 'users#edit_destination', :as => :user_edit_destination, via: [:get, :post]
+ match 'users/edit_budget/:id' => 'users#edit_budget', :as => :user_edit_budget, via: [:get, :post]
+ #match 'dateranges/new/:id' => 'dateranges#new', :as => :new_daterange, via: [:get, :post]
    get ':controller(/:action(/:id))(.:format)'
   post ':controller(/:action(/:id))(.:format)'
   

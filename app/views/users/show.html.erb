@@ -1,76 +1,44 @@
 <div>
 	<h3>Dream Destinations: </h3>
-	<% if !current_user.destination.nil? %>
-	  <%= current_user.destination %>  
+	<% if !@user.destination.nil? %>
+	  <%= @user.destination %>  
 	<% else %>
-		<%= form_for(current_user) do |f| %>
-			<div class="field">
-				<%= f.label :destination %><br>
-				<%= f.text_field :destination %>
-			</div>
-			<div>
-				<%= f.submit "Update" %>
-			</div>
-		<% end %>
-	<% end%>
+	   <p> No destinations.</p>
+	<% end%>	
+	<% if @user.id==current_user.id %>
+	     <%= link_to "Update destination", user_edit_destination_path(current_user.id) %>  
+	<%  end %>
 </div>
 
 
 <div>
 	<h3>Budget range: </h3>
-	<% if !current_user.budget_in_min.nil? %>
-		<p> In country : $ <%= current_user.budget_in_min %> to $ <%= current_user.budget_in_max %>  </p>
-		<p> Out of country : $ <%= current_user.budget_out_min  %> to $ <%= current_user.budget_out_max %>  </p>
+	<% if (!@user.budget_in_min.nil?) &&(!@user.budget_in_max.nil?) %>
+		<p> In country : $ <%= @user.budget_in_min %> to $ <%= @user.budget_in_max %>  </p>
+		<p> Out of country : $ <%= @user.budget_out_min  %> to $ <%= @user.budget_out_max %>  </p>
 	<% else %>
-      <p>Need to show the form here </p>
-	  <%= form_for(current_user) do |f| %>
-	     In country: 
-		  <div class="field">
-			<%= f.label :from %>
-			$ <%= f.text_field :budget_in_min %>
-		  </div>
-			<div class="field">
-			<%= f.label :_to %><br>
-			$ <%= f.text_field :budget_in_max %>
-		  </div>
-		  Out of country:
-		 <div class="field">
-			<%= f.label :from %>
-			$ <%= f.text_field :budget_out_min %>
-		  </div>
-		 <div class="field">
-			<%= f.label :_to %><br>
-			$ <%= f.text_field :budget_out_max %>
-		  </div>
-		 <div>
-			<%= f.submit "Update" %>
-		 </div>
-		 <% end %>
+		   <p> No budget.</p>	
 	<% end %>
+	<% if @user.id==current_user.id %>
+	     <%= link_to "Update budget", user_edit_budget_path(current_user.id) %>  
+	<%  end %>
 </div>
 
 <div>
     <h3>Availability: </h3>
-   	<% if !current_user.calendar.nil? %>
-	   <strong>Date:</strong>
-	   <% current_user.calendar.ranges.each do |range| %>  
+   	<% if !@user.dateranges.nil? %>
+	    <strong>Date:</strong>
+	    <% @user.dateranges.each do |range| %>  
 			From <%= range.start_date %> to <%= range.end_date %> 
-	  <% end %>
+		<% end %>	
 	<% else %>
-		<%= form_for(create_daterange_path) do |f| %>
-			<div class="field">
-				<%= f.label :start_date %><br>
-				<%= f.date_select :start_date %>
-			</div>
-			<div class="field">
-				<%= f.label :end_date %><br>
-				<%= f.date_select :end_date %>
-			</div>
-			<div>
-				<%= submit_tag "Add the range", :controller => "daterange", :action => "create", :user_id => current_user.id  %>
-			</div>
-		<% end %>
-	<% end%>
+	    <p> No calendar.</p>	
+	<% end %>
+	
+	<% if @user.id==current_user.id %>
+	    <%= link_to "Add a range", new_daterange_path(current_user.id) %>  
+	<% end %>
+	
 </div>
 
 
