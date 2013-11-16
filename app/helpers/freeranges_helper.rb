@@ -1,0 +1,2 @@
+module FreerangesHelper
+end
