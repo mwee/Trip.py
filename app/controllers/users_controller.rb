@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   #before_action :signed_in_user, :only => [:show,:profile]
   
+  def new
+    
+  end
+  
   def show
     @user = User.find(params[:id])
 	

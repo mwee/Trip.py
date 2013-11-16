@@ -11,13 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131116042600) do
-
-  create_table "calendars", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
+ActiveRecord::Schema.define(version: 20131116001505) do
 
   create_table "dateranges", force: true do |t|
     t.date     "start_date"
@@ -33,14 +27,6 @@ ActiveRecord::Schema.define(version: 20131116042600) do
     t.datetime "updated_at"
     t.float    "cost_min"
     t.float    "cost_max"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.integer  "creator_id"
-  end
-
-  create_table "trips_users", id: false, force: true do |t|
-    t.integer "trip_id", null: false
-    t.integer "user_id", null: false
   end
 
   create_table "users", force: true do |t|
@@ -51,11 +37,6 @@ ActiveRecord::Schema.define(version: 20131116042600) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "destination"
-    t.float    "budget_in_min"
-    t.float    "budget_out_min"
-    t.float    "budget_out_max"
-    t.float    "budget_in_max"
   end
 
 end
