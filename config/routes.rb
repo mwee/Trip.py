@@ -4,17 +4,17 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
-  match '/signin',  to: 'sessions#create',         via: [:get, :post]
-  
+
 # You can have the root of your site routed with "root"
- root 'sessions#new'
+ root 'trips#index'
  resources :users
  resources :trips
- resources :freerange
+ resources :freeranges
  
  match 'users/show/:id' => 'users#show', :as => :user_show, via: [:get, :post]
  match 'users/edit_destination/:id' => 'users#edit_destination', :as => :user_edit_destination, via: [:get, :post]
  match 'users/edit_budget/:id' => 'users#edit_budget', :as => :user_edit_budget, via: [:get, :post]
+
    get ':controller(/:action(/:id))(.:format)'
   post ':controller(/:action(/:id))(.:format)'
   
