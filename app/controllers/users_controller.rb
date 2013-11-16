@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   #before_action :signed_in_user, :only => [:show,:profile]
 
 
-  def show
+  def show_profile
     @user = User.find(params[:id])
   end
 

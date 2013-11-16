@@ -15,11 +15,32 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
+    <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date %>
+  </div>
+    <div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.date_select :end_date %>
+  </div>
   <div class="field">
     <%= f.label :destination %><br>
     <%= f.text_field :destination %>
   </div>
-  <div class="actions">
+  <div class="field">
+    <%= f.label :cost_min %><br>
+    $ <%= f.text_field :cost_min %>
+  </div>
+    <div class="field">
+    <%= f.label :cost_max %><br>
+    $ <%= f.text_field :cost_max %>
+  </div>
+
+
+  
+  Invite your friends to join the trip:
+  
+    <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

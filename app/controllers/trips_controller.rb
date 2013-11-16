@@ -19,6 +19,7 @@ class TripsController < ApplicationController
 
   # GET /trips/1/edit
   def edit
+  
   end
 
   # POST /trips
@@ -69,6 +70,6 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:title, :destination)
+      params.require(:trip).permit(:title, :destination, :start_date, :end_date, :cost_min, :cost_max)
     end
 end
