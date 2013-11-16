@@ -26,9 +26,9 @@
 
 <div>
     <h3>Availability: </h3>
-   	<% if !@user.dateranges.nil? %>
+   	<% if !@user.freeranges.nil? %>
 	    <strong>Date:</strong>
-	    <% @user.dateranges.each do |range| %>  
+	    <% @user.freeranges.each do |range| %>  
 			From <%= range.start_date %> to <%= range.end_date %> 
 		<% end %>	
 	<% else %>
@@ -36,7 +36,7 @@
 	<% end %>
 	
 	<% if @user.id==current_user.id %>
-	    <%= link_to "Add a range", new_daterange_path(current_user.id) %>  
+	    <%= link_to "Add a range", new_freerange_path(current_user.id) %>  
 	<% end %>
 	
 </div>
