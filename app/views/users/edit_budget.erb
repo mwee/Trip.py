@@ -1,0 +1,23 @@
+	  <%= form_for(@user) do |f| %>
+	     In country: 
+		  <div class="field">
+			<%= f.label :from %>
+			$ <%= f.text_field :budget_in_min %>
+		  </div>
+			<div class="field">
+			<%= f.label :_to %><br>
+			$ <%= f.text_field :budget_in_max %>
+		  </div>
+		  Out of country:
+		 <div class="field">
+			<%= f.label :from %>
+			$ <%= f.text_field :budget_out_min %>
+		  </div>
+		 <div class="field">
+			<%= f.label :_to %><br>
+			$ <%= f.text_field :budget_out_max %>
+		  </div>
+		 <div>
+			<%= f.submit "Update" %>
+		 </div>
+		 <% end %>
