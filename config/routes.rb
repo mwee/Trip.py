@@ -1,6 +1,8 @@
 LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
   
 
+  resources :trips
+
 # The priority is based upon order of creation: first created -> highest priority.
 # See how all your routes lay out with "rake routes".
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
