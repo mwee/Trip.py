@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131116001505) do
-
+ActiveRecord::Schema.define(version: 20131116184352) do
   create_table "dateranges", force: true do |t|
     t.date     "start_date"
     t.date     "end_date"
