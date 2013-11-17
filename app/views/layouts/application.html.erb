@@ -20,23 +20,20 @@
 </head>
 <body>
 
-
-	<% if current_user %>
-	  <header class="navbar navbar-default navbar-fixedd-top">
-	  	<div class="float-left navbar-header">
-	  		<a href="/" class="navbar-brand">
-               <img id="logoIcon" src="http://www.iconsdb.com/icons/preview/F49D1E/airplane-57-xxl.png">
-            </a>
-            <span id="logoName"> TRIP.PY</span>
-	  	</div>
-	  	<div id="rightButtons" class="pull-right">
-	  		<%= link_to "Sign out", signout_path, id: "sign_out" %>
-	  		
-	  		<%= link_to "Your Profile"%> 
-	  	</div>
-	  </header>
-	   Welcome <strong><%= current_user.name %></strong>!
-	  <div class="left_fields"></div>
+	<% if current_user %>		 
+		  	 Welcome <strong><%= current_user.name %></strong>!
+		  	  <%= link_to "Sign out", signout_path, id: "sign_out" %>
+	  <header></header>
+	  
+	  <div class="left_fields">
+	  	<%= link_to "Your Profile", user_show_path(current_user.id) %> 
+	  	<%= link_to "Your Friends", user_show_friend_path(current_user.id) %> 
+		<%= link_to "Your Trips" %>  	
+		<% if !current_user.trips.nil? %>
+		   <% @trips = current_user.trips %>
+	        <%= render 'trips/index' %> 
+		<% end %>
+	  </div>
       <div class="right_fields">
       	   <%=yield%>
       </div>
@@ -48,7 +45,7 @@
 
  <!-- 	<div id="user-widget">
 	  <% if current_user %>
-		
+		 Welcome <strong><%= current_user.name %></strong>!
 		    <%= link_to "Sign out", signout_path, id: "sign_out" %>
 			<br>
 			<%= link_to "Your Profile", user_show_path(current_user.id) %> 
@@ -60,5 +57,9 @@
      </div>
      <div id="fb-root"></div> --> 
 	 
+
+
+<footer></footer>
 </body>
+
 </html>
