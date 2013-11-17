@@ -8,8 +8,7 @@ $(document).ready(function() {
 			xfbml : true // parse XFBML
 		});
 
-	};
-	( function(d) {
+	}; ( function(d) {
 			var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
 			if (d.getElementById(id)) {
 				return;
@@ -21,12 +20,13 @@ $(document).ready(function() {
 			ref.parentNode.insertBefore(js, ref);
 		}(document));
 
-if (top.location!= self.location)
-{
-	console.log(self.location);
-	console.log(top.location);
-top.location = self.location;
-}
+	alert("loadfacebook jdk");
+	if (top.location != self.location) {
+		alert("here");
+		console.log(self.location);
+		console.log(top.location);
+		top.location = self.location;
+	}
 
 	$("#invite").click(function() {
 		alert("here");
