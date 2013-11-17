@@ -18,7 +18,7 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
  match 'users/edit_budget/:id' => 'users#edit_budget', :as => :user_edit_budget, via: [:get, :post]
 
   match 'trips/invite/:id' => 'trips#invite', :as => :trip_invite, via: [:get, :post]
-	
+  match 'trips/join/:id' => 'trips#join', :as => :trip_join, via: [:get, :patch, :post]
   get ':controller(/:action(/:id))(.:format)'
   post ':controller(/:action(/:id))(.:format)'
   

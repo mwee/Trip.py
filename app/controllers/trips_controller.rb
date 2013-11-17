@@ -11,6 +11,7 @@ class TripsController < ApplicationController
   # GET /trips/1
   # GET /trips/1.json
   def show
+    @activities=@trip.activities
   end
 
   # GET /trips/new
@@ -57,7 +58,14 @@ class TripsController < ApplicationController
   end
   
   def join
-     #respond_to do |format|
+    @friends=User.all
+    #respond_to do |format|
+	params[:friends].values.each do |friend|
+		if friend	
+			@trip  = @friends[friend].created_trips.create(trip_params) 
+			@trip.save
+		end
+	end
       #if @trip.update(trip_params)
        # format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
        # format.json { head :no_content }
