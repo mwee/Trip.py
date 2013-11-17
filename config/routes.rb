@@ -11,6 +11,10 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
  resources :trips
  resources :freeranges
  resources :activities
+ 
+ match 'activities/like/:id' => 'activities#like', :as => :like_activity, via: [:get, :post]
+ match 'activities/dislike/:id' => 'activities#dislike', :as => :dislike_activity, via: [:get, :post]
+
 
  match 'users/show/:id' => 'users#show', :as => :user_show, via: [:get, :post]
  match 'users/show_friend/:id' => 'users#show_friend', :as => :user_show_friend, via: [:get, :post]
