@@ -54,12 +54,13 @@ class TripsController < ApplicationController
   end
 
   def invite
-  	@friends=User.all #TODO: CHANGE!
+    @trip=Trip.find(params[:id])
+  	@friends=@trip.get_uninvited_friends(current_user)
   end
   
   def join
     @trip=Trip.find(params[:id])
-    @friends=User.all
+    @friends=@trip.get_uninvited_friends(current_user)
 	@count=-1
 	params[:friends].each do |f|
 		@count=@count+1

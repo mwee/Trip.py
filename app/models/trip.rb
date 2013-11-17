@@ -19,4 +19,13 @@ class Trip < ActiveRecord::Base
 	 #Return true if the user is a member of the trip(including the creator )
 	 def user_is_member
 	 end
+	 
+	 #return a list of friends that is not a memeber of the trip yet
+	 def get_uninvited_friends(user)
+	   trip= Trip.find(self.id) 
+	   users= User.all #user.friends
+	   uninvited = users-trip.users
+	   uninvited=uninvited-[trip.creator]
+	   return uninvited
+	 end
 end
