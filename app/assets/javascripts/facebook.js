@@ -19,7 +19,7 @@ $(document).ready(function() {
 			js.src = "//connect.facebook.net/en_US/all.js";
 			ref.parentNode.insertBefore(js, ref);
 		}(document));
-
+/*
 	alert("loadfacebook jdk");
 	if (top.location != self.location) {
 		alert("here");
@@ -27,12 +27,12 @@ $(document).ready(function() {
 		console.log(top.location);
 		top.location = self.location;
 	}
-
+*/
 	$("#invite").click(function() {
 		alert("here");
 		FB.ui({
-			method : 'apprequests',
-			message : 'Try this app',
+			method : 'send',
+			link : 'http://stark-dawn-4251.herokuapp.com/',
 		}, console.log("response"));
 	});
 
