@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   
   def show
      @user = current_user
-	 @freeranges=@user.freeranges
+	   @freeranges=@user.freeranges
   end
 
   def show_friends

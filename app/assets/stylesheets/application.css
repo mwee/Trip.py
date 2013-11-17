@@ -12,7 +12,34 @@
  *= require_tree .
  */
 
+#rightButtons{
+	position:relative;
+	top:15px;
+	left: -10px;
+	color : #f49d1e;
+}
+.navbar-header{
+	float:left;
+}
 
+float-right{
+	float: right;
+}
+ .navbar-default{
+ 	background-color:rgba(255,255,255,0.8);
+ 	height: 40px;
+ }
+
+#logoName{
+	font-size: 19px;
+	font-weight: 300;
+	color : #f49d1e;
+}
+#logoIcon{
+	height : 55px;
+	position: relative;
+	top: -5px;
+}
 .explain_row{
 	padding-top: 25px;
 }
