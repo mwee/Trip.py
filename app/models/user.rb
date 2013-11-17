@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	
     #has_many :votes
 	
-	AMOUNT_REGEX= /\d+\.?\d{0,2}+/i
+	AMOUNT_REGEX= (/\d+\.?\d{0,2}+/i)
 	validates :budget_in_min, :format => AMOUNT_REGEX,:numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}
 	validates :budget_in_max, :format => AMOUNT_REGEX,:numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}
 	validates :budget_out_min, :format => AMOUNT_REGEX,:numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}
@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
 			  user.provider = auth.provider
 			  user.uid = auth.uid
 			  user.name = auth.info.name
+			  user.budget_in_min=0
+			   user.budget_in_max=0
+			    user.budget_out_min=0
+			     user.budget_out_max=0
 			  user.oauth_token = auth.credentials.token
 			  user.oauth_expires_at = Time.at(auth.credentials.expires_at)
 			  user.save!

@@ -20,7 +20,8 @@
 </head>
 <body>
 
-	<% if !current_user %>
+
+	<% if current_user %>
 	  <header class="navbar navbar-default navbar-fixedd-top">
 	  	<div class="float-left navbar-header">
 	  		<a href="/" class="navbar-brand">
@@ -34,6 +35,7 @@
 	  		<%= link_to "Your Profile"%> 
 	  	</div>
 	  </header>
+	   Welcome <strong><%= current_user.name %></strong>!
 	  <div class="left_fields"></div>
       <div class="right_fields">
       	   <%=yield%>
@@ -46,7 +48,7 @@
 
  <!-- 	<div id="user-widget">
 	  <% if current_user %>
-		 Welcome <strong><%= current_user.name %></strong>!
+		
 		    <%= link_to "Sign out", signout_path, id: "sign_out" %>
 			<br>
 			<%= link_to "Your Profile", user_show_path(current_user.id) %> 

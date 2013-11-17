@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 	   @freeranges=@user.freeranges
   end
 
-  def show_friends
+  def show_friend
      @user = User.find(params[:id])		 
   end
   
