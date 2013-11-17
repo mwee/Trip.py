@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   end
 
   def show_friend
-     @user = User.find(params[:id])		 
+     @user = User.find(params[:id])		
+     @friends=User.all #need to changed to @user.friends	 
   end
   
   def edit_destination

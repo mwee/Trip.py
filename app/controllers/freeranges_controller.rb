@@ -4,7 +4,7 @@ class FreerangesController < ApplicationController
   # GET /freeranges
   # GET /freeranges.json
   def index
-    @user = User.find(params[:id])
+    @user = current_user
     @freeranges = @user.freeranges
   end
 
