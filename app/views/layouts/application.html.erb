@@ -33,6 +33,35 @@
 		   <% @trips = current_user.trips %>
 	        <%= render 'trips/index' %> 
 		<% end %>
+
+	<% if current_user %>
+	  <header class="navbar navbar-default navbar-fixedd-top">
+	  	<div class="float-left navbar-header">
+	  		<a href="/" class="navbar-brand">
+               <img id="logoIcon" src="http://www.iconsdb.com/icons/preview/F49D1E/airplane-57-xxl.png">
+            </a>
+            <span id="logoName"> TRIP.PY</span>
+	  	</div>
+	  	<div id="rightButtons" class="pull-right">
+	  		<%= link_to "Sign out", signout_path, id: "sign_out" %>
+	  		
+	  	</div>
+	  </header>
+	  
+	  <div class="left_fields">
+	  	  <div class="panel_icon">
+	  	  	   <img class="profile_pic" src="https://cdn0.iconfinder.com/data/icons/vector-people-icons-for-ios/400/lady-512.png">
+	  	  </div>
+	  	  <div class="panel_name">
+	  	  	    <%= current_user.name.split(" ").first %>
+	  	  </div>
+	  	  <div class="panel_links"> 
+	  	  	   <h4 class="title"><span class="label color1">20</span>
+	  	  	   	Your Friends</h3>
+		       <h4 class="title"><span class="label color2">4</span>
+		       	Your Trips</h3>
+	  	  </div>
+	  	
 	  </div>
       <div class="right_fields">
       	   <%=yield%>
