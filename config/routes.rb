@@ -7,7 +7,9 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
   match '/signin',  to: 'sessions#create',         via: [:get, :post]
   
 # You can have the root of your site routed with "root"
- root 'sessions#new'
+
+ 
+ root 'welcome#home'
  resources :users
  resources :trips
  resources :freerange
