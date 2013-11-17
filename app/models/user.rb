@@ -25,4 +25,10 @@ class User < ActiveRecord::Base
 			  user.save!
         end
     end
+	
+	def get_trip_num()
+	    user= User.find(self.id) 
+		num=(user.trips+user.created_trips).length
+	    return num
+	end
 end
