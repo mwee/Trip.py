@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131117203805) do
+ActiveRecord::Schema.define(version: 20131117213157) do
 
   create_table "activities", force: true do |t|
     t.datetime "created_at"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20131117203805) do
   end
 
   create_table "calendars", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "dateranges", force: true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -45,6 +53,7 @@ ActiveRecord::Schema.define(version: 20131117203805) do
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "creator_id"
+    t.text     "description"
   end
 
   create_table "trips_users", id: false, force: true do |t|
