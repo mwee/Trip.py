@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	
     #has_many :votes
 	
-	AMOUNT_REGEX= /\d+\.?\d{0,2}+/i
+	AMOUNT_REGEX= (/\d+\.?\d{0,2}+/i)
 	validates :budget_in_min, :format => AMOUNT_REGEX,:numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}
 	validates :budget_in_max, :format => AMOUNT_REGEX,:numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}
 	validates :budget_out_min, :format => AMOUNT_REGEX,:numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}
