@@ -11,7 +11,34 @@
  *= require_self
  *= require_tree .
  */
+.right_changes{
+	position: relative;
+	left: 30%;
+}
+ .user_info{
+ 	float: left;
+ 	width: 70%;
+ }
+.right_answers_p{
+  font-size: 14px;
+  font-weight: 300;
+}
+.right_section{
+	margin-top: 10px;
+	background-color: rgba(255,255,255,0.8);
+	margin-right: 20px;
+	padding: 10px;
+}
 
+.right_label{
+    /*float:left;*/
+    font-weight: 300;
+}
+.right_answers{
+	float:left;
+	width: 50%;
+
+}
 .right_body{
 	margin-top: 10px;
 	margin-left: 20px;
@@ -81,7 +108,7 @@ footer{
 }
 
 .profile_pic{
-	height: 180px;
+	height: 150px;
 }
 .left_fields{
 	float: left;
@@ -190,6 +217,8 @@ body{
 }
 
 .mainbody{
-	font-family : "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+	/*font-family : "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;*/
+	font-family: 	font-family:'Raleway', sans-serif;
+
 	
 }
