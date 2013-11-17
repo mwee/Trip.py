@@ -17,3 +17,14 @@
 
 
 
+$(document).ready(function(){
+
+
+    $("#updateDestination").click(function(){
+     $("#updatingDestinations").slideToggle();
+     });
+
+    $("#newSuggestionButton").click(function(){
+    $("#addingSuggestion").slideToggle();
+     });
+});

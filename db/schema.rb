@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20131117214343) do
-
 
   create_table "activities", force: true do |t|
     t.datetime "created_at"
@@ -29,28 +27,12 @@ ActiveRecord::Schema.define(version: 20131117214343) do
     t.integer  "user_id"
   end
 
-  create_table "dateranges", force: true do |t|
-    t.date     "start_date"
-    t.date     "end_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
   create_table "freeranges", force: true do |t|
     t.date     "start_date"
     t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-  end
-
-  create_table "requests", force: true do |t|
-    t.integer  "request_id"
-    t.integer  "from"
-    t.integer  "to"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "trips", force: true do |t|
