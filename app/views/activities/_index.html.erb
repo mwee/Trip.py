@@ -1,10 +1,10 @@
-<h1>Listing Activities</h1>
+<h1>Activities</h1>
 <table>
   <thead>
     <tr>
+      <th>Likes</th>
+      <th>Dislikes</th>
       <th>Activities</th>
-      <th>Like</th>
-      <th>Dislike</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,6 +14,8 @@
   <tbody>
     <% @activities.each do |activity| %>
       <tr>
+        <td><%= activity.num_likes %></td>
+        <td><%= activity.num_dislikes %></td>
         <td><%= activity.topic %></td>
         <td><%= link_to 'Like', like_activity_path(activity), remote: true %></td>
         <td><%= link_to 'Dislike', dislike_activity_path(activity), remote: true%></td>

@@ -58,22 +58,15 @@ class TripsController < ApplicationController
   end
   
   def join
+    @trip=Trip.find(params[:id])
     @friends=User.all
-    #respond_to do |format|
-	params[:friends].values.each do |friend|
-		if friend	
-			@trip  = @friends[friend].created_trips.create(trip_params) 
-			@trip.save
-		end
+	params[:friends].values.length do |i|
+	    #is_checked=params[:friends].values[i]
+		#if is_checked==1
+			@trip.users << @friends[i]	          			
+		#end
 	end
-      #if @trip.update(trip_params)
-       # format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
-       # format.json { head :no_content }
-     # else
-     #   format.html { render action: 'edit' }
-     #   format.json { render json: @trip.errors, status: :unprocessable_entity }
-    #  end
-    #end
+  
   end
   
   # DELETE /trips/1
