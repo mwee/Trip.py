@@ -19,38 +19,41 @@ $(document).ready(function() {
 			js.src = "//connect.facebook.net/en_US/all.js";
 			ref.parentNode.insertBefore(js, ref);
 		}(document));
-/*
-	alert("loadfacebook jdk");
-	if (top.location != self.location) {
-		alert("here");
-		console.log(self.location);
-		console.log(top.location);
-		top.location = self.location;
-	}
-*/
+	/*
+	 alert("loadfacebook jdk");
+	 if (top.location != self.location) {
+	 alert("here");
+	 console.log(self.location);
+	 console.log(top.location);
+	 top.location = self.location;
+	 }
+	 */
 
-/*
- * 		FB.ui({
-			method : 'send',
-			
-			link : 'http://stark-dawn-4251.herokuapp.com/',
-		}, console.log("response"));
- */
-/*
- * link : 'http://stark-dawn-4251.herokuapp.com/',
- */
-if (top.location != self.location) {
-		alert("change top location");
-		console.log(self.location);
-		console.log(top.location);
-		top.location = self.location;
-	}
-	
+	/*
+	 * 		FB.ui({
+	 method : 'send',
+
+	 link : 'http://stark-dawn-4251.herokuapp.com/',
+	 }, console.log("response"));
+	 */
+	/*
+	 * link : 'http://stark-dawn-4251.herokuapp.com/',
+	 */
+
+	$(function() {
+		if (top.location != self.location) {
+			alert("change top location");
+			console.log(self.location);
+			console.log(top.location);
+			top.location = self.location;
+		}
+	});
+
 	$("#invite").click(function() {
 		//alert("here");
 		FB.ui({
-			method: 'apprequests',
-			message:'try this app',
+			method : 'apprequests',
+			message : 'try this app',
 		}, console.log(response.));
 	});
 

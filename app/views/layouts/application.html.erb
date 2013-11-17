@@ -63,7 +63,7 @@
 		 Welcome <strong><%= current_user.name %></strong>!
 		    <%= link_to "Sign out", signout_path, id: "sign_out" %>
 			<br>
-			<%= link_to "Your Profile", user_show_path(current_user.id) %> 
+			<%= link_to "Your friend", user_show_friend_path(current_user.id) %> 
 			<h1 class="title">Your Friends</h1>
 			<h1 class="title">Your Trips</h1><!--should go to the trips/show view		 
 	  <% else %>
