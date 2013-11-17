@@ -12,5 +12,5 @@
 OmniAuth.config.logger = Rails.logger
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, '251622244993391', '354b23626f00bc2dbe1410a1944af151', :info_fields=> {:client_options => {:ssl => {:verify => false}}}
+  provider :facebook, '251622244993391', '354b23626f00bc2dbe1410a1944af151',  {:client_options => {:ssl => {:verify => false}}}
 end
