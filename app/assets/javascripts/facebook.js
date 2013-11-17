@@ -25,7 +25,7 @@ if (top.location!= self.location)
 {
 	console.log(self.location);
 	console.log(top.location);
-top.location = self.location
+top.location = self.location;
 }
 
 	$("#invite").click(function() {
