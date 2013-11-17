@@ -55,8 +55,12 @@ $(document).ready(function() {
 		FB.ui({
 			method : 'apprequests',
 			message : 'try this app',
-		}, console.log('response'));
+		}, requestCallBack(response));
 	});
+	
+	function requestCallBack(response){
+		console.log(response.request);
+	}
 
 	$("#sign_in").click(function() {
 		//e.preventDefault();
