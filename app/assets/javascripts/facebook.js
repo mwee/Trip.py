@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	// Handler for .ready() called.
 
 	window.fbAsyncInit = function() {
 		FB.init({
@@ -10,16 +9,37 @@ $(document).ready(function() {
 		});
 
 	};
+	( function(d) {
+			var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement('script');
+			js.id = id;
+			js.async = true;
+			js.src = "//connect.facebook.net/en_US/all.js";
+			ref.parentNode.insertBefore(js, ref);
+		}(document));
+
+	$("#invite").click(function() {
+		alert("here");
+		FB.ui({
+			method : 'apprequests',
+			message : 'My Great Request',
+		}, console.log("response"));
+	});
 
 	$("#sign_in").click(function() {
 		//e.preventDefault();
-			alert("here");
-		FB.login(function(response) {
-			if (response.authResponse) {
-				// The person logged into your app
-				window.location = '/auth/facebook/callback';
-			}
-		});
+		/*
+		 alert("here");
+		 FB.login(function(response) {
+		 if (response.authResponse) {
+		 // The person logged into your app
+		 window.location = '/auth/facebook/callback';
+		 }
+		 });
+		 */
 	});
 	$("#sign_out").click(function() {
 		FB.getLoginStatus(function(response) {
@@ -44,13 +64,6 @@ $(document).ready(function() {
 	 FB.logout() if response.authResponse
 	 true
 
-	 (function(d){
-	 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-	 if (d.getElementById(id)) {return;}
-	 js = d.createElement('script'); js.id = id; js.async = true;
-	 js.src = "//connect.facebook.net/en_US/all.js";
-	 ref.parentNode.insertBefore(js, ref);
-	 }(document));
 	 */
 });
 /*
