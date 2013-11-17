@@ -1,29 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LyxhLiyihuaFkezaMweeFinal</title>
+  <title>Trip.py!</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src = "https://raw.github.com/jschr/bootstrap-modal/master/js/bootstrap-modal.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="http://railsgirls.com/assets/bootstrap.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src = "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src = "http://qtip2.com/v/nightly/jquery.qtip.js"></script>
+  <link rel="stylesheet" href="http://qtip2.com/v/nightly/jquery.qtip.css">
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+ 
+
 </head>
 <body>
-	
-	<div id="user-widget">
+
+	<% if current_user %>
+	  <header></header>
+	  <div class="left_fields"></div>
+      <div class="right_fields">
+      	   <%=yield%>
+      </div>
+
+	<%else%>
+	   <%=yield%>
+	<%end%>
+
+
+ <!-- 	<div id="user-widget">
 	  <% if current_user %>
 		 Welcome <strong><%= current_user.name %></strong>!
 		    <%= link_to "Sign out", signout_path, id: "sign_out" %>
 			<br>
 			<%= link_to "Your Profile", user_show_path(current_user.id) %> 
 			<h1 class="title">Your Friends</h1>
-			<h1 class="title">Your Trips</h1><!--should go to the trips/show view-->		 
+			<h1 class="title">Your Trips</h1><!--should go to the trips/show view		 
 	  <% else %>
 		 <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
      <% end %>
      </div>
-     <div id="fb-root"></div>
+     <div id="fb-root"></div> --> 
 	 
 
-<%= yield %>
 
+<footer></footer>
 </body>
+
 </html>

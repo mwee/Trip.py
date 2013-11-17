@@ -6,7 +6,10 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
 # You can have the root of your site routed with "root"
- root 'trips#index'
+
+
+ 
+ root 'welcome#home'
  resources :users
  resources :trips
  resources :freeranges
