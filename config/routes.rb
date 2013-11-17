@@ -6,20 +6,18 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
 # You can have the root of your site routed with "root"
-
-
- 
  root 'welcome#home'
  resources :users
  resources :trips
  resources :freeranges
- 
+ resources :activities
+
  match 'users/show/:id' => 'users#show', :as => :user_show, via: [:get, :post]
-  match 'users/show_friend/:id' => 'users#show_friend', :as => :user_show_friend, via: [:get, :post]
+ match 'users/show_friend/:id' => 'users#show_friend', :as => :user_show_friend, via: [:get, :post]
  match 'users/edit_destination/:id' => 'users#edit_destination', :as => :user_edit_destination, via: [:get, :post]
  match 'users/edit_budget/:id' => 'users#edit_budget', :as => :user_edit_budget, via: [:get, :post]
 
-   get ':controller(/:action(/:id))(.:format)'
+  get ':controller(/:action(/:id))(.:format)'
   post ':controller(/:action(/:id))(.:format)'
   
 # Example of regular route:

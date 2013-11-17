@@ -12,6 +12,10 @@
  *= require_tree .
  */
 
+ .main_section{
+ 	margin-top: 65px;
+ }
+
 #footerIcon{
     height: 90px;
  }
@@ -167,8 +171,12 @@ h1 span{
 }
 
 body{
-	font-family : "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-    background: url("https://d23ksy42n131jj.cloudfront.net/assets/textures/lifeisgood-bf38ca0b43dcc50007a7203f64137529.jpg");
+	background: url("https://d23ksy42n131jj.cloudfront.net/assets/textures/lifeisgood-bf38ca0b43dcc50007a7203f64137529.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+}
+
+.mainbody{
+	font-family : "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+	
 }
