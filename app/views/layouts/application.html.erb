@@ -19,63 +19,56 @@
 
 </head>
 <body>
+  <div class="mainbody">
+  	<!-- There is a user. So a new navbar and left profile handle-->
+			<% if current_user %>
+			  <!-- navbar header -->
+			  <header class="navbar navbar-default navbar-fixed-top">
+			  	<div class="float-left navbar-header">
+			  		<a href="/" class="navbar-brand">
+		               <img id="logoIcon" src="http://www.iconsdb.com/icons/preview/F49D1E/airplane-57-xxl.png">
+		            </a>
+		            <span id="logoName"> TRIP.PY</span>
+			  	</div>
+			  	<div id="rightButtons" class="pull-right">
+			  		<%= link_to "Sign out", signout_path, id: "sign_out",class: "btn" %>
+			  	
+			  	</div>
+			  </header>
+			  <!-- main body on the user home -->
+			  <div class="main_section row">
+					  <div class="left_fields">
+					  	  <div class="panel_icon">
+					  	  	   <img class="profile_pic" src="https://cdn0.iconfinder.com/data/icons/vector-people-icons-for-ios/400/lady-512.png">
+					  	  </div>
+					  	  <div class="panel_name">
+					  	  	    <%= current_user.name.split(" ").first %>
+					  	  </div>
+					  	  <div class="panel_links"> 
+					  	  	   <h4 class="title"><span class="label color1">20</span>
+					  	  	   	Your Friends</h4>
+						       <h4 class="title"><span class="label color2">4</span>
 
+						       	<%= link_to "Your Trips", trips_path, :id => current_user.id %> </h4>
 
-	<% if current_user %>
-	  <header class="navbar navbar-default navbar-fixedd-top">
-	  	<div class="float-left navbar-header">
-	  		<a href="/" class="navbar-brand">
-               <img id="logoIcon" src="http://www.iconsdb.com/icons/preview/F49D1E/airplane-57-xxl.png">
-            </a>
-            <span id="logoName"> TRIP.PY</span>
-	  	</div>
-	  	<div id="rightButtons" class="pull-right">
-	  		<%= link_to "Sign out", signout_path, id: "sign_out" %>
-	  		
-	  	</div>
-	  </header>
-	  
-	  <div class="left_fields">
-	  	  <div class="panel_icon">
-	  	  	   <img class="profile_pic" src="https://cdn0.iconfinder.com/data/icons/vector-people-icons-for-ios/400/lady-512.png">
-	  	  </div>
-	  	  <div class="panel_name">
-	  	  	    <%= current_user.name.split(" ").first %>
-	  	  </div>
-	  	  <div class="panel_links"> 
-	  	  	   <h4 class="title"><span class="label color1">20</span>
-	  	  	   	Your Friends</h3>
-		       <h4 class="title"><span class="label color2">4</span>
-		       <%= link_to "Your Trips", trips_path, :id => current_user.id %> 
-			   </h3>
-	  	  </div>
-	  </div>
-      <div class="right_fields">
-      	   <%=yield%>
-      </div>
+					  	  </div>
+					  </div>
+				      <div class="right_fields">
+				      	   <%=yield%>
+				      </div>
+		      </div>  
 
-	<%else%>
-	   <%=yield%>
-	<%end%>
+	<!-- A home page that will be in welcome#home-->
+			  <%else%>
+			   <%=yield%>
+			  <%end%>
+   </div>
+    <footer>
+    	<div>Contact : 6.170project@mit.edu</div>
+    	<div> <img id="footerIcon" src="http://www.iconsdb.com/icons/preview/F49D1E/airplane-57-xxl.png"></div>
+    </footer>
+    
 
-
- <!-- 	<div id="user-widget">
-	  <% if current_user %>
-		 Welcome <strong><%= current_user.name %></strong>!
-		    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-			<br>
-			<%= link_to "Your Profile", user_show_path(current_user.id) %> 
-			<h1 class="title">Your Friends</h1>
-			<h1 class="title">Your Trips</h1><!--should go to the trips/show view		 
-	  <% else %>
-		 <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-     <% end %>
-     </div>
-     <div id="fb-root"></div> --> 
-	 
-
-
-<footer></footer>
 </body>
-
+ 
 </html>
