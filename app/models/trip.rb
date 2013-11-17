@@ -6,6 +6,10 @@ class Trip < ActiveRecord::Base
 	 #has_many :activities
 	 #has_many :logistics
 	 
+	AMOUNT_REGEX= /\d+\.?\d{0,2}+/i
+	validates :cost_min, :format => AMOUNT_REGEX,:numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}
+	validates :cost_in_max, :format => AMOUNT_REGEX,:numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}
+	 
 	 #Return true if the user is the creator of the trip
 	 def user_is_creator
 	 end

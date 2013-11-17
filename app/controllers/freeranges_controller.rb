@@ -4,12 +4,14 @@ class FreerangesController < ApplicationController
   # GET /freeranges
   # GET /freeranges.json
   def index
-    @freeranges = Freerange.all
+    @user = User.find(params[:id])
+    @freeranges = @user.freeranges
   end
 
   # GET /freeranges/1
   # GET /freeranges/1.json
   def show
+  
   end
 
   # GET /freeranges/new
@@ -24,8 +26,7 @@ class FreerangesController < ApplicationController
   # POST /freeranges
   # POST /freeranges.json
   def create
-    @freerange = Freerange.new(freerange_params)
-
+    @freerange = current_user.freeranges.build(freerange_params) 
     respond_to do |format|
       if @freerange.save
         format.html { redirect_to @freerange, notice: 'Freerange was successfully created.' }

@@ -44,6 +44,9 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+#used to validate dates
+gem 'validates_timeliness', '~> 3.0'
+
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 
