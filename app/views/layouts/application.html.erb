@@ -22,7 +22,10 @@
 
 	<% if current_user %>
 	  <header></header>
-	  <div class="left_fields"></div>
+	  <div class="left_fields">
+	  	<%= link_to "Your Profile", user_show_path(current_user.id) %> 
+	  	<%= link_to "Your Friends", user_show_friend_path(current_user.id) %> 
+	  </div>
       <div class="right_fields">
       	   <%=yield%>
       </div>
