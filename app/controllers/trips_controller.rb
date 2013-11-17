@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: [:show, :edit, :update, :destroy]
+  before_action :set_trip, only: [:show, :edit, :invite, :update, :destroy]
 
   # GET /trips
   # GET /trips.json
@@ -20,15 +20,15 @@ class TripsController < ApplicationController
 
   # GET /trips/1/edit
   def edit
-  
   end
 
   # POST /trips
   # POST /trips.json
   def create
-    @trip = Trip.new(trip_params)
+	@trip  = current_user.created_trips.create(trip_params) 
     respond_to do |format|
       if @trip.save
+	    # add save the trip for invited friends
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
         format.json { render action: 'show', status: :created, location: @trip }
       else
@@ -52,6 +52,22 @@ class TripsController < ApplicationController
     end
   end
 
+  def invite
+  	@friends=User.all #TODO: CHANGE!
+  end
+  
+  def join
+     #respond_to do |format|
+      #if @trip.update(trip_params)
+       # format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
+       # format.json { head :no_content }
+     # else
+     #   format.html { render action: 'edit' }
+     #   format.json { render json: @trip.errors, status: :unprocessable_entity }
+    #  end
+    #end
+  end
+  
   # DELETE /trips/1
   # DELETE /trips/1.json
   def destroy
