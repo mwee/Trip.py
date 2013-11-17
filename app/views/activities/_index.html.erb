@@ -1,0 +1,30 @@
+<h1>Listing Activities</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Activities</th>
+      <th>Like</th>
+      <th>Dislike</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.topic %></td>
+        <td><%= link_to 'Like', activity, remote: true, method: :like %></td>
+        <td><%= link_to 'Dislike', activity, remote: true, method: :dislike</td>
+        <td><%= link_to 'Show', activity %></td>
+        <td><%= link_to 'Edit', edit_trip_path(activity) %></td>
+        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Activity', new_activity_path %>
