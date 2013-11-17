@@ -21,11 +21,18 @@ $(document).ready(function() {
 			ref.parentNode.insertBefore(js, ref);
 		}(document));
 
+if (top.location!= self.location)
+{
+	console.log(self.location);
+	console.log(top.location);
+top.location = self.location
+}
+
 	$("#invite").click(function() {
 		alert("here");
 		FB.ui({
 			method : 'apprequests',
-			message : 'My Great Request',
+			message : 'Try this app',
 		}, console.log("response"));
 	});
 

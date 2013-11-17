@@ -18,10 +18,6 @@ class User < ActiveRecord::Base
 			  user.provider = auth.provider
 			  user.uid = auth.uid
 			  user.name = auth.info.name
-			  user.budget_in_min=0
-			   user.budget_in_max=0
-			    user.budget_out_min=0
-			     user.budget_out_max=0
 			  user.oauth_token = auth.credentials.token
 			  user.oauth_expires_at = Time.at(auth.credentials.expires_at)
 			  user.save!
