@@ -2,23 +2,29 @@
 <div class="right_body">
 
 <div class="right_section">
+	<div>
 	<div class="user_info>">
-	<h3 class="right_label">Dream Destinations:</h3>
+		<h3 class="right_label">Dream Destinations:</h3>
 
-	<div class="right_answers">
-			<% if !@user.destination.nil? %>
-			  <p   class="right_answers_p"> <%= @user.destination %>  </p>
-			<% else %>
-			   <p   class="right_answers_p"> No destinations.</p>
-			<% end%>
-			</h3>
-    </div>	
-    </div>
+		<div class="right_answers">
+				<% if !@user.destination.nil? %>
+				  <p   class="right_answers_p"> <%= @user.destination %>  </p>
+				<% else %>
+				   <p   class="right_answers_p"> No destinations.</p>
+				<% end%>
+				</h3>
+	    </div>	
+	</div>
     <div class="right_changes">
 	<% if @user.id==current_user.id %>
-	     <%= link_to "Update destination", user_edit_destination_path(current_user.id) %>  
+	     <div id ="updateDestination"class="btn btn-medium ">Update Destinations
+         </div>
 	<% end %>
    </div>
+   </div>
+    <div id="updatingDestinations" class="popUp" style="display: none;">
+            <%= render :template => 'users/edit_destination' -%>
+    </div>
 
  </div>
 
@@ -37,7 +43,7 @@
 
     <div class="right_changes">
 	<% if @user.id==current_user.id %>
-	     <%= link_to "Update budget", user_edit_budget_path(current_user.id) %>  
+	     <%= link_to "Update budget", user_edit_budget_path(current_user.id) , class: "btn-custom" %>  
 	<% end %>
     </div>
 </div>
@@ -54,7 +60,7 @@
     </div>
 	<div class="right_changes">
 	<% if @user.id==current_user.id %>
-	    <%= link_to "Add a range", new_freerange_path %>  
+	    <%= link_to "Add a range", new_freerange_path , class: "btn-custom" %>  
 	<% end %>
    </div>
 </div>
