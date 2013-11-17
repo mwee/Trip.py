@@ -10,7 +10,8 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
  resources :users
  resources :trips
  resources :freeranges
- 
+ resources :activities
+
  match 'users/show/:id' => 'users#show', :as => :user_show, via: [:get, :post]
  match 'users/show_friend/:id' => 'users#show_friend', :as => :user_show_friend, via: [:get, :post]
  match 'users/edit_destination/:id' => 'users#edit_destination', :as => :user_edit_destination, via: [:get, :post]
