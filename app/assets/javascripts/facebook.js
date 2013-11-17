@@ -46,7 +46,12 @@ $(document).ready(function() {
 			method : 'apprequests',
 			message : 'try this app',
 		}, function(response) {
-			console.log(response);
+			var request=response.request;
+			var from= $("#user_data").attr("user-id");
+			for (var i=0;i<response.to.length;i++){
+				var to= response.to[i];
+				console.log(to);
+			}
 		});
 	});
 
