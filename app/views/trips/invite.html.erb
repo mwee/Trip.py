@@ -13,8 +13,7 @@
     <p> Invite your friends to join the trip: </p>
     <% @friends.length.times do |i| %>
 	  <%= label_tag @friends[i].name %>:
-	  <%= check_box_tag "friends[#{i}]" %> <br />
-  
+	  <%= check_box_tag "friends[#{i}]" %> <br /> 
 	<% end %>
   
   <div class="actions">

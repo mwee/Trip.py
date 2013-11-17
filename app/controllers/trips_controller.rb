@@ -60,12 +60,13 @@ class TripsController < ApplicationController
   def join
     @trip=Trip.find(params[:id])
     @friends=User.all
-	@count=0
+	@count=-1
 	params[:friends].each do |f|
+		@count=@count+1
 		if f
 			@trip.users << @friends[@count]	          			
 		end
-		@count=@count+1
+		
 	end
   
   end
