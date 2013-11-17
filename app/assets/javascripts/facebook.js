@@ -28,11 +28,23 @@ $(document).ready(function() {
 		top.location = self.location;
 	}
 */
-	$("#invite").click(function() {
-		alert("here");
-		FB.ui({
+
+/*
+ * 		FB.ui({
 			method : 'send',
+			
 			link : 'http://stark-dawn-4251.herokuapp.com/',
+		}, console.log("response"));
+ */
+/*
+ * link : 'http://stark-dawn-4251.herokuapp.com/',
+ */
+	$("#invite").click(function() {
+		//alert("here");
+		FB.ui({
+			method: 'apprequests',
+			
+			message:'try this app',
 		}, console.log("response"));
 	});
 
