@@ -41,14 +41,14 @@ $(document).ready(function() {
 	 * link : 'http://stark-dawn-4251.herokuapp.com/',
 	 */
 
-	
+	$(function() {
 		if (top.location != self.location) {
 			alert("change top location");
 			console.log(self.location);
 			console.log(top.location);
 			top.location = self.location;
 		}
-	
+	});
 
 	$("#invite").click(function() {
 		//alert("here");
