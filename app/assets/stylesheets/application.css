@@ -12,6 +12,29 @@
  *= require_tree .
  */
 
+ .main_section{
+ 	margin-top: 65px;
+ }
+
+#footerIcon{
+    height: 90px;
+ }
+
+#rightButtons .btn{
+	position: relative;
+	top: -18px;
+	border: none;
+	background-color: inherit;
+
+}
+footer{
+	margin-top: 650px;
+	padding-top: 60px;
+	padding-bottom: 10px;
+	background: black;
+	height: 200px;
+	text-align: center 
+}
 
 .right_fields{
 	width: 65%;
@@ -131,6 +154,7 @@ float-right{
 #trippyInfo{
 	padding: 30px;
 	background : rgba(255,255,255,0.4);
+	margin-top: 30px;
 }
 .text-center{
 	text-align: center;
@@ -147,8 +171,12 @@ h1 span{
 }
 
 body{
-	font-family : "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-    background: url("https://d23ksy42n131jj.cloudfront.net/assets/textures/lifeisgood-bf38ca0b43dcc50007a7203f64137529.jpg");
+	background: url("https://d23ksy42n131jj.cloudfront.net/assets/textures/lifeisgood-bf38ca0b43dcc50007a7203f64137529.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+}
+
+.mainbody{
+	font-family : "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+	
 }

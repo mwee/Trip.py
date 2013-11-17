@@ -1,3 +1,5 @@
+<div class="right_title"> Your Profile</div>
+
 <div>
 	<h3>Dream Destinations: </h3>
 	<% if !@user.destination.nil? %>
@@ -13,7 +15,7 @@
 
 <div>
 	<h3>Budget range: </h3>
-	<% if (!@user.budget_in_min.nil?) &&(!@user.budget_in_max.nil?) %>
+	<% if (!@user.budget_in_min.nil?) || (!@user.budget_in_max.nil?) %>
 		<p> In country : $ <%= @user.budget_in_min %> to $ <%= @user.budget_in_max %>  </p>
 		<p> Out of country : $ <%= @user.budget_out_min %> to $ <%= @user.budget_out_max %>  </p>
 	<% else %>

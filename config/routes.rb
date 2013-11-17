@@ -11,12 +11,18 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
  resources :trips
  resources :freeranges
  resources :activities
+ 
+ match 'activities/like/:id' => 'activities#like', :as => :like_activity, via: [:get, :post]
+ match 'activities/dislike/:id' => 'activities#dislike', :as => :dislike_activity, via: [:get, :post]
+
 
  match 'users/show/:id' => 'users#show', :as => :user_show, via: [:get, :post]
  match 'users/show_friend/:id' => 'users#show_friend', :as => :user_show_friend, via: [:get, :post]
  match 'users/edit_destination/:id' => 'users#edit_destination', :as => :user_edit_destination, via: [:get, :post]
  match 'users/edit_budget/:id' => 'users#edit_budget', :as => :user_edit_budget, via: [:get, :post]
 
+  match 'trips/invite/:id' => 'trips#invite', :as => :trip_invite, via: [:get, :post]
+  match 'trips/join/:id' => 'trips#join', :as => :trip_join, via: [:get, :patch, :post]
   get ':controller(/:action(/:id))(.:format)'
   post ':controller(/:action(/:id))(.:format)'
   

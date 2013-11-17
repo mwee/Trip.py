@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 	$(function() {
 		if (top.location != self.location) {
-			alert("change top location");
+			console.log("change top location");
 			console.log(self.location);
 			console.log(top.location);
 			top.location = self.location;
@@ -51,11 +51,11 @@ $(document).ready(function() {
 	});
 
 	$("#invite").click(function() {
-		//alert("here");
+		
 		FB.ui({
 			method : 'apprequests',
 			message : 'try this app',
-		}, console.log(response));
+		}, console.log('response'));
 	});
 
 	$("#sign_in").click(function() {

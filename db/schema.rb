@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 20131117092830) do
     t.integer  "user_id"
   end
 
+  create_table "dateranges", force: true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
   create_table "freeranges", force: true do |t|
     t.date     "start_date"
     t.date     "end_date"
