@@ -1,0 +1,40 @@
+<div>
+	<h3>Dream Destinations: </h3>
+	<% if !@user.destination.nil? %>
+	  <%= @user.destination %>  
+	<% else %>
+	   <p> No destinations.</p>
+	<% end%>	
+	<% if @user.id==current_user.id %>
+	     <%= link_to "Update destination", user_edit_destination_path(current_user.id) %>  
+	<%  end %>
+</div>
+
+
+<div>
+	<h3>Budget range: </h3>
+	<% if (!@user.budget_in_min.nil?) &&(!@user.budget_in_max.nil?) %>
+		<p> In country : $ <%= @user.budget_in_min %> to $ <%= @user.budget_in_max %>  </p>
+		<p> Out of country : $ <%= @user.budget_out_min %> to $ <%= @user.budget_out_max %>  </p>
+	<% else %>
+		   <p> No budget.</p>	
+	<% end %>
+	<% if @user.id==current_user.id %>
+	     <%= link_to "Update budget", user_edit_budget_path(current_user.id) %>  
+	<%  end %>
+</div>
+
+<div>
+    <h3>Availability: </h3>
+   	<% if !@user.freeranges.nil? %>
+	<%= render 'freeranges/index' %>
+	<% else %>
+	    <p> No free ranges.</p>	
+	<% end %>
+	
+	<% if @user.id==current_user.id %>
+	    <%= link_to "Add a range", new_freerange_path %>  
+	<% end %>
+</div>
+
+
