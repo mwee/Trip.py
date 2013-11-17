@@ -27,18 +27,20 @@
     <%= f.label :destination %><br>
     <%= f.text_field :destination %>
   </div>
+    Estimated cost per person
   <div class="field">
-    <%= f.label :cost_min %><br>
+    <%= f.label :_from %><br>
     $ <%= f.text_field :cost_min %>
   </div>
+
     <div class="field">
-    <%= f.label :cost_max %><br>
+    <%= f.label :_to %><br>
     $ <%= f.text_field :cost_max %>
   </div>
+
   
-  Invite your friends to join the trip:
-  
-    <div class="actions">
+  <div class="actions">
     <%= f.submit %>
   </div>
+  
 <% end %>

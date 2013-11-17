@@ -1,8 +1,8 @@
 class ActivitiesController < ApplicationController
   def index
-    @user = User.find(params[:id])
-    @trip = Trip.find(params[:id])
-    @activities = Activities.all 
+    @user = current_user
+    @trips = current_user.created_trips  + current_user.trips 
+    @activities = Activity.all 
   end
 
   # GET /activities/1
