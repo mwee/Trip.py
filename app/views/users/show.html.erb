@@ -1,12 +1,13 @@
 <div class="right_title"> Your Profile</div>
 <div class="right_body">
 <div class="right_section">
-	<span><h3>Dream Destinations: </h3>
+	<span><h3>Dream Destinations:</h3>
 	<% if !@user.destination.nil? %>
 	  <%= @user.destination %>  
 	<% else %>
 	   <p> No destinations.</p>
 	<% end%>
+	</h3>
     </span>	
 
 	<% if @user.id==current_user.id %>
