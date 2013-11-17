@@ -8,8 +8,7 @@ $(document).ready(function() {
 			xfbml : true // parse XFBML
 		});
 
-	}; 
-	( function(d) {
+	}; ( function(d) {
 			var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
 			if (d.getElementById(id)) {
 				return;
@@ -20,15 +19,6 @@ $(document).ready(function() {
 			js.src = "//connect.facebook.net/en_US/all.js";
 			ref.parentNode.insertBefore(js, ref);
 		}(document));
-	/*
-	 alert("loadfacebook jdk");
-	 if (top.location != self.location) {
-	 alert("here");
-	 console.log(self.location);
-	 console.log(top.location);
-	 top.location = self.location;
-	 }
-	 */
 
 	/*
 	 * 		FB.ui({
@@ -51,16 +41,24 @@ $(document).ready(function() {
 	});
 
 	$("#invite").click(function() {
-		
+
 		FB.ui({
 			method : 'apprequests',
 			message : 'try this app',
-		}, requestCallBack(response));
+		}, function(response) {
+			var request=response.request;
+			var from= $("#user_data").attr("user-id");
+			for (var i=0;i<response.to.length;i++){
+				var to= response.to[i];
+				console.log(to);
+			}
+		});
 	});
-	
-	function requestCallBack(response){
-		console.log(response.request);
+
+	function requestCallBack(response) {
+		console.log("response.request");
 	}
+
 
 	$("#sign_in").click(function() {
 		//e.preventDefault();
@@ -99,11 +97,4 @@ $(document).ready(function() {
 
 	 */
 });
-/*
-
- $.ajax
- url: "#{window.location.protocol}//connect.facebook.net/en_US/all.js"
- dataType: 'script'
- cache: true
- */
 

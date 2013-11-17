@@ -10,6 +10,22 @@
   <%= @trip.destination %>
 </p>
 <p>
+  <strong>Description:</strong>
+  <%= @trip.description %>
+</p>
+<p>
+  <strong>Created by:</strong>
+  <%= @trip.creator.name %>
+</p>
+
+<p>
+  <strong>Other participants:</strong>
+  <% @trip.users.each do |participant|%> 
+     <%= participant.name %>
+   <% end %>
+</p>
+
+<p>
   <strong>Estimated cost per person:</strong>
   From $<%= @trip.cost_min %> to $<%= @trip.cost_max %>
 </p>
