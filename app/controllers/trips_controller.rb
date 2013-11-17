@@ -60,11 +60,12 @@ class TripsController < ApplicationController
   def join
     @trip=Trip.find(params[:id])
     @friends=User.all
-	params[:friends].values.length do |i|
-	    #is_checked=params[:friends].values[i]
-		#if is_checked==1
-			@trip.users << @friends[i]	          			
-		#end
+	@count=0
+	params[:friends].each do |f|
+		if f
+			@trip.users << @friends[@count]	          			
+		end
+		@count=@count+1
 	end
   
   end
