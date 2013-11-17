@@ -35,18 +35,18 @@
 			  	
 			  	</div>
 			  </header>
-			  <!-- main body on the user home -->
+			  <!-- main body on the user home <%=current_user.image%>-->
 			  <div class="main_section row">
 					  <div class="left_fields">
 					  	  <div class="panel_icon">
-					  	  	   <img class="profile_pic" src="https://cdn0.iconfinder.com/data/icons/vector-people-icons-for-ios/400/lady-512.png">
+					  	  	   <img class="profile_pic" src=<%=current_user.image%>>
 					  	  </div>
 					  	  <div class="panel_name">
 					  	  	    <%= current_user.name.split(" ").first %>
 					  	  </div>
 					  	  <div class="panel_links"> 
 					  	  	   <h4 class="title"><span class="label color1">20</span>
-					  	  	   	Your Friends</h4>
+					  	  	   	<%= link_to "Your Friends", trips_path, :id => user_show_friend_path(current_user.id) %></h4>
 						       <h4 class="title"><span class="label color2">4</span>
 
 						       	<%= link_to "Your Trips", trips_path, :id => current_user.id %> </h4>
@@ -68,6 +68,7 @@
     	<div> <img id="footerIcon" src="http://www.iconsdb.com/icons/preview/F49D1E/airplane-57-xxl.png"></div>
     </footer>
     
+
 
 </body>
  

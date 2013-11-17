@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131117092830) do
+ActiveRecord::Schema.define(version: 20131117203805) do
 
   create_table "activities", force: true do |t|
     t.datetime "created_at"
@@ -22,14 +22,6 @@ ActiveRecord::Schema.define(version: 20131117092830) do
   end
 
   create_table "calendars", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
-  create_table "dateranges", force: true do |t|
-    t.date     "start_date"
-    t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -73,6 +65,7 @@ ActiveRecord::Schema.define(version: 20131117092830) do
     t.float    "budget_out_min"
     t.float    "budget_out_max"
     t.float    "budget_in_max"
+    t.string   "image"
   end
 
   create_table "votes", force: true do |t|
