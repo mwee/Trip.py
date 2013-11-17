@@ -12,6 +12,25 @@
  *= require_tree .
  */
 
+#footerIcon{
+    height: 90px;
+ }
+
+#rightButtons .btn{
+	position: relative;
+	top: -18px;
+	border: none;
+	background-color: inherit;
+
+}
+footer{
+	margin-top: 650px;
+	padding-top: 60px;
+	padding-bottom: 10px;
+	background: black;
+	height: 200px;
+	text-align: center 
+}
 
 .right_fields{
 	width: 65%;
@@ -131,6 +150,7 @@ float-right{
 #trippyInfo{
 	padding: 30px;
 	background : rgba(255,255,255,0.4);
+	margin-top: 30px;
 }
 .text-center{
 	text-align: center;
