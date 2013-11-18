@@ -6,7 +6,6 @@
       <th>Activities</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -28,7 +27,6 @@
             activity_id: activity.id.to_s %></td>
         <% end %>
 
-        <td><%= link_to 'Show', activity %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
