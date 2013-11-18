@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
 	
 	AMOUNT_REGEX= ( /\d+\.?\d{0,2}+/i)
 	validates :budget_in_min, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}, :allow_nil => true
-	validates :budget_in_max, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000},:allow_nil => true
+	validates :budget_in_max, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => :budget_in_min, :less_than => 1000000},:allow_nil => true
 	validates :budget_out_min, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000},:allow_nil => true
-	validates :budget_out_max, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000},:allow_nil => true
+	validates :budget_out_max, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => :budget_out_min, :less_than => 1000000},:allow_nil => true
 	
 	# Authentification
     def self.from_omniauth(auth)
@@ -25,4 +25,11 @@ class User < ActiveRecord::Base
 			  user.save!
         end
     end
+	
+
+	def get_trip_num()
+	    user= User.find(self.id) 
+		num=(user.trips+user.created_trips).length
+	    return num
+	end
 end
