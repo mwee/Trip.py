@@ -24,9 +24,9 @@
 			  <!-- navbar header -->
 			  <header class="navbar navbar-default navbar-fixed-top">
 			  	<div class="float-left navbar-header">
-			  		<a href="/" class="navbar-brand">
+			  		<span href="/" class="navbar-brand">
 		               <img id="logoIcon" src="http://www.iconsdb.com/icons/preview/F49D1E/airplane-57-xxl.png">
-		            </a>
+		            </span>
 		            <span id="logoName"> TRIP.PY</span>
 			  	</div>
 			  	<div id="rightButtons" class="pull-right">
@@ -45,10 +45,11 @@
 					  	  </div>
 					  	  <div class="panel_links"> 
 					  	  	   <h4 class="title"><span class="label color1">20</span>
-					  	  	   	<%= link_to "Your Friends", user_show_friend_path(current_user.id) %></h4>
-						       <h4 class="title"><span class="label color2">4</span>
+					  	  	   	<%= link_to "Your Friends", trips_path, :id => user_show_friend_path(current_user.id) %></h4>
 
-						       	<%= link_to "Your Trips", trips_path, :id => current_user.id %> </h4>
+						       <h4 class="title"><span class="label color2"><%=current_user.get_trip_num()%></span>
+					  	  	   	<%= link_to "Your Trips", trips_path, :id => current_user.id %></h4>
+						       
 
 					  	  </div>
 					  </div>
