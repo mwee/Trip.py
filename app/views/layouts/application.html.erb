@@ -38,13 +38,14 @@
 			  <div class="main_section row">
 					  <div class="left_fields">
 					  	  <div class="panel_icon">
-					  	  </div>
+                              <img class="profile_pic" src="https://cdn0.iconfinder.com/data/icons/vector-people-icons-for-ios/400/lady-512.png">
+                          </div>
 					  	  <div class="panel_name">
 					  	  	    <%= current_user.name.split(" ").first %>
 					  	  </div>
 					  	  <div class="panel_links"> 
 					  	  	   <h4 class="title"><span class="label color1">20</span>
-					  	  	   	<%= link_to "Your Friends", trips_path, :id => user_show_friend_path(current_user.id) %></h4>
+					  	  	   	<%= link_to "Your Friends", user_show_friend_path(current_user.id) , :id => current_user.id %></h4>
 
 						       <h4 class="title"><span class="label color2"><%=current_user.get_trip_num()%></span>
 					  	  	   	<%= link_to "Your Trips", trips_path, :id => current_user.id %></h4>

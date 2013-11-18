@@ -58,7 +58,7 @@ $(document).ready(function() {
 					to : to,
 
 				}, function(response) {
-					console.log(response["to"]);
+					console.log("response");
 				});
 
 				/*

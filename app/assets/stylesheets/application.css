@@ -12,6 +12,9 @@
  *= require_tree .
  */
 
+.trip_buttons{
+	margin-top: 10px;
+}
  th{
  	padding: 20px;
  	font-weight: 300;
@@ -138,7 +141,7 @@ footer{
 }
 
 .profile_pic{
-	height: 150px;
+	height: 180px;
 }
 .left_fields{
 	float: left;
