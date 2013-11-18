@@ -12,6 +12,9 @@
  *= require_tree .
  */
 
+.trip_buttons{
+	margin-top: 10px;
+}
  th{
  	padding: 20px;
  	font-weight: 300;
