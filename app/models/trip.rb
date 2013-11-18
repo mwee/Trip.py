@@ -12,6 +12,7 @@ class Trip < ActiveRecord::Base
 	validates_date :end_date, :on_or_after => :start_date
 	validates :title, :presence => true, length: { maximum:25}
 	validates :destination, :presence => true
+	validates :description, :presence => true
 	 
 	 #Return true if the user is the creator of the trip
 	 def user_is_creator

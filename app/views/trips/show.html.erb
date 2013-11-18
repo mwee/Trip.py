@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Title:</strong>
@@ -43,4 +43,67 @@
 
 </br>
 
-<%= render "activities/index" %>
+<%= render "activities/index" %> -->
+
+
+
+
+
+
+<div class="right_title"> Trip.py: <%=@trip.title%></div>
+<div class="right_body">
+
+</div>
+<div class="right_section">
+  <div class="user_info>">
+    <h3 class="right_label">Destinations:</h3>
+
+    <div class="right_answers">
+          <p   class="right_answers_p"> <%= @trip.description %>  </p>
+    </div>  
+   </div>
+</div>
+
+ <div class="right_changes">
+     <h3 class="right_label">Created By:</h3>
+      <div class="right_answers">
+          <p   class="right_answers_p"> <%= @trip.creator.name %>  </p>
+    </div>
+
+      <% end %>
+  </div>
+  </div>
+
+<div class="right_section">
+  <div class="user_info>">
+    <h3 class="right_label">Cabal:</h3>
+
+    <div class="right_answers">
+          <p   class="right_answers_p"> 
+               <% @trip.users.each do |participant|%> 
+                 <%= participant.name %>
+               <% end %>
+          </p>
+    </div>  
+   </div>
+</div>
+
+
+
+<div class="right_section">
+  <div class="user_info>">
+    <h3 class="right_label">Cost Per Head:</h3>
+
+    <div class="right_answers">
+          <p   class="right_answers_p"> $<%= @trip.cost_min %> to $<%= @trip.cost_max %>  </p>
+    </div>  
+   </div>
+</div>
+
+
+
+
+
+
+
+
