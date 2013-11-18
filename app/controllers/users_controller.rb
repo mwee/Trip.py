@@ -8,23 +8,21 @@ class UsersController < ApplicationController
   end
 
   def show_friend
-     @user = User.find(params[:id])	
+     @user = current_user
      @freeranges=@user.freeranges	 
-  
-    @friends=@user.friends
+     @friends=User.all-[@user]#need to changed to @user.friends	 
   end
   
   def edit_destination
-     @user = User.find(params[:id])
-     
+     @user = current_user
   end
   
   def edit_budget
-     @user = User.find(params[:id])
+     @user = current_user
   end
   
    def update
-    @user = User.find(params[:id])
+    @user = current_user
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }

@@ -77,12 +77,10 @@
     </div>
 
 	<div class="right_changes">
-		<% if @user.id==current_user.id %>
-		    
-              <div id ="addRange"class="btn btn-medium "><%= link_to "Add a range", new_freerange_path%> </div>
+		<% if @user.id==current_user.id %>	    
+              <div id ="addRange"class="btn btn-medium "><%= link_to "Add a free range", new_freerange_path%> </div>
 		<% end %>
 	</div>
   
-
 </div>
 </div>

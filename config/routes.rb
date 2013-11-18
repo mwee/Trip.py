@@ -28,11 +28,14 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
   
   match 'trips/invite/:id' => 'trips#invite', :as => :trip_invite, via: [:get, :post]
   match 'trips/join/:id' => 'trips#join', :as => :trip_join, via: [:get, :patch, :post]
+  match 'trips/remove/:id' => 'trips#join', :as => :trip_remove, via: [:get, :patch, :post]
   
   match 'trips/:id/activities/new' => 'activities#new', :as => :trip_activities_new,  via: [:get, :patch, :post]
     match 'trips/:id/activities/create' => 'activities#create', :as => :trip_activities_create,  via: [:get, :patch, :post]
+	
   get ':controller(/:action(/:id))(.:format)'
   post ':controller(/:action(/:id))(.:format)'
+  
   
 # Example of regular route:
 #   get 'products/:id' => 'catalog#view'

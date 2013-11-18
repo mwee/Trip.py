@@ -4,15 +4,6 @@
   <strong>Title:</strong>
   <%= @trip.title %>
 </p>
-        <div class="trip_buttons">
-
-          <%= link_to ' Invite Friends ', trip_invite_path(@trip.id) %>|
-
-          <%= link_to 'Edit', edit_trip_path(@trip) %> |
-
-          <%= link_to 'Add Activity', trip_activities_new_path(@trip.id) %>
-        </div>
-		
 
 <p>
   <strong>Destination:</strong>
@@ -117,11 +108,18 @@
             <h3 class="right_label">Dates:</h3>
 
             <div class="right_answers">
-                  <p   class="right_answers_p"> $<%= @trip.start_date%> to $<%= @trip.end_date %>  </p>
+                  <p   class="right_answers_p"> <%= @trip.start_date%> to <%= @trip.end_date %>  </p>
             </div>  
            </div>
         </div>
+        <div class="trip_buttons">
 
+          <%= link_to ' Invite Friends ', trip_invite_path(@trip.id) %>|
+
+          <%= link_to 'Edit', edit_trip_path(@trip) %> |
+
+          <%= link_to 'Add Activity', trip_activities_new_path(@trip.id) %>
+        </div>
 
 </br>
 
