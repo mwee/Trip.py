@@ -1,32 +1,33 @@
-<h1>Activities</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Likes</th>
-      <th>Dislikes</th>
-      <th>Activities</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<h4>Activities</h4>
+<% if @activities.any? %>
+	<table>
+	  <thead>
+		<tr>
+		  <th>Likes</th>
+		  <th>Dislikes</th>
+		  <th>Activities</th>
+		  <th></th>
+		  <th></th>
+		  <th></th>
+		</tr>
+	  </thead>
 
-  <tbody>
-    <% @activities.each do |activity| %>
-      <tr>
-        <td><%= activity.num_likes %></td>
-        <td><%= activity.num_dislikes %></td>
-        <td><%= activity.topic %></td>
-        <td><%= link_to 'Like', like_activity_path(activity), remote: true %></td>
-        <td><%= link_to 'Dislike', dislike_activity_path(activity), remote: true%></td>
-        <td><%= link_to 'Show', activity %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	  <tbody>
+		<% @activities.each do |activity| %>
+		  <tr>
+			<td><%= activity.num_likes %></td>
+			<td><%= activity.num_dislikes %></td>
+			<td><%= activity.topic %></td>
+			<td><%= link_to 'Like', like_activity_path(activity), remote: true %></td>
+			<td><%= link_to 'Dislike', dislike_activity_path(activity), remote: true%></td>
+			<td><%= link_to 'Show', activity %></td>
+			<td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+			<td><%= link_to 'Delete', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		  </tr>
+		<% end %>
+	  </tbody>
+	</table>
+<% else %>
+   No activities yet.
+<% end %>
 
-<br>
-
-<%= link_to 'New Activity', trip_activities_new_path(@trip.id) %>
