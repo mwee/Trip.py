@@ -4,14 +4,12 @@ class FreerangesController < ApplicationController
   # GET /freeranges
   # GET /freeranges.json
   def index
-    @user = current_user
-    @freeranges = @user.freeranges
+    @freeranges = current_user.freeranges
   end
 
   # GET /freeranges/1
   # GET /freeranges/1.json
   def show
-  
   end
 
   # GET /freeranges/new
@@ -29,7 +27,7 @@ class FreerangesController < ApplicationController
     @freerange = current_user.freeranges.build(freerange_params) 
     respond_to do |format|
       if @freerange.save
-        format.html { redirect_to @freerange, notice: 'Freerange was successfully created.' }
+        format.html { redirect_to current_user, notice: 'Freerange was successfully created.' }
         format.json { render action: 'show', status: :created, location: @freerange }
       else
         format.html { render action: 'new' }
