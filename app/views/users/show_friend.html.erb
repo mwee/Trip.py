@@ -2,6 +2,8 @@
 	<h3 id="user_data" data_user-id="<%= @user.id %>">Your friends </h3>
 	</br>
 	</br>
+
+	<!-- shows the information for each friend -->
 	<% @friends.each do |friend| %>
 		<div class="right_title"> <%= friend.name %></div>
 		<div class="right_body">
@@ -49,8 +51,8 @@
 			</div>
 		</div>
 		</div>
-			 </br>
-	<% end %>
+		</br>
+<% end %>
 </div>
 
 

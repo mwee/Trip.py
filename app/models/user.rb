@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-	acts_as_voter
-
+    acts_as_voter
     has_many :freeranges
     has_and_belongs_to_many :trips, :join_table => :trips_users
     has_many :created_trips, :class_name => "Trip", :foreign_key => :creator_id
@@ -43,4 +42,5 @@ class User < ActiveRecord::Base
 	def is_trip_creator(trip)
 	    return self.id==trip.creator.id
 	end
+
 end
