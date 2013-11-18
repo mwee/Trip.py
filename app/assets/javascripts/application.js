@@ -24,7 +24,11 @@ $(document).ready(function(){
      $("#updatingDestinations").slideToggle();
      });
 
-    $("#newSuggestionButton").click(function(){
-    $("#addingSuggestion").slideToggle();
+    $("#updateBudget").click(function(){
+    $("#updatingBudget").slideToggle();
+     });
+
+     $("#addRange").click(function(){
+    $("#addingRange").slideToggle();
      });
 });

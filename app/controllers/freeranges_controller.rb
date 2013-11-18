@@ -29,7 +29,7 @@ class FreerangesController < ApplicationController
     @freerange = current_user.freeranges.build(freerange_params) 
     respond_to do |format|
       if @freerange.save
-        format.html { redirect_to @freerange, notice: 'Freerange was successfully created.' }
+        format.html { redirect_to current_user, notice: 'Freerange was successfully created.' }
         format.json { render action: 'show', status: :created, location: @freerange }
       else
         format.html { render action: 'new' }
@@ -57,7 +57,7 @@ class FreerangesController < ApplicationController
   def destroy
     @freerange.destroy
     respond_to do |format|
-      format.html { redirect_to freeranges_url }
+      format.html { redirect_to current_user }
       format.json { head :no_content }
     end
   end

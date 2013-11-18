@@ -1,3 +1,7 @@
+<br>
+<br>
+<br>
+<div class="font">
 <%= form_for @user do |f| %>
   	<!--shows the relevant feedback message!-->
 		<% if @user.errors.any? %>
@@ -8,27 +12,34 @@
 			
 		    </div>
 		<% end %>
-	 In country: 
-	  <div class="field">
+
+	 <div> In country: </div>
+	 <div>
+	  <div class="field left_div">
 		<%= f.label :from %>
 		$ <%= f.text_field :budget_in_min %>
 	  </div>
-	  <div class="field">
+	  <div class="field right_div">
 		<%= f.label :_to %>
 		$ <%= f.text_field :budget_in_max %>
 	  </div>
+	</div>
 	  
-	  Out of country:
-	  
-	 <div class="field">
+	  <div class='next_field'>Out of country:</div>
+	  <div>
+	 <div class="field left_div">
 		<%= f.label :from %>
 		$ <%= f.text_field :budget_out_min %>
 	  </div>
-	 <div class="field">
+	 <div class="field right_div">
 		<%= f.label :_to %>
 		$ <%= f.text_field :budget_out_max %>
 	  </div>
+	</div>
+
 	 <div>
 		<%= f.submit "Update" %>
 	 </div>
  <% end %>
+
+</div>
