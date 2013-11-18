@@ -4,12 +4,13 @@ class UsersController < ApplicationController
   
   def show
      @user = current_user
-	   @freeranges=@user.freeranges
+	 @freeranges=@user.freeranges
   end
 
   def show_friend
-     @user = User.find(params[:id])		
-     @friends=User.all #need to changed to @user.friends	 
+     @user = User.find(params[:id])	
+     @freeranges=@user.freeranges	 
+     @friends=User.all  #need to changed to @user.friends	 
   end
   
   def edit_destination

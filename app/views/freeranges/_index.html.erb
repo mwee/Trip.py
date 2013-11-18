@@ -5,7 +5,6 @@
       <th>End date</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -14,9 +13,8 @@
       <tr>
         <td><%= freerange.start_date %></td>
         <td><%= freerange.end_date %></td>
-        <td><%= link_to 'Show', freerange %></td>
         <td><%= link_to 'Edit', edit_freerange_path(freerange) %></td>
-        <td><%= link_to 'Destroy', freerange, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', freerange, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
