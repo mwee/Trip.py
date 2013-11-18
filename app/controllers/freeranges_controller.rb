@@ -41,7 +41,7 @@ class FreerangesController < ApplicationController
   def update
     respond_to do |format|
       if @freerange.update(freerange_params)
-        format.html { redirect_to @freerange, notice: 'Freerange was successfully updated.' }
+        format.html { redirect_to current_user, notice: 'Freerange was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
