@@ -33,4 +33,8 @@ class User < ActiveRecord::Base
 		num=(user.trips+user.created_trips).length
 	    return num
 	end
+	
+	def is_trip_creator(trip)
+	    retrun self.id==trip.creator.id
+	end
 end
