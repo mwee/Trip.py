@@ -5,9 +5,7 @@ class User < ActiveRecord::Base
     has_and_belongs_to_many :trips, :join_table => :trips_users
     has_many :created_trips, :class_name => "Trip", :foreign_key => :creator_id
 	
-    #has_many :votes
 
-	
 	AMOUNT_REGEX= ( /\d+\.?\d{0,2}+/i)
 	validates :budget_in_min, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}, :allow_nil => true
 	validates :budget_in_max, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => :budget_in_min, :less_than => 1000000},:allow_nil => true
@@ -27,13 +25,21 @@ class User < ActiveRecord::Base
         end
     end
 	
-
+     #return the number of the trips that the user created or is a member of the cabal
 	def get_trip_num()
 	    user= User.find(self.id) 
-		num=(user.trips+user.created_trips).length
+		num =(user.trips+user.created_trips).length
 	    return num
 	end
 	
+	#return the number of friends
+	def get_friend_num
+	    user = User.find(self.id) 
+		num = User.all.length-1 #TODO: user.friends.length
+	    return num
+	end
+	
+	#Return true if the user is the creator of the trip
 	def is_trip_creator(trip)
 	    return self.id==trip.creator.id
 	end

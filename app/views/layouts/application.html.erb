@@ -44,7 +44,7 @@
 					  	  	    <%= current_user.name.split(" ").first %>
 					  	  </div>
 					  	  <div class="panel_links"> 
-					  	  	   <h4 class="title"><span class="label color1">20</span>
+					  	  	   <h4 class="title"><span class="label color1"><%=current_user.get_friend_num()%></span>
 					  	  	   	<%= link_to "Your Friends", user_show_friend_path(current_user.id) , :id => current_user.id %></h4>
 
 						       <h4 class="title"><span class="label color2"><%=current_user.get_trip_num()%></span>
