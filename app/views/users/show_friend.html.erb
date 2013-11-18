@@ -2,10 +2,15 @@
 	<h3 id="user_data" data_user-id="<%= @user.id %>">Your friends </h3>
 	<button type="button" id="invite"> Invite Friends</button>
 	</br>
+
+<% if @friends.any? %>
+
 	<% @friends.each do |f| %>
+	    <%= @f.name%>
 	     <%= render 'users/friend_show', :user => f %>
 		 </br>
 	<% end %>
+		<% end %>
 </div>
 
 
