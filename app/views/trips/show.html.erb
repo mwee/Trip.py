@@ -53,54 +53,79 @@
 <div class="right_title"> Trip.py: <%=@trip.title%></div>
 <div class="right_body">
 
+
+        <div class="right_section">
+          <div class="user_info>">
+            <h3 class="right_label">Destinations:</h3>
+
+            <div class="right_answers">
+                  <p   class="right_answers_p"> <%= @trip.description %>  </p>
+            </div>  
+           </div>
+        </div>
+
+         <div class="right_section">
+          <div class="user_info>">
+            <h3 class="right_label">Created By:</h3>
+
+            <div class="right_answers">
+                  <p   class="right_answers_p"> <%= @trip.creator.name %>  </p>
+            </div>  
+           </div>
+        </div>
+          
+
+        <div class="right_section">
+          <div class="user_info>">
+            <h3 class="right_label">Cabal:</h3>
+
+            <div class="right_answers">
+                  <p   class="right_answers_p"> 
+                       <% @trip.users.each do |participant|%> 
+                         <%= participant.name %>
+                       <% end %>
+                  </p>
+            </div>  
+           </div>
+        </div>
+
+
+
+
+
+        <div class="right_section">
+          <div class="user_info>">
+            <h3 class="right_label">Cost Per Head:</h3>
+
+            <div class="right_answers">
+                  <p   class="right_answers_p"> $<%= @trip.cost_min %> to $<%= @trip.cost_max %>  </p>
+            </div>  
+           </div>
+        </div>
+
+        <div class="right_section">
+          <div class="user_info>">
+            <h3 class="right_label">Dates:</h3>
+
+            <div class="right_answers">
+                  <p   class="right_answers_p"> $<%= @trip.start_date%> to $<%= @trip.end_date %>  </p>
+            </div>  
+           </div>
+        </div>
+        <div class="trip_buttons">
+
+          <%= link_to ' Invite Friends ', trip_invite_path(@trip.id) %>|
+
+          <%= link_to 'Edit', edit_trip_path(@trip) %> |
+
+          <%= link_to 'Add Activity', trip_activities_new_path(@trip.id) %>
+        </div>
+
+</br>
+
+<%= render "activities/index" %> 
+
 </div>
-<div class="right_section">
-  <div class="user_info>">
-    <h3 class="right_label">Destinations:</h3>
-
-    <div class="right_answers">
-          <p   class="right_answers_p"> <%= @trip.description %>  </p>
-    </div>  
-   </div>
-</div>
-
- <div class="right_changes">
-     <h3 class="right_label">Created By:</h3>
-      <div class="right_answers">
-          <p   class="right_answers_p"> <%= @trip.creator.name %>  </p>
-    </div>
-
-      <% end %>
-  </div>
-  </div>
-
-<div class="right_section">
-  <div class="user_info>">
-    <h3 class="right_label">Cabal:</h3>
-
-    <div class="right_answers">
-          <p   class="right_answers_p"> 
-               <% @trip.users.each do |participant|%> 
-                 <%= participant.name %>
-               <% end %>
-          </p>
-    </div>  
-   </div>
-</div>
-
-
-
-<div class="right_section">
-  <div class="user_info>">
-    <h3 class="right_label">Cost Per Head:</h3>
-
-    <div class="right_answers">
-          <p   class="right_answers_p"> $<%= @trip.cost_min %> to $<%= @trip.cost_max %>  </p>
-    </div>  
-   </div>
-</div>
-
-
 
 
 
