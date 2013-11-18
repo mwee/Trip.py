@@ -70,10 +70,10 @@ class ActivitiesController < ApplicationController
   	render action: 'show'
   end
 
-  def dislike
-  	@activity = Activity.find(params[:id])
+  def unlike
+	@activity = Activity.find(params[:id])
 	@user = current_user
-	@activity.downvote_from @user
+  @activity.unliked_by @user
 	render action: 'show'
   end
 

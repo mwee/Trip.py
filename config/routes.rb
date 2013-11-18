@@ -13,7 +13,7 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
  resources :activities
  
  match 'activities/like/:id' => 'activities#like', :as => :like_activity, via: [:get, :post]
- match 'activities/dislike/:id' => 'activities#dislike', :as => :dislike_activity, via: [:get, :post]
+ match 'activities/unlike/:id' => 'activities#unlike', :as => :unlike_activity, via: [:get, :post]
 
 
  match 'users/show/:id' => 'users#show', :as => :user_show, via: [:get, :post]

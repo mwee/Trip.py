@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	acts_as_voter
 
     has_many :freeranges
     has_and_belongs_to_many :trips, :join_table => :trips_users
