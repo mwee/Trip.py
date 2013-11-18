@@ -15,12 +15,16 @@
 		  <tr>
 			<td><%= freerange.start_date %></td>
 			<td><%= freerange.end_date %></td>
+			<% if freerange.owns_range(current_user)%>
 			<td><%= link_to 'Edit', edit_freerange_path(freerange) %></td>
 			<td><%= link_to 'Delete', freerange, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			<% end %>
 		  </tr>
 		<% end %>
 	  </tbody>
 	</table>
 	<br>
+<% else %>
+   No free dates.
 <% end %>
 
