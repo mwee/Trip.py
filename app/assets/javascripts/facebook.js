@@ -8,7 +8,8 @@ $(document).ready(function() {
 			xfbml : true // parse XFBML
 		});
 
-	}; ( function(d) {
+	};
+	( function(d) {
 			var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
 			if (d.getElementById(id)) {
 				return;
@@ -46,19 +47,49 @@ $(document).ready(function() {
 			method : 'apprequests',
 			message : 'try this app',
 		}, function(response) {
-			var request=response.request;
-			var from= $("#user_data").attr("user-id");
-			for (var i=0;i<response.to.length;i++){
-				var to= response.to[i];
-				console.log(to);
+			var request = response.request;
+			var from = $("#user_data").attr("data_user-id");
+			for (var i = 0; i < response.to.length; i++) {
+				var to = response.to[i];
+				console.log(request + " " + from + " " + to);
+				$.post("/invites/create", {
+					request_id : request,
+					from : from,
+					to : to,
+
+				}, function(response) {
+					console.log(response["to"]);
+				});
+
+				/*
+				 $.ajax({
+				 type : "POST",
+				 url : "/invites/create",
+				 data : {
+				 invite : {
+				 request_id : request,
+				 from : from,
+				 to : to,
+				 }
+				 },
+				 statusCode : {
+				 422 : function(jqXHR, textStatus, errorThrown) {
+				 var json = $.parseJSON(jqXHR.responseText)
+				 console.log(json);
+				 }
+				 },
+
+				 success : function() {
+				 alert("Data Send!");
+				 },
+				 error : function(xhr) {
+				 xhr.alert("The error code is: " + xhr.statusText);
+				 }
+				 });
+				 */
 			}
 		});
 	});
-
-	function requestCallBack(response) {
-		console.log("response.request");
-	}
-
 
 	$("#sign_in").click(function() {
 		//e.preventDefault();
