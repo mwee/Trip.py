@@ -11,6 +11,7 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
  resources :trips
  resources :freeranges
  resources :activities
+ resources :invites
  
  match 'activities/like/:id' => 'activities#like', :as => :like_activity, via: [:get, :post]
  match 'activities/unlike/:id' => 'activities#unlike', :as => :unlike_activity, via: [:get, :post]
@@ -21,8 +22,13 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
  match 'users/edit_destination/:id' => 'users#edit_destination', :as => :user_edit_destination, via: [:get, :post]
  match 'users/edit_budget/:id' => 'users#edit_budget', :as => :user_edit_budget, via: [:get, :post]
 
+  match 'invites/create', to: 'invites#create', via: [ :post]
+  
   match 'trips/invite/:id' => 'trips#invite', :as => :trip_invite, via: [:get, :post]
   match 'trips/join/:id' => 'trips#join', :as => :trip_join, via: [:get, :patch, :post]
+  
+  match 'trips/:id/activities/new' => 'activities#new', :as => :trip_activities_new,  via: [:get, :patch, :post]
+    match 'trips/:id/activities/create' => 'activities#create', :as => :trip_activities_create,  via: [:get, :patch, :post]
   get ':controller(/:action(/:id))(.:format)'
   post ':controller(/:action(/:id))(.:format)'
   

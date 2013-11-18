@@ -31,4 +31,12 @@ $(document).ready(function() {
 		$('#like_' + activity_id).html(parseInt(num_likes) - 1)
 		location.reload()
 	});
+
+    $("#updateDestination").click(function(){
+     $("#updatingDestinations").slideToggle();
+     });
+
+    $("#newSuggestionButton").click(function(){
+    $("#addingSuggestion").slideToggle();
+     });
 });

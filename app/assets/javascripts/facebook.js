@@ -21,12 +21,74 @@ $(document).ready(function() {
 			ref.parentNode.insertBefore(js, ref);
 		}(document));
 
+	/*
+	 * 		FB.ui({
+	 method : 'send',
+
+	 link : 'http://stark-dawn-4251.herokuapp.com/',
+	 }, console.log("response"));
+	 */
+	/*
+	 * link : 'http://stark-dawn-4251.herokuapp.com/',
+	 */
+
+	$(function() {
+		if (top.location != self.location) {
+			console.log("change top location");
+			console.log(self.location);
+			console.log(top.location);
+			top.location = self.location;
+		}
+	});
+
 	$("#invite").click(function() {
-		alert("here");
+
 		FB.ui({
 			method : 'apprequests',
-			message : 'My Great Request',
-		}, console.log("response"));
+			message : 'try this app',
+		}, function(response) {
+			var request = response.request;
+			var from = $("#user_data").attr("data_user-id");
+			for (var i = 0; i < response.to.length; i++) {
+				var to = response.to[i];
+				console.log(request + " " + from + " " + to);
+				$.post("/invites/create", {
+					request_id : request,
+					from : from,
+					to : to,
+
+				}, function(response) {
+					console.log(response["to"]);
+				});
+
+				/*
+				 $.ajax({
+				 type : "POST",
+				 url : "/invites/create",
+				 data : {
+				 invite : {
+				 request_id : request,
+				 from : from,
+				 to : to,
+				 }
+				 },
+				 statusCode : {
+				 422 : function(jqXHR, textStatus, errorThrown) {
+				 var json = $.parseJSON(jqXHR.responseText)
+				 console.log(json);
+				 }
+				 },
+
+				 success : function() {
+				 alert("Data Send!");
+				 },
+				 error : function(xhr) {
+				 xhr.alert("The error code is: " + xhr.statusText);
+				 }
+				 });
+				 */
+			}
+		});
 	});
 
 	$("#sign_in").click(function() {
@@ -66,11 +128,4 @@ $(document).ready(function() {
 
 	 */
 });
-/*
-
- $.ajax
- url: "#{window.location.protocol}//connect.facebook.net/en_US/all.js"
- dataType: 'script'
- cache: true
- */
 

@@ -7,7 +7,6 @@
       <th></th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -16,10 +15,9 @@
       <tr>
         <td><%= trip.title %></td>
         <td><%= trip.destination %></td>
-        <td><%= link_to 'Show', trip %></td>
-		<td><%= link_to 'Invite', trip_invite_path(trip.id) %></td>
-        <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
-        <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to ' Show ', trip %></td>
+        <td><%= link_to ' Edit ', edit_trip_path(trip) %></td>
+        <td><%= link_to ' Delete ', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

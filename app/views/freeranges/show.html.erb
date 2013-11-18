@@ -1,14 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Start date:</strong>
+<p class="right_answers">
+  Start date:
   <%= @freerange.start_date %>
 </p>
 
-<p>
-  <strong>End date:</strong>
+<p class="right_answers">
+    End date:
   <%= @freerange.end_date %>
 </p>
-
-<%= link_to 'Edit', edit_freerange_path(@freerange) %> |
-<%= link_to 'Back', freeranges_path %>

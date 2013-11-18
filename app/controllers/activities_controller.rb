@@ -13,6 +13,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/new
   def new
+    @trip=Trip.find(params[:id])
     @activity = Activity.new
   end
 
@@ -24,7 +25,9 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.json
   def create
-    @activity = Activity.new(activity_params)
+    @trip=Trip.find(params[:id])
+    @activity = @trip.activities.create(activity_params)
+    #@activity = Activity.new(activity_params)
     respond_to do |format|
       if @activity.save
       	# puts @activity
