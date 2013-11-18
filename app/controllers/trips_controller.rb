@@ -69,11 +69,12 @@ class TripsController < ApplicationController
 		end
 		
 	end
-  
+    redirect_to @trip
   end
   
   # DELETE /trips/1
   # DELETE /trips/1.json
+  #need to differentiate between deleting a whole trip a just a user from it
   def destroy
     @trip.destroy
     respond_to do |format|

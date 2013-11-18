@@ -4,14 +4,12 @@ class FreerangesController < ApplicationController
   # GET /freeranges
   # GET /freeranges.json
   def index
-    @user = User.find(params[:id])
-    @freeranges = @user.freeranges
+    @freeranges = current_user.freeranges
   end
 
   # GET /freeranges/1
   # GET /freeranges/1.json
   def show
-  
   end
 
   # GET /freeranges/new
@@ -29,7 +27,7 @@ class FreerangesController < ApplicationController
     @freerange = current_user.freeranges.build(freerange_params) 
     respond_to do |format|
       if @freerange.save
-        format.html { redirect_to current_user, notice: 'Freerange was successfully created.' }
+        format.html { redirect_to current_user, notice: 'Range was successfully created.' }
         format.json { render action: 'show', status: :created, location: @freerange }
       else
         format.html { render action: 'new' }
@@ -43,7 +41,7 @@ class FreerangesController < ApplicationController
   def update
     respond_to do |format|
       if @freerange.update(freerange_params)
-        format.html { redirect_to @freerange, notice: 'Freerange was successfully updated.' }
+        format.html { redirect_to current_user, notice: 'Freerange was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -57,7 +55,7 @@ class FreerangesController < ApplicationController
   def destroy
     @freerange.destroy
     respond_to do |format|
-      format.html { redirect_to current_user }
+      format.html { redirect_to current_user, notice: 'Range was successfully deleted.'  }
       format.json { head :no_content }
     end
   end

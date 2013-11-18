@@ -15,7 +15,6 @@
   <script src = "http://qtip2.com/v/nightly/jquery.qtip.js"></script>
   <link rel="stylesheet" href="http://qtip2.com/v/nightly/jquery.qtip.css">
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
- 
 
 </head>
 <body>
@@ -47,9 +46,10 @@
 					  	  <div class="panel_links"> 
 					  	  	   <h4 class="title"><span class="label color1">20</span>
 					  	  	   	<%= link_to "Your Friends", trips_path, :id => user_show_friend_path(current_user.id) %></h4>
-						       <h4 class="title"><span class="label color2"><%=current_user.get_trip_num()%></span>
 
-						       	<%= link_to "Your Trips", trips_path, :id => current_user.id %> </h4>
+						       <h4 class="title"><span class="label color2"><%=current_user.get_trip_num()%></span>
+					  	  	   	<%= link_to "Your Trips", trips_path, :id => current_user.id %></h4>
+						       
 
 					  	  </div>
 					  </div>

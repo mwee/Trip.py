@@ -19,7 +19,9 @@
 		    <%= check_box_tag "friends[#{i}]" %> <br /> 
 		<% end %>
 		<div class="actions">
-			<%= f.submit %>
+			<%= f.submit 'Invite' %>
 		</div>
     <% end %>
 <% end %>
+
+<%= link_to 'Back', @trip %>

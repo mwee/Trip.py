@@ -66,16 +66,15 @@
 
 
 <div class="right_section">
-	<div class ="user_info">
-		    <h3 class="right_label">Availability: </h3>
-		    <div class="right_answers">
-		   	<% if !@user.freeranges.nil? %>
-			   <p class="right_answers_p"> <%= render 'freeranges/index' %> </p>
-			<% else %>
-			    <p class="right_answers_p"> No free ranges.</p>	
-			<% end %>
-		    </div>
-     </div>
+	
+  <h3 class="right_label">Availability: </h3>
+    <div class="right_answers">
+   	<% if !@user.freeranges.nil? %>
+	    <p class="right_answers_p"> <%= render 'freeranges/index', locals:{freeranges: @user.freeranges} %> </p>
+	<% else %>
+	    <p class="right_answers_p"> No free ranges.</p>	
+	<% end %>
+    </div>
 
 	<div class="right_changes">
 		<% if @user.id==current_user.id %>

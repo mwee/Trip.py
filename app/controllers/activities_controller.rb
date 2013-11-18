@@ -31,7 +31,7 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       if @activity.save
       	# puts @activity
-        format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
+        format.html { redirect_to  @trip, notice: 'Activity was successfully created.' }
         format.json { render action: 'show', status: :created, location: @activity }
       else
         format.html { render action: 'new' }
@@ -46,7 +46,7 @@ class ActivitiesController < ApplicationController
   	@activity = Activity.find(params[:id])
     respond_to do |format|
       if @activity.update(activity_params)
-        format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
+        format.html { redirect_to @activity.trip, notice: 'Activity was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -61,7 +61,7 @@ class ActivitiesController < ApplicationController
   	@activity = Activity.find(params[:id])
     @activity.destroy
     respond_to do |format|
-      format.html { redirect_to activities_url }
+      format.html { redirect_to  @activity.trip }
       format.json { head :no_content }
     end
   end
@@ -73,10 +73,10 @@ class ActivitiesController < ApplicationController
   	render action: 'show'
   end
 
-  def dislike
-  	@activity = Activity.find(params[:id])
+  def unlike
+	@activity = Activity.find(params[:id])
 	@user = current_user
-	@activity.downvote_from @user
+  @activity.unliked_by @user
 	render action: 'show'
   end
 

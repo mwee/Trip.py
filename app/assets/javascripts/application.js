@@ -15,10 +15,22 @@
 //= require turbolinks
 //= require_tree .
 
+// code to update the vote counts
+$(document).ready(function() {
+	$('.' + 'like_link').click(function() {
+		var activity_id = $(this).attr('activity_id')
+		var num_likes = $('#like_' + activity_id).html()
+		$('#like_' + activity_id).html(parseInt(num_likes) + 1)
+		$(this).remove()
+	});
 
 
-$(document).ready(function(){
-
+	$('.' + 'unlike_link').click(function() {
+		var activity_id = $(this).attr('activity_id')
+		var num_likes = $('#like_' + activity_id).html()
+		$('#like_' + activity_id).html(parseInt(num_likes) - 1)
+		location.reload()
+	});
 
     $("#updateDestination").click(function(){
      $("#updatingDestinations").slideToggle();
