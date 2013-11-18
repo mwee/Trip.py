@@ -3,8 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th>Likes</th>
       <th>Activity</th>
+	  <th>Likes</th>
       <th></th>
       <th></th>
     </tr>
@@ -14,12 +14,10 @@
 
     <% @activities.each do |activity| %>
       <tr>
+        <td><%= activity.topic %></td>
         <%= content_tag :td, id: "like_" + activity.id.to_s do %>
           <%= activity.total_likes %>
         <% end %>
-
-        <td><%= activity.topic %></td>
-
         <% if current_user.voted_up_on? activity %>
           <td><%= link_to 'Unlike', unlike_activity_path(activity), remote: true, class: "unlike_link", 
           activity_id: activity.id.to_s %></td>
