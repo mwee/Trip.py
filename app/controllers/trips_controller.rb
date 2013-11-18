@@ -76,7 +76,11 @@ class TripsController < ApplicationController
   # DELETE /trips/1.json
   #need to differentiate between deleting a whole trip a just a user from it
   def destroy
-    @trip.destroy
+    if @user.is_trip_creator(@trip) 
+	   @trip.destroy
+	else 
+	   @trip.users.delete(@user)
+	end
     respond_to do |format|
       format.html { redirect_to trips_url }
       format.json { head :no_content }
@@ -86,16 +90,17 @@ class TripsController < ApplicationController
    def remove
      @user = current_user
 	 @trip.users.find (@user.id).delete
-    respond_to do |format|
+     respond_to do |format|
       format.html { redirect_to trips_url }
       format.json { head :no_content }
-    end
+     end
   end
   
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_trip
       @trip = Trip.find(params[:id])
+	  @user=current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
