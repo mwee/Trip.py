@@ -21,8 +21,7 @@ $(document).ready(function() {
 		var activity_id = $(this).attr('activity_id')
 		var num_likes = $('#like_' + activity_id).html()
 		$('#like_' + activity_id).html(parseInt(num_likes) + 1)
-		location.reload()
-
+		$(this).remove()
 	});
 
 
