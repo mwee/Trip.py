@@ -1,6 +1,13 @@
 == README
 Heroku link for mvp: http://fierce-reaches-8826.herokuapp.com
 
+Since the app uses Facebook, we create two Facebook accounts that you could use:
+
+Account 1: email: 591059716@qq.com, password: 3217132, name: Taone TA
+
+Account 2: email: 415493163@qq.com, password: 3217132, name: Christine Lin
+
+They are already each other's Facebook friend.
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
