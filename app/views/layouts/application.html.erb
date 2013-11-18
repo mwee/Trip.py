@@ -45,7 +45,7 @@
 					  	  </div>
 					  	  <div class="panel_links"> 
 					  	  	   <h4 class="title"><span class="label color1">20</span>
-					  	  	   	<%= link_to "Your Friends", trips_path, :id => user_show_friend_path(current_user.id) %></h4>
+					  	  	   	<%= link_to "Your Friends", user_show_friend_path, :id => current_user.id %></h4>
 
 						       <h4 class="title"><span class="label color2"><%=current_user.get_trip_num()%></span>
 					  	  	   	<%= link_to "Your Trips", trips_path, :id => current_user.id %></h4>
