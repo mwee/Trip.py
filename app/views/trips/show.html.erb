@@ -4,15 +4,6 @@
   <strong>Title:</strong>
   <%= @trip.title %>
 </p>
-        <div class="trip_buttons">
-
-          <%= link_to ' Invite Friends ', trip_invite_path(@trip.id) %>|
-
-          <%= link_to 'Edit', edit_trip_path(@trip) %> |
-
-          <%= link_to 'Add Activity', trip_activities_new_path(@trip.id) %>
-        </div>
-		
 
 <p>
   <strong>Destination:</strong>
@@ -121,7 +112,14 @@
             </div>  
            </div>
         </div>
+        <div class="trip_buttons">
 
+          <%= link_to ' Invite Friends ', trip_invite_path(@trip.id) %>|
+
+          <%= link_to 'Edit', edit_trip_path(@trip) %> |
+
+          <%= link_to 'Add Activity', trip_activities_new_path(@trip.id) %>
+        </div>
 
 </br>
 

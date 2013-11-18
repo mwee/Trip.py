@@ -35,6 +35,6 @@ class User < ActiveRecord::Base
 	end
 	
 	def is_trip_creator(trip)
-	    retrun self.id==trip.creator.id
+	    return self.id==trip.creator.id
 	end
 end
