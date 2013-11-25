@@ -8,7 +8,8 @@ $(document).ready(function() {
 			xfbml : true // parse XFBML
 		});
 
-	}; ( function(d) {
+	};
+	( function(d) {
 			var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
 			if (d.getElementById(id)) {
 				return;
@@ -55,7 +56,7 @@ $(document).ready(function() {
 						request_id : request,
 						user_id : from,
 						friend_id : to,
-						status:"pending",
+						status : "pending",
 
 					},
 

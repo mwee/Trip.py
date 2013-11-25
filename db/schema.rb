@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 20131118044510) do
     t.integer  "user_id"
   end
 
+  create_table "dateranges", force: true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
   create_table "freeranges", force: true do |t|
     t.date     "start_date"
     t.date     "end_date"
@@ -40,6 +48,14 @@ ActiveRecord::Schema.define(version: 20131118044510) do
     t.integer  "friend_id"
     t.integer  "request_id"
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invites", force: true do |t|
+    t.integer  "request_id"
+    t.integer  "from"
+    t.integer  "to"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
