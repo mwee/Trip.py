@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def show_friend
      @user = current_user
      @freeranges=@user.freeranges	 
-     @friends=User.all-[@user]#need to changed to @user.friends	 
+     @friends=@user.friends.all 
   end
   
   def edit_destination

@@ -1,6 +1,6 @@
 class Friendship < ActiveRecord::Base
   belongs_to :user
-  belongs_to :friend, class_name: "User"
+  belongs_to :friend, :class_name=> 'User'
   
   def self.addFriend(friend_id, friend_user_id)
     Friendship.where(friend_id:friend_id, status: "pending").each do |friendship|
