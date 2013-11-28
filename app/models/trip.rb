@@ -2,7 +2,8 @@ class Trip < ActiveRecord::Base
      has_and_belongs_to_many :users, :join_table => :trips_users
      belongs_to :creator, :class_name => "User", :foreign_key => :creator_id
 	 
-	 has_many :activities
+	 has_many :activities, :dependent => :destroy
+	 has_many :trip_invitations, :dependent => :destroy
 	 #has_many :logistics
 	 
 	AMOUNT_REGEX= /\d+\.?\d{0,2}+/i
@@ -22,6 +23,7 @@ class Trip < ActiveRecord::Base
 	 end
 	 
 	 #return a list of friends that is not a memeber of the trip yet
+	 #TODO: CHANGE!!!
 	 def get_uninvited_friends(user)
 	   trip= Trip.find(self.id) 
 	   users= User.all #user.friends

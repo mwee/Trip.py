@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118044510) do
+ActiveRecord::Schema.define(version: 20131128034552) do
 
   create_table "activities", force: true do |t|
     t.datetime "created_at"
@@ -19,20 +19,6 @@ ActiveRecord::Schema.define(version: 20131118044510) do
     t.integer  "user_id"
     t.text     "topic"
     t.integer  "trip_id"
-  end
-
-  create_table "calendars", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
-  create_table "dateranges", force: true do |t|
-    t.date     "start_date"
-    t.date     "end_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "freeranges", force: true do |t|
@@ -52,12 +38,12 @@ ActiveRecord::Schema.define(version: 20131118044510) do
     t.datetime "updated_at"
   end
 
-  create_table "invites", force: true do |t|
-    t.integer  "request_id"
-    t.integer  "from"
-    t.integer  "to"
+  create_table "trip_invitations", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "inviter_id"
+    t.integer  "invitee_id"
+    t.integer  "trip_id"
   end
 
   create_table "trips", force: true do |t|
@@ -72,6 +58,7 @@ ActiveRecord::Schema.define(version: 20131118044510) do
     t.integer  "creator_id"
     t.text     "description"
     t.text     "link"
+    t.boolean  "active"
   end
 
   create_table "trips_users", id: false, force: true do |t|

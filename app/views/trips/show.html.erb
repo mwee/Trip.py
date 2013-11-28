@@ -1,4 +1,4 @@
-<div class="right_title"> Trip.py: <%=@trip.title%></div>
+<div class="right_title"> <%=@trip.title%></div>
 <div class="right_body">
         <div class="right_section">
           <div class="user_info>">
@@ -50,14 +50,15 @@
             </div>  
            </div>
         </div>
+		
         <div class="trip_buttons">
-
-          <%= link_to ' Invite Friends ', trip_invite_path(@trip.id) %>|
+          <%= link_to 'Invite Friends', trip_add_invitations_new_path(@trip.id) %>|
           <%= link_to 'Add Activity', trip_activities_new_path(@trip.id) %>
         </div>
+		
 </br>
 
-<%= render "activities/index" %> 
+<%= render :template  => "activities/index" %> 
 
 </div>
 

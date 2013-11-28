@@ -14,7 +14,8 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   def new
     @trip=Trip.find(params[:id])
-    @activity = Activity.new
+    
+	@activity = Activity.new
   end
 
   # GET /activities/1/edit

@@ -53,24 +53,6 @@ class TripsController < ApplicationController
     end
   end
 
-  def invite
-    @trip=Trip.find(params[:id])
-  	@friends=@trip.get_uninvited_friends(current_user)
-  end
-  
-  def join
-    @trip=Trip.find(params[:id])
-    @friends=@trip.get_uninvited_friends(current_user)
-	@count=-1
-	params[:friends].each do |f|
-		@count=@count+1
-		if f
-			@trip.users << @friends[@count]	          			
-		end
-		
-	end
-    redirect_to @trip
-  end
   
   # DELETE /trips/1
   # DELETE /trips/1.json

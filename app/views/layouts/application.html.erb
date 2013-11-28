@@ -50,7 +50,13 @@
 					  	  	   	<%= link_to "Your Friends", user_show_friend_path(current_user.id) , :id => current_user.id %></h4>
 
 						       <h4 class="title"><span class="label color2"><%=current_user.get_trip_num()%></span>
-					  	  	   	<%= link_to "Your Trips", trips_path, :id => current_user.id %></h4>						      
+					  	  	   	<%= link_to "Your Trips", trips_path, :id => current_user.id %></h4>	
+								
+								<h4 class="title"><span class="label color2"><%=current_user.get_invitation_num()%></span>
+					  	  	   	<%= link_to "Your Invitations", trip_invitations_path(current_user.id), :id => current_user.id %></h4>	
+								
+								
+								
 					  	  </div>
 					  </div>
 				      <div class="right_fields">

@@ -1,4 +1,6 @@
 LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
+  resources :trip_invitations
+
   get "friendships/create"
   get "friendship/create"
   # The priority is based upon order of creation: first created -> highest priority.
@@ -14,7 +16,7 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
  resources :freeranges
  resources :activities
  resources :invites
- 
+ resources :tripinvitations
  match 'activities/like/:id' => 'activities#like', :as => :like_activity, via: [:get, :post]
  match 'activities/unlike/:id' => 'activities#unlike', :as => :unlike_activity, via: [:get, :post]
 
@@ -26,12 +28,11 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
 
   match 'invites/create', to: 'invites#create', via: [ :post]
   
-  match 'trips/invite/:id' => 'trips#invite', :as => :trip_invite, via: [:get, :post]
-  match 'trips/join/:id' => 'trips#join', :as => :trip_join, via: [:get, :patch, :post]
-  match 'trips/remove/:id' => 'trips#join', :as => :trip_remove, via: [:get, :patch, :post]
+  match 'trips/:id/trip_invitations/new' => 'trip_invitations#new', :as => :trip_add_invitations_new, via: [:get, :patch, :post]
+  match 'trips/:id/trip_invitations/create' => 'trip_invitations#create', :as => :trip_add_invitations_create, via: [:get, :patch, :post]
   
   match 'trips/:id/activities/new' => 'activities#new', :as => :trip_activities_new,  via: [:get, :patch, :post]
-    match 'trips/:id/activities/create' => 'activities#create', :as => :trip_activities_create,  via: [:get, :patch, :post]
+  match 'trips/:id/activities/create' => 'activities#create', :as => :trip_activities_create,  via: [:get, :patch, :post]
 	
   get ':controller(/:action(/:id))(.:format)'
   post ':controller(/:action(/:id))(.:format)'

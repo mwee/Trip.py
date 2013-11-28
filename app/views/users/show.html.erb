@@ -70,7 +70,7 @@
   <h3 class="right_label">Availability: </h3>
     <div class="right_answers">
    	<% if !@user.freeranges.nil? %>
-	    <p class="right_answers_p"> <%= render 'freeranges/index', locals:{freeranges: @user.freeranges} %> </p>
+	    <p class="right_answers_p"> <%= render :template => 'freeranges/index', locals:{freeranges: @user.freeranges} %> </p>
 	<% else %>
 	    <p class="right_answers_p"> No free ranges.</p>	
 	<% end %>

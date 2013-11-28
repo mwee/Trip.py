@@ -1,0 +1,32 @@
+<h1>Invitation to join the trip </h1>
+  <tbody>
+    <% @trip_invitations.each do |trip_invitation| %>
+	        <% @trip=trip_invitation.trip %>
+            <%= trip_invitation.inviter.name %> invited you to join the trip: <%=@trip.title%>
+            
+			<h3 class="right_label">Destinations:</h3>
+            <p   class="right_answers_p"> <%= @trip.description %>  </p>
+
+            <h3 class="right_label">Created By:</h3>
+            <p   class="right_answers_p"> <%= @trip.creator.name %>  </p>
+            
+           <h3 class="right_label">Cabal:</h3>
+            <p   class="right_answers_p"> 
+                  <% @trip.users.each do |participant|%> 
+                         <%= participant.name %>
+                       <% end %>
+            </p>
+            <h3 class="right_label">Estimated Total Cost Per Person:</h3>
+           <p   class="right_answers_p"> $<%= @trip.cost_min %> to $<%= @trip.cost_max %>  </p>
+
+            <h3 class="right_label">Dates:</h3>
+            <p   class="right_answers_p"> <%= @trip.start_date%> to <%= @trip.end_date %>  </p>
+            
+        <%= button_to 'Accept', :controller => "trip_invitations", :action=> "accept", :id => trip_invitation.id %> 
+        <%= button_to 'Decline', :controller => "trip_invitations", :action=> "decline", :id => trip_invitation.id %> 
+      </br>
+    <% end %>
+  </tbody>
+
+
+

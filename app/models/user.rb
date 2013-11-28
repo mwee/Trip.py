@@ -1,9 +1,14 @@
 class User < ActiveRecord::Base
   acts_as_voter
-  has_many :freeranges
+  has_many :freeranges, :dependent => :destroy
+  
   has_and_belongs_to_many :trips, :join_table => :trips_users
-  has_many :created_trips, :class_name => "Trip", :foreign_key => :creator_id
-
+  has_many :created_trips, :class_name => "Trip", :foreign_key => :creator_id, :dependent => :destroy
+  
+  has_many :invitations, :class_name => "TripInvitation", :foreign_key => :invitee_id, :dependent => :destroy
+  has_many :created_invitations, :class_name => "TripInvitation", :foreign_key => :inviter_id, :dependent => :destroy
+  
+  
   has_many :friendships
   #has_many :friends, -> {"status = 'finalized'"}, :through => :friendships
   has_many :friends, :conditions => "status = 'finalized'", :through => :friendships
@@ -38,6 +43,12 @@ class User < ActiveRecord::Base
   def get_friend_num
     user = User.find(self.id)
     num = User.all.length-1 #TODO: user.friends.length
+    return num
+  end
+  
+    def get_invitation_num
+    user = User.find(self.id)
+    num = user.invitations.length
     return num
   end
 
