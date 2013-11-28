@@ -22,13 +22,37 @@ class Trip < ActiveRecord::Base
 	 def user_is_member
 	 end
 	 
-	 #return a list of friends that is not a memeber of the trip yet
+	 def get_status
+		trip= Trip.find(self.id) 
+		if trip.active
+			return "Active"
+		else
+			return "finalized"
+		end
+	 end
+	 
+	 #return a list of friends that is not a memeber of the trip and not yet get an invitation to join the trip
 	 #TODO: CHANGE!!!
 	 def get_uninvited_friends(user)
 	   trip= Trip.find(self.id) 
 	   users= User.all #user.friends
 	   uninvited = users-trip.users
-	   uninvited=uninvited-[trip.creator]
+	   uninvited -= [trip.creator]
+	   for invi in trip.trip_invitations
+	      uninvited -= [invi.invitee]
+	   end
 	   return uninvited
+	 end
+	 
+	 def get_free_uninvited_friends(user)
+	     trip= Trip.find(self.id) 
+	     uninvited=trip.get_uninvited_friends(user)
+		 free_uninvited_friends=[]
+		 for f in uninvited
+		    if Freerange.is_free_during(trip.start_date,trip.end_date,f)
+			    free_uninvited_friends += [f]
+			end
+		 end
+		 return free_uninvited_friends
 	 end
 end

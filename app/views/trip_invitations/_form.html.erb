@@ -14,10 +14,17 @@
     <% if @friends.length==0 %>
 	    All your friends are invited.
 	<% else %>
-		<% @friends.length.times do |i| %>
-		    <%= label_tag @friends[i].name %>:
+		Friends who are free during  <%= @trip.start_date %> to <%= @trip.end_date %>:
+		<% @free_friends.length.times do |i| %>
+		    <%= label_tag @free_friends[i].name %>:
 		    <%= check_box_tag "friends[#{i}]" %> <br /> 
 		<% end %>
+		<br>
+		Friends who are not free:
+		<% @no_free_friends.length.times do |i| %>
+		    <%= label_tag @no_free_friends[i].name %>:
+		    <%= check_box_tag "friends[#{i+@num_free_friends}]" %> <br /> 
+		<% end %>		
 		<div class="actions">
 			<%= f.submit 'Invite' %>
 		</div>

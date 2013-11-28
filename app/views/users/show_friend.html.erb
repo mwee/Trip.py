@@ -45,7 +45,7 @@
 			<div class="right_answers">
 			<% if !friend.freeranges.nil? %>
 			   <% @freeranges=friend.freeranges %>
-				<p class="right_answers_p"> <%= render 'freeranges/index', :freeranges => friend.freeranges %> </p>
+				<p class="right_answers_p"> <%= render :template => 'freeranges/index', :freeranges => friend.freeranges %> </p>
 			<% else %>
 				<p class="right_answers_p"> No free dates.</p>	
 			<% end %>

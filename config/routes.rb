@@ -19,15 +19,12 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
  resources :tripinvitations
  match 'activities/like/:id' => 'activities#like', :as => :like_activity, via: [:get, :post]
  match 'activities/unlike/:id' => 'activities#unlike', :as => :unlike_activity, via: [:get, :post]
-
-
+ 
  match 'users/show/:id' => 'users#show', :as => :user_show, via: [:get, :post]
  match 'users/show_friend/:id' => 'users#show_friend', :as => :user_show_friend, via: [:get, :post]
  match 'users/edit_destination/:id' => 'users#edit_destination', :as => :user_edit_destination, via: [:get, :post]
  match 'users/edit_budget/:id' => 'users#edit_budget', :as => :user_edit_budget, via: [:get, :post]
 
-  match 'invites/create', to: 'invites#create', via: [ :post]
-  
   match 'trips/:id/trip_invitations/new' => 'trip_invitations#new', :as => :trip_add_invitations_new, via: [:get, :patch, :post]
   match 'trips/:id/trip_invitations/create' => 'trip_invitations#create', :as => :trip_add_invitations_create, via: [:get, :patch, :post]
   

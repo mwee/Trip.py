@@ -18,6 +18,9 @@ class TripInvitationsController < ApplicationController
     @trip = Trip.find(params[:id])
 	@trip_invitation = TripInvitation.new
 	@friends=@trip.get_uninvited_friends(current_user)
+	@free_friends=@trip.get_free_uninvited_friends(current_user)
+	@num_free_friends=@free_friends.length
+	@no_free_friends=@friends-@free_friends
   end
 
   # GET /trip_invitations/1/edit

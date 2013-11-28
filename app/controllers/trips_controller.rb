@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: [:show, :edit, :invite, :update, :destroy]
+  before_action :set_trip, only: [:show, :edit, :invite, :update, :finalize, :destroy]
 
   # GET /trips
   # GET /trips.json
@@ -52,7 +52,11 @@ class TripsController < ApplicationController
       end
     end
   end
-
+  #change status active from true to false
+  def finalize
+     @trip.update_column(:active, false)
+	 redirect_to trips_path
+  end
   
   # DELETE /trips/1
   # DELETE /trips/1.json
@@ -87,6 +91,6 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:title, :destination, :description, :link, :start_date, :end_date, :cost_min, :cost_max)
+      params.require(:trip).permit(:title, :destination, :description, :link, :start_date, :end_date, :cost_min, :cost_max, :active)
     end
 end

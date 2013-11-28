@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20131128034552) do
     t.integer  "creator_id"
     t.text     "description"
     t.text     "link"
-    t.boolean  "active"
+    t.boolean  "active",      default: true
   end
 
   create_table "trips_users", id: false, force: true do |t|
