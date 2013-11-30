@@ -1,81 +1,78 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Trip.py!</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+	<head>
+		<title>Trip.py!</title>
+		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<%= csrf_meta_tags %>
 
-   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  <script src = "https://raw.github.com/jschr/bootstrap-modal/master/js/bootstrap-modal.js"></script>
-  <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="http://railsgirls.com/assets/bootstrap.css">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-  <script src = "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-  <script src = "http://qtip2.com/v/nightly/jquery.qtip.js"></script>
-  <link rel="stylesheet" href="http://qtip2.com/v/nightly/jquery.qtip.css">
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<script src = "https://raw.github.com/jschr/bootstrap-modal/master/js/bootstrap-modal.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="http://railsgirls.com/assets/bootstrap.css">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src = "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		<script src = "http://qtip2.com/v/nightly/jquery.qtip.js"></script>
+		<link rel="stylesheet" href="http://qtip2.com/v/nightly/jquery.qtip.css">
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
-</head>
-<body>
-  <div class="mainbody">
-  	<!-- There is a user. So a new navbar and left profile handle-->
+	</head>
+	<body>
+		<div class="mainbody">
+			<!-- There is a user. So a new navbar and left profile handle-->
 			<% if current_user %>
-			  <!-- navbar header -->
-			  <header class="navbar navbar-default navbar-fixed-top">
-			  	<div class="float-left navbar-header">
-			  		<span href="/" class="navbar-brand">
-		               <img id="logoIcon" src="http://www.iconsdb.com/icons/preview/F49D1E/airplane-57-xxl.png">
-		            </span>
-		            <span id="logoName"> TRIP.PY</span>
-			  	</div>
-			  	<div id="rightButtons" class="pull-right">
-			  		<%= link_to "Sign out", signout_path, id: "sign_out",class: "btn" %>
-			  	
-			  	</div>
-			  </header>
-			 
-			  <div class="main_section row">
-					  <div class="left_fields">
-					  	  <div class="panel_icon">
-                              <img class="profile_pic" src="https://cdn0.iconfinder.com/data/icons/vector-people-icons-for-ios/400/lady-512.png">
-                          </div>
-					  	  <div class="panel_name">
-					  	  	    <%= current_user.name.split(" ").first %>		  	  	    
-					  	  </div>
-					  	  <div class="panel_links"> 
-					  	  	   &nbsp; &nbsp; &nbsp; <h4 class="title"><%= link_to "Your Profile", user_show_path(current_user.id) , :id => current_user.id  %></h4>
-					  	  	
-					  	  	   <h4 class="title"><span class="label color1"><%=current_user.get_friend_num()%></span>
-					  	  	   	<%= link_to "Your Friends", user_show_friend_path(current_user.id) , :id => current_user.id %></h4>
+			<!-- navbar header -->
+			<header class="navbar navbar-default navbar-fixed-top">
+				<div class="float-left navbar-header">
+					<span href="/" class="navbar-brand"> <img id="logoIcon" src="http://www.iconsdb.com/icons/preview/F49D1E/airplane-57-xxl.png"> </span>
+					<span id="logoName"> TRIP.PY</span>
+				</div>
+				<div id="rightButtons" class="pull-right">
+					<%= link_to "Sign out", signout_path, id: "sign_out",class: "btn" %>
 
-						       <h4 class="title"><span class="label color2"><%=current_user.get_trip_num()%></span>
-					  	  	   	<%= link_to "Your Trips", trips_path, :id => current_user.id %></h4>	
-								
-								<h4 class="title"><span class="label color2"><%=current_user.get_invitation_num()%></span>
-					  	  	   	<%= link_to "Your Invitations", trip_invitations_path(current_user.id), :id => current_user.id %></h4>	
-								
-								
-								
-					  	  </div>
-					  </div>
-				      <div class="right_fields">
-				      	   <%=yield%>
-				      </div>
-		      </div>  
-<div id="fb-root"></div>
-	<!-- A home page that will be in welcome#home-->
-			  <%else%>
-			   <%=yield%>
-			  <%end%>
-   </div>
-    <footer>
-    	<div>Contact : 6.170project@mit.edu</div>
-    	<div> <img id="footerIcon" src="http://www.iconsdb.com/icons/preview/F49D1E/airplane-57-xxl.png"></div>
-    </footer>
-    
+				</div>
+			</header>
 
+			<div class="main_section row">
+				<div class="left_fields">
+					<div class="panel_icon">
+						<img class="profile_pic" src="https://cdn0.iconfinder.com/data/icons/vector-people-icons-for-ios/400/lady-512.png">
+					</div>
+					<div class="panel_name">
+						<%= current_user.name.split(" ").first %>
+					</div>
+					<div class="panel_links">
+						&nbsp; &nbsp; &nbsp; <h4 class="title"><%= link_to "Your Profile", user_show_path(current_user.id) , :id => current_user.id  %></h4>
 
-</body>
- 
+						<h4 class="title"><span class="label color1"><%= current_user.get_friend_num()%></span> <%= link_to "Your Friends", user_show_friend_path(current_user.id) , :id => current_user.id %></h4>
+
+						<h4 class="title"><span class="label color2"><%= current_user.get_trip_num()%></span> <%= link_to "Your Trips", trips_path, :id => current_user.id %></h4>
+
+						<h4 class="title"><span class="label color2"><%= current_user.get_invitation_num()%></span> <%= link_to "Your Invitations", trip_invitations_path(current_user.id), :id => current_user.id %></h4>
+
+					</div>
+				</div>
+				<div class="right_fields">
+								
+					<%= yield%>
+				</div>
+			</div>
+			<div id="fb-root"></div>
+			<!-- A home page that will be in welcome#home-->
+			<%else%>
+			<%= yield%>
+
+			<%end%>
+		</div>
+		<footer>
+			<div>
+				Contact : 6.170project@mit.edu
+			</div>
+			<div>
+				<img id="footerIcon" src="http://www.iconsdb.com/icons/preview/F49D1E/airplane-57-xxl.png">
+			</div>
+		</footer>
+
+	</body>
+
 </html>

@@ -1,66 +1,71 @@
 $(document).ready(function() {
 
+    if (window.location.hash && window.location.hash == '#_=_') {
+        if (window.history && history.pushState) {
+            window.history.pushState("", document.title, window.location.pathname);
+        } else {
+            // Prevent scrolling by storing the page's current scroll offset
+            var scroll = {
+                top: document.body.scrollTop,
+                left: document.body.scrollLeft
+            };
+            window.location.hash = '';
+            // Restore the scroll offset, should be flicker free
+            document.body.scrollTop = scroll.top;
+            document.body.scrollLeft = scroll.left;
+        }
+    }
+    
 	window.fbAsyncInit = function() {
 		FB.init({
 			appId : '1375015546079605', // App ID
-			status : true, // check login status
+			status : false, // check login status
 			cookie : true, // enable cookies to allow the server to access the session
-			xfbml : true // parse XFBML
+			xfbml : true, // parse XFBML
+			oauth: true
 		});
 
 	};
-	( function(d) {
-			var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-			if (d.getElementById(id)) {
-				return;
-			}
-			js = d.createElement('script');
-			js.id = id;
-			js.async = true;
-			js.src = "//connect.facebook.net/en_US/all.js";
-			ref.parentNode.insertBefore(js, ref);
-		}(document));
+	
+	
+  (function(d){
+   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement('script'); js.id = id; js.async = true;
+   js.src = "//connect.facebook.net/en_US/all.js";
+   ref.parentNode.insertBefore(js, ref);
+  }(document));
 
-	$(function() {
-		if (top.location != self.location) {
-			console.log("change top location");
-			console.log(self.location);
-			console.log(top.location);
-			top.location = self.location;
-		}
-	});
 
 	$("#invite").click(function() {
-
+		alert("jere");
+	
 		FB.ui({
 			method : 'apprequests',
-			message : 'try this app',
+			message : 'try this app'
 		}, function(response) {
+			alert("finished");
+			
 			var request = response.request;
 			var from = $("#user_data").attr("data_user-id");
 			$.ajaxSetup({
-				headers : {
-					'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
-				}
+				headers : {	'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')}
 			});
 			for (var i = 0; i < response.to.length; i++) {
 				var to = response.to[i];
 				console.log(request + " " + from + " " + to);
 				$.ajax({
 					type : "POST",
-					url : "/friendships/create",
+					url : "/friendships/createFacebook",
 					beforeSend : function(xhr) {
 						xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
 					},
 					data : {
-						request_id : request,
 						user_id : from,
 						friend_id : to,
 						status : "pending",
-
 					},
-
-					success : function() {
+				success : function() {
 						console.log("Data Send!");
 					},
 					error : function(xhr) {
@@ -69,8 +74,11 @@ $(document).ready(function() {
 				});
 
 			}
+			
 		});
+		
 	});
+
 
 	$("#sign_out").click(function() {
 		FB.getLoginStatus(function(response) {
@@ -82,11 +90,21 @@ $(document).ready(function() {
 				// and signed request each expire
 				//var uid = response.authResponse.userID;
 				//var accessToken = response.authResponse.accessToken;
-				FB.logout()
+				FB.logout();
 			}
 		});
 
 	});
-
+	
+	/*
+		$(function() {
+		if (top.location != self.location) {
+			console.log("change top location");
+			console.log(self.location);
+			console.log(top.location);
+			top.location = self.location;
+		}
+	});
+*/
 });
 

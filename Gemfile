@@ -50,6 +50,8 @@ gem 'validates_timeliness', '~> 3.0'
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 
+gem 'jquery-turbolinks'
+
 group :development, :test do
     gem 'sqlite3'
 end

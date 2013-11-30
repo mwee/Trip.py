@@ -8,5 +8,6 @@ class CreateFriendships < ActiveRecord::Migration
 
       t.timestamps
     end
-  end
+    
+    end
 end

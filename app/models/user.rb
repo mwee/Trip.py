@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   #has_many :friends, -> {"status = 'finalized'"}, :through => :friendships
   has_many :friends, :conditions => "status = 'finalized'", :through => :friendships
 
+ EMAIL_REGEX =  /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+/i
+ 
   AMOUNT_REGEX= ( /\d+\.?\d{0,2}+/i)
   validates :budget_in_min, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}, :allow_nil => true
   validates :budget_in_max, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => :budget_in_min, :less_than => 1000000},:allow_nil => true
@@ -24,7 +26,8 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.name
-      #user.image=auth.info.image
+      user.email=auth.info.email
+      user.gender=auth.extra.raw_info.gender
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
@@ -42,7 +45,7 @@ class User < ActiveRecord::Base
   #return the number of friends
   def get_friend_num
     user = User.find(self.id)
-    num = User.all.length-1 #TODO: user.friends.length
+    num = user.friends.length
     return num
   end
   
@@ -55,6 +58,16 @@ class User < ActiveRecord::Base
   #Return true if the user is the creator of the trip
   def is_trip_creator(trip)
     return self.id==trip.creator.id
+  end
+  
+  def self.get_user(email)
+    if EMAIL_REGEX.match(email)
+      user = User.find_by_email(email)
+    end
+    if user
+      return user
+    end
+
   end
 
 end

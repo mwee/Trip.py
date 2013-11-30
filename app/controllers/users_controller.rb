@@ -11,6 +11,7 @@ class UsersController < ApplicationController
      @user = current_user
      @freeranges=@user.freeranges	 
      @friends= User.all-[@user] #TODO:change @user.friends.all
+     @invitations=Friendship.getReceivedInvitation(@user.id)
   end
   
   def edit_destination

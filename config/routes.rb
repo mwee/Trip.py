@@ -17,6 +17,8 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
  resources :activities
  resources :invites
  resources :tripinvitations
+ resources :friendships
+ 
  match 'activities/like/:id' => 'activities#like', :as => :like_activity, via: [:get, :post]
  match 'activities/unlike/:id' => 'activities#unlike', :as => :unlike_activity, via: [:get, :post]
  
@@ -34,7 +36,9 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
   get ':controller(/:action(/:id))(.:format)'
   post ':controller(/:action(/:id))(.:format)'
   
-  
+
+    match '/friendships/createFacebook', to: 'friendships#createFacebook', via: 'post'
+    
 # Example of regular route:
 #   get 'products/:id' => 'catalog#view'
 
