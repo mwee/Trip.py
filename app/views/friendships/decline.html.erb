@@ -1,0 +1,12 @@
+<% provide(:title, 'Invite Friend') %>
+
+<%= form_tag(new_friendship_path) do %>
+<div class="field" >
+	<%= text_field_tag :email, nil, placeholder: 'Enter email'%>
+</div>
+
+<div class="actions">
+	<%= submit_tag "Send Friend Invitation",:class=>"btn btn-primary" %>
+
+</div>
+<% end %>
