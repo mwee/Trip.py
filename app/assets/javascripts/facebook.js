@@ -95,7 +95,7 @@ $(document).ready(function() {
 
 	});
 	
-	/*
+	
 		$(function() {
 		if (top.location != self.location) {
 			console.log("change top location");
@@ -104,6 +104,6 @@ $(document).ready(function() {
 			top.location = self.location;
 		}
 	});
-*/
+
 });
 
