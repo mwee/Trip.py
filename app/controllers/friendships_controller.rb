@@ -1,63 +1,79 @@
 class FriendshipsController < ApplicationController
-  
-    before_filter :require_login
-  
+
+  before_filter :require_login
+  before_action :set_friendship, only: [:accept, :decline]
+  #GET
   def new
-     @friend= User.get_user(params[:email])
-      if @friend.nil?
-        flash[:notice] = "Invalid email"
-         elsif Friendship.is_friend?(current_user.id, @friend.id)
-        flash[:notice] =  "User with"+ @friend.email+" is already your friends or invitations already sent."
-      else
-     @friendship = @current_user.friendships.build(friend_id: @friend.id)
+    @friend= User.get_user(params[:email])
+    if @friend.nil?
+      flash[:notice] = "Invalid email"
+    elsif Friendship.is_friend?(current_user.id, @friend.id)
+      flash[:notice] =  "User with email "+ @friend.email+" is already your friends or invitations already sent."
+    else
+      @friendship = @current_user.friendships.build(friend_id: @friend.id)
       @friendship.save
       flash[:success]= "Send Friend Invitation To User With Email "+ @friend.email
-      end
-      redirect_to  user_show_friend_path(@current_user.id) 
+    end
+    redirect_to  user_show_friend_path(@current_user.id)
   end
 
+
+
+  #POST, used for facebook invitation request
   def create
-      @friend= User.get_user(params[:email])
-      #first check if user exists
-      if @friend.nil?
-        flash[:notice] = "Invalid email"
-      elsif Frienship.is_friend?(current_user.id, @friend.id)
-        flash[:notice] =  "User with"+ @friend.email+" is already your friends or invitations already sent."
-      else
-        @friendship = Friendship.new(:user_id=> current_user.id,:friend_id=> @friend.id)
-        @friendship.save
-        flash[:success]= "Send Friend Invitation To User With Email "+ @friend.email
-      end
-    redirect_to  user_show_friend_path(current_user.id) 
-  end
-
-
-
-  def createFacebook
     logger.info("friendship creating");
-    @friendship = Friendship.new(:user_id=> params[:user_id],:friend_id=> params[:friend_id])
+    #first check if user exists
+    @friend=User.get_facebook_user(params[:friend_id])
+    @friendship = @current_user.friendships.build(@current_user.id,:friend_id=> params[:friend_id])
     respond_to do |format|
-      if Friendship.is_friend?(params[:user_id],params[:friend_id])
-
-        format.html { redirect_to new_friendship_path, notice: '' }
+      if @user.nil?
+        @friendship.save
+        format.html { redirect_to user_show_friend_path(@current_user.id), success: 'friend invitation send' }
         format.json { render json: @friendship.to_json }
-      elsif
-      @friendship.save
-        format.html { redirect_to root_path, notice: 'friendship created.' }
+      elsif !Friendship.is_friend?(@current_user.id,@friend.id)
+        @friendship.friend_id=@friend.id
+        @friendship.save
+        format.html { redirect_to user_show_friend_path(@current_user.id), success: 'friend invitation send' }
         format.json { render json: @friendship.to_json }
       else
-        format.html {redirect_to root_path }
-        format.json { render json: @friendship.errors, status: :unprocessable_entity }
+        format.html { redirect_to user_show_friend_path(@current_user.id), notice:  @friend.name+" is already your friends or invitations already sent." }
+        format.json { render json: @friendship.to_json }
       end
 
     end
+  end
 
+  # POST /friendships/1
+  def accept
+    # Prevents unauthorized access by other users
+    if !@friendship.is_invited?(@current_user.id)
+      flash[:notice] = "This friend invitation is not for you!"
+      redirect_to user_show_friend_path(@current_user.id)
+    return
+    end
+    @friendship.update()
+    @friendship.createInverse()
+    redirect_to user_show_friend_path(@current_user.id)
+  end
+
+  # DELETE /friendships/1
+  def decline
+    # Prevents unauthorized access by other users
+    if !@friendship.is_invited?(@current_user.id)
+      flash[:notice] = "This friend invitation is not for you!"
+      redirect_to user_show_friend_path(@current_user.id)
+    return
+    end
+    @friendship.destroy
+    flash[:success] = "Invitation declined"
+    redirect_to user_show_friend_path(@current_user.id)
   end
 
   private
 
-#def friendship_params
-#  params.require(:friendship).permit(:user_id, :friend_id)
-#end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_friendship
+    @friendship = Friendship.find(params[:id])
+  end
 
 end

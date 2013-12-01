@@ -1,20 +1,19 @@
 class User < ActiveRecord::Base
   acts_as_voter
   has_many :freeranges, :dependent => :destroy
-  
+
   has_and_belongs_to_many :trips, :join_table => :trips_users
   has_many :created_trips, :class_name => "Trip", :foreign_key => :creator_id, :dependent => :destroy
-  
+
   has_many :invitations, :class_name => "TripInvitation", :foreign_key => :invitee_id, :dependent => :destroy
   has_many :created_invitations, :class_name => "TripInvitation", :foreign_key => :inviter_id, :dependent => :destroy
-  
-  
+
   has_many :friendships
   #has_many :friends, -> {"status = 'finalized'"}, :through => :friendships
   has_many :friends, :conditions => "status = 'finalized'", :through => :friendships
 
- EMAIL_REGEX =  /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+/i
- 
+  EMAIL_REGEX =  /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+/i
+
   AMOUNT_REGEX= ( /\d+\.?\d{0,2}+/i)
   validates :budget_in_min, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}, :allow_nil => true
   validates :budget_in_max, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => :budget_in_min, :less_than => 1000000},:allow_nil => true
@@ -31,7 +30,7 @@ class User < ActiveRecord::Base
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
-      Friendship.addFriend(user.uid, user.id)
+      Friendship.updateId(user.uid, user.id)
     end
   end
 
@@ -48,8 +47,8 @@ class User < ActiveRecord::Base
     num = user.friends.length
     return num
   end
-  
-    def get_invitation_num
+
+  def get_invitation_num
     user = User.find(self.id)
     num = user.invitations.length
     return num
@@ -59,13 +58,21 @@ class User < ActiveRecord::Base
   def is_trip_creator(trip)
     return self.id==trip.creator.id
   end
-  
+
   def self.get_user(email)
     if EMAIL_REGEX.match(email)
       user = User.find_by_email(email)
     end
     if user
-      return user
+    return user
+    end
+
+  end
+
+  def self.get_facebook_user(uid)
+      user = User.find_by_uid(uid)
+    if user
+    return user
     end
 
   end

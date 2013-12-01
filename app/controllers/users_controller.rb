@@ -10,8 +10,9 @@ class UsersController < ApplicationController
   def show_friend
      @user = current_user
      @freeranges=@user.freeranges	 
-     @friends= User.all-[@user] #TODO:change @user.friends.all
+     @friends= @user.friends.all
      @invitations=Friendship.getReceivedInvitation(@user.id)
+     @invitations_users=@invitations.map { |invitation| User.find(invitation.user_id) }
   end
   
   def edit_destination

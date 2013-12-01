@@ -37,7 +37,11 @@ LyxhLiyihuaFkezaMweeFinal::Application.routes.draw do
   post ':controller(/:action(/:id))(.:format)'
   
 
-    match '/friendships/createFacebook', to: 'friendships#createFacebook', via: 'post'
+  match '/friendships/accept/:id' => 'friendships#accept', :as => :accept_invitation, via: [:get,:post]
+  
+  delete '/friendships/:id/decline', to: 'friendships#decline', as: 'decline_invitation'
+  
+    
     
 # Example of regular route:
 #   get 'products/:id' => 'catalog#view'

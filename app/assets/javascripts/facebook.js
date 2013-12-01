@@ -56,14 +56,13 @@ $(document).ready(function() {
 				console.log(request + " " + from + " " + to);
 				$.ajax({
 					type : "POST",
-					url : "/friendships/createFacebook",
+					url : "/friendships/create",
 					beforeSend : function(xhr) {
 						xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
 					},
 					data : {
 						user_id : from,
 						friend_id : to,
-						status : "pending",
 					},
 				success : function() {
 						console.log("Data Send!");
