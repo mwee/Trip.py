@@ -1,7 +1,7 @@
 class TripInvitationsController < ApplicationController
   before_filter :require_login
   before_action :set_trip_invitation, only: [:show, :accept, :decline]
-  before_action :user_is_invitee, only: [:accept,:decline]
+  before_action :user_is_invitee, only: [:accept, :decline]
 
   # GET /trip_invitations
   # GET /trip_invitations.json
@@ -10,10 +10,6 @@ class TripInvitationsController < ApplicationController
     @trip_invitations = @user.invitations
   end
 
-  # GET /trip_invitations/1
-  # GET /trip_invitations/1.json
-  def show
-  end
 
   # GET /trip_invitations/new
   def new
@@ -30,15 +26,15 @@ class TripInvitationsController < ApplicationController
   def create	
 	@trip=Trip.find(params[:id])
     @friends=@trip.get_uninvited_friends(current_user)
-	@count=-1
-	params[:friends].each do |f|
-		@count = @count + 1
+	count=0
+	params[:friends].each do |f|	
 		if f
-		    @invitee = @friends[@count]
-		    @trip_invitation = TripInvitation.create(current_user, @invitee, @trip) 				
-			@trip_invitation.save	
+		    TripInvitation.create(current_user, @friends[count], @trip) 						
 		end
-		
+		count = count + 1
+	end
+	if count>=1
+	   flash[:notice] = "Invitation successfully sent."
 	end
     redirect_to @trip	
   end
@@ -46,14 +42,14 @@ class TripInvitationsController < ApplicationController
   #accept a trip invitation
   def accept
      @trip=Trip.find(@trip_invitation.trip.id)
-	 @trip_invitation.accept()	 
+	 @trip_invitation.accept	 
+	 flash[:notice] ="Successfully join the trip. You are now part of the cabal."
 	 redirect_to @trip
   end
   
   #decline a trip invitation
   def decline
-	 @trip_invitation.decline()
-	 @trip_invitations = @user.invitations
+	 @trip_invitation.decline
 	 redirect_to trip_invitations_path
   end
 
@@ -68,6 +64,7 @@ class TripInvitationsController < ApplicationController
       params[:trip_invitation]
     end
 	
+	#return true if the user is the person invited
 	def user_is_invitee
 	    if !@trip_invitation.is_invitee(@user)
 	        redirect_to(:controller => 'trip_invitations', :action => 'index')  

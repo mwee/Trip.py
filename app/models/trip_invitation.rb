@@ -7,7 +7,7 @@ class TripInvitation < ActiveRecord::Base
 	# Create an invitation
     def self.create(inviter, invitee, trip)
 		invitation=trip.trip_invitations.new("inviter_id" => inviter.id, "invitee_id" => invitee.id,)
-		return invitation
+		invitation.save
     end
 	
 	#delete the invitation and add the invitee to the cabal of the trip
@@ -26,6 +26,6 @@ class TripInvitation < ActiveRecord::Base
 	#Return true if the user is the invitee for the invitation
 	def is_invitee(user)
 	    invi= TripInvitation.find(self.id) 
-		return invi.invitee.id==invi.id
+		return invi.invitee.id==user.id
 	end
 end
