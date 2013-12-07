@@ -22,6 +22,7 @@ $(document).ready(function() {
 			status : false, // check login status
 			cookie : true, // enable cookies to allow the server to access the session
 			xfbml : true, // parse XFBML
+			channelUrl   : 'https://desolate-everglades-8674.herokuapp.com/home/fbchannel'
 			oauth: true
 		});
 
@@ -42,7 +43,7 @@ $(document).ready(function() {
 	
 		FB.ui({
 			method : 'apprequests',
-			message : 'try this app'
+			message : 'I am already using Trippy. Please join me.'
 		}, function(response) {
 			alert("finished");
 			
