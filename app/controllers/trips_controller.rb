@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
   before_filter :require_login
   before_action :set_trip, only: [:show, :edit, :update, :finalize, :destroy, :leavecabal]
+  
   # Check for correct permission for the user to do a certain action
   before_action :user_is_creator, only: [:destroy,:edit,:finalize]
   before_action :user_is_in_cabal, only: [:leavecabal]
