@@ -26,7 +26,7 @@ class FriendshipsController < ApplicationController
     @friend=User.get_facebook_user(params[:friend_id])
     respond_to do |format|
       if @friend.nil?
-        @friendship = @current_user.friendships.build(:friend_id=> params[:friend_id])
+        @friendship = @current_user.friendships.build(:friend_uid=> params[:friend_uid])
         @friendship.save
         format.html { redirect_to user_show_friend_path(@current_user.id), success: 'friend invitation send' }
         format.json { render json: @friendship.to_json }

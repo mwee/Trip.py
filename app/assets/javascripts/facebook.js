@@ -63,7 +63,7 @@ $(document).ready(function() {
 					},
 					data : {
 						user_id : from,
-						friend_id : to,
+						friend_uid : to,
 					},
 				success : function() {
 						console.log("Data Send!");

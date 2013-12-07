@@ -39,7 +39,7 @@ class Friendship < ActiveRecord::Base
   
   #update the friend_id to be user_id once facebook users register
   def self.updateId(facebook_id, friend_id)
-     Friendship.where(friend_id:facebook_id, status:'pending').each do |friendship|
+     Friendship.where(friend_uid:facebook_id, status:'pending').each do |friendship|
         friendship.friend_id=friend_id
        friendship.save!
     end
