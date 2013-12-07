@@ -21,12 +21,6 @@ ActiveRecord::Schema.define(version: 20131207205445) do
     t.integer  "trip_id"
   end
 
-  create_table "calendars", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
   create_table "freeranges", force: true do |t|
     t.date     "start_date"
     t.date     "end_date"
@@ -43,8 +37,6 @@ ActiveRecord::Schema.define(version: 20131207205445) do
     t.datetime "updated_at"
     t.string   "friend_uid"
   end
-
-  add_index "friendships", ["friend_id", "user_id"], name: "index_friendships_on_friend_id_and_user_id", unique: true
 
   create_table "trip_invitations", force: true do |t|
     t.datetime "created_at"
