@@ -2,6 +2,8 @@ class Friendship < ActiveRecord::Base
   belongs_to :user
   belongs_to :friend, :class_name=> 'User'
   #validates :friend_id, uniqueness: { scope: :user_id }
+  
+  #get the friend invitations received
   def self.getReceivedInvitation(friend_id)
     return Friendship.where(friend_id:friend_id,status:"pending")
   end
@@ -17,14 +19,14 @@ class Friendship < ActiveRecord::Base
     return (self.friend_id==friend_id)
   end
 
-
+  #finalize the friendship
   def update
     self.status='finalized'
     self.save!
   end
   
-  def createInverse
-    
+  #create a inverse friendship between two users
+  def createInverse    
     inverseFriendship= Friendship.find_by(user_id:self.friend_id, friend_id:self.user_id)
     if inverseFriendship.nil?
       newFriendship=Friendship.new(user_id:self.friend_id, friend_id:self.user_id,status:"finalized")
@@ -34,7 +36,8 @@ class Friendship < ActiveRecord::Base
       inverseFriendship.update
     end
   end
-  #update the friend_id
+  
+  #update the friend_id to be user_id once facebook users register
   def self.updateId(facebook_id, friend_id)
      Friendship.where(friend_id:facebook_id, status:'pending').each do |friendship|
         friendship.friend_id=friend_id
