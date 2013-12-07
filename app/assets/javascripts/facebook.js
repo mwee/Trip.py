@@ -22,7 +22,7 @@ $(document).ready(function() {
 			status : false, // check login status
 			cookie : true, // enable cookies to allow the server to access the session
 			xfbml : true, // parse XFBML
-			channelUrl   : 'https://desolate-everglades-8674.herokuapp.com/home/fbchannel'
+			channelUrl   : 'https://desolate-everglades-8674.herokuapp.com/home/fbchannel',
 			oauth: true
 		});
 
