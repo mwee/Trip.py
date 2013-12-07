@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131130043110) do
+ActiveRecord::Schema.define(version: 20131207205445) do
 
   create_table "activities", force: true do |t|
     t.datetime "created_at"
@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(version: 20131130043110) do
     t.integer  "user_id"
     t.text     "topic"
     t.integer  "trip_id"
+  end
+
+  create_table "calendars", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "freeranges", force: true do |t|
@@ -32,10 +38,13 @@ ActiveRecord::Schema.define(version: 20131130043110) do
   create_table "friendships", force: true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
-    t.string   "status"
+    t.string   "status",     default: "pending"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "friend_uid"
   end
+
+  add_index "friendships", ["friend_id", "user_id"], name: "index_friendships_on_friend_id_and_user_id", unique: true
 
   create_table "trip_invitations", force: true do |t|
     t.datetime "created_at"
