@@ -21,17 +21,17 @@ class FriendshipsController < ApplicationController
 
   #POST, used for facebook invitation request
   def create
-    logger.info("friendship creating");
+    puts "friendship creating";
     #first check if user exists
     @friend=User.get_facebook_user(params[:friend_id])
     respond_to do |format|
       if @friend.nil?
-        @friendship = @current_user.friendships.build(:friend_id=> params[:friend_id])
+        @friendship = @current_user.friendships.build(:friend_uid=> params[:friend_uid])
         @friendship.save
         format.html { redirect_to user_show_friend_path(@current_user.id), success: 'friend invitation send' }
         format.json { render json: @friendship.to_json }
       elsif !Friendship.is_friend?(@current_user.id,@friend.id)
-        logger.info("chaning id");
+        puts "chaning id";
         @friendship = @current_user.friendships.build(:friend_id=>@friend.id)
         @friendship.save
         format.html { redirect_to user_show_friend_path(@current_user.id), success: 'friend invitation send' }

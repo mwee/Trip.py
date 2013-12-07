@@ -5,14 +5,6 @@ class SessionsController < ApplicationController
     redirect_to user_show_path(user.id)   
 
  end
-     
-  def new
-    if current_user
-      redirect_to user_show_path(current_user.id)
-    else
-      render "new"
-    end
-  end
 
 
   def destroy
