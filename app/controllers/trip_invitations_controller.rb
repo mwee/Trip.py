@@ -1,4 +1,5 @@
 class TripInvitationsController < ApplicationController
+  before_filter :require_login
   before_action :set_trip_invitation, only: [:show, :edit, :update, :destroy, :accept, :decline]
 
   # GET /trip_invitations
