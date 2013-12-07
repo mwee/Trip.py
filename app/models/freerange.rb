@@ -3,6 +3,7 @@ class Freerange < ActiveRecord::Base
 	validates_date :start_date, :on_or_after => Time.now
 	validates_date :end_date, :on_or_after => :start_date
 	
+	#return true if the user owns the free range
 	def owns_range(user)
     	return self.user.id==user.id
 	end
@@ -20,7 +21,7 @@ class Freerange < ActiveRecord::Base
 	   return free_dates 
 	end
 	
-	#return a  boolean indicating if the user is free during input_start_date to input_end_date
+	#return a boolean indicating if the user is free during input_start_date to input_end_date
 	def self.is_free_during(input_start_date,input_end_date,user)
 	    if !user.freeranges.any?
 		    return false

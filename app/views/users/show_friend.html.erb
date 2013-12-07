@@ -1,6 +1,4 @@
 <div>
-
-
 	<% flash.each do |key, value| %>
 	<div class="alert alert-<%= key %>">
 		<button type="button" class="close" data-dismiss="alert">
@@ -13,39 +11,31 @@
 	<button id="invite" type="button">
 		Invite Your Facebook friends
 	</button>
-	<p>
-		or
-	</p>
+	<p>or</p>
 
 	<%= render :template => 'friendships/new' %>
-
 	</br>
 	</br>
-
 
 
 	<% if @invitations.any? %>
-	<h3>You Have <%= pluralize(@invitations.count, "Friend Invitations")  %>  </h3>
-	<% @invitations.zip(@invitations_users).each do |invitation, invitation_user| %>
-	<p>
-		<%= invitation_user.name%> wants to be your friend
-		<%= button_to 'Accept', :controller => 'friendships', :action => "accept", :id => invitation.id,:class => "btn" %>
-		<%= button_to 'Decline', decline_invitation_path(id: invitation.id), {:method => :delete, :style => "float:left;",:class => "btn"}%>
-
-	</p>
+		<h3>You Have <%= pluralize(@invitations.count, "Friend Invitations")  %>  </h3>
+		<% @invitations.zip(@invitations_users).each do |invitation, invitation_user| %>
+			<p>
+				<%= invitation_user.name%> wants to be your friend
+				<%= button_to 'Accept', :controller => 'friendships', :action => "accept", :id => invitation.id,:class => "btn" %>
+				<%= button_to 'Decline', decline_invitation_path(id: invitation.id), {:method => :delete, :style => "float:left;",:class => "btn"}%>
+			</p>
+		<% end %>
 	<% end %>
-
-	<% end %>
-	<!-- shows the information for each friend -->
 	
-	<h3 id="user_data" data_user-id="<%= @user.id %>">Your friends </h3>
-	
+	<!-- shows the information for each friend -->	
+	<h3 id="user_data" data_user-id="<%= @user.id %>">Your friends </h3>	
 	<% @friends.each do |friend| %>
 	<div class="right_title">
 		<%= friend.name %>
 	</div>
 	<div class="right_body">
-
 		<div class="right_section">
 			<div class="user_info>">
 				<h3 class="right_label">Dream Destinations:</h3>
@@ -63,12 +53,10 @@
 					</h3>
 				</div>
 			</div>
-
 		</div>
 
 		<div class="right_section">
 			<h3 class="right_label">Budget range: </h3>
-
 			<div class="right_answers">
 				<% if (!friend.budget_in_min.nil?) || (!friend.budget_in_max.nil?) %>
 				<p class="right_answers_p">
