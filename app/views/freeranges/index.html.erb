@@ -1,4 +1,4 @@
-<% if @freeranges.any? %>
+<% if freeranges.any? %>
     Free during: 
 	<table>
 	  <thead>
@@ -11,7 +11,7 @@
 	  </thead>
 
 	  <tbody>
-		<% @freeranges.each do |freerange| %>
+		<% freeranges.each do |freerange| %>
 		  <tr>
 			<td><%= freerange.start_date %></td>
 			<td><%= freerange.end_date %></td>

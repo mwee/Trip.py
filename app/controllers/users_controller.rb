@@ -3,13 +3,12 @@ class UsersController < ApplicationController
   
   
   def show
-     @user = current_user
+     @user= current_user
 	 @freeranges=@user.freeranges
   end
 
   def show_friend
-     @user = current_user
-     @freeranges=@user.freeranges	 
+     @user=current_user
      @friends= @user.friends.all
      @invitations=Friendship.getReceivedInvitation(@user.id)
      @invitations_users=@invitations.map { |invitation| User.find(invitation.user_id) }

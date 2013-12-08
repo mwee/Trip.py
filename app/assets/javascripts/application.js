@@ -44,4 +44,9 @@ $(document).ready(function() {
      $("#addRange").click(function(){
     $("#addingRange").slideToggle();
      });
+
+   
+
+   
+   
 });
