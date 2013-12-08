@@ -31,7 +31,7 @@
                       <div class="buttonDiv">
                        
                             <%= button_to 'View', trip , :class => "btn btn-primary" %>
-                             <% if @current_user.is_trip_creator(trip) %>
+                             <% if trip.user_is_creator(@current_user) %>
 
                                    <% if trip.active %>
                                          <%= button_to 'Edit', edit_trip_path(trip), :class => "btn btn-primary" %>

@@ -32,7 +32,7 @@ class TripsController < ApplicationController
   # POST /trips.json
   def create
 	  @trip  = @current_user.created_trips.create(trip_params) 
-    respond_to do |format|
+      respond_to do |format|
       if @trip.save
 	    flash[:notice] ='Trip was successfully created.'
         format.html { redirect_to @trip}	

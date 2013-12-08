@@ -6,7 +6,7 @@ class TripInvitationsController < ApplicationController
   # GET /trip_invitations
   # GET /trip_invitations.json
   def index
-    @user = current_user
+    @user = @current_user
     @trip_invitations = @user.invitations
   end
 
@@ -15,8 +15,8 @@ class TripInvitationsController < ApplicationController
   def new
     @trip = Trip.find(params[:id])
   	@trip_invitation = TripInvitation.new
-  	@friends=@trip.get_uninvited_friends(current_user)
-  	@free_friends=@trip.get_free_uninvited_friends(current_user)
+  	@friends=@trip.get_uninvited_friends(@current_user)
+  	@free_friends=@trip.get_free_uninvited_friends(@current_user)
   	@num_free_friends=@free_friends.length
   	@no_free_friends=@friends-@free_friends
   end
@@ -25,13 +25,15 @@ class TripInvitationsController < ApplicationController
   # POST /trip_invitations.json
   def create	
   	@trip=Trip.find(params[:id])
-    @friends=@trip.get_uninvited_friends(current_user)
+    @friends=@trip.get_uninvited_friends(@current_user)
   	count=0
-  	params[:friends].each do |f|	
-  		if f
-  		    TripInvitation.create(current_user, @friends[count], @trip) 						
-  		end
-  		count = count + 1
+  	if !(params[:friends].nil?)
+       params[:friends].each do |f|	
+    		if f
+    		    TripInvitation.create(@current_user, @friends[count], @trip) 						
+    		end
+    		count = count + 1
+    	 end
   	end
   	if count>=1
   	   flash[:notice] = "Invitation successfully sent."
