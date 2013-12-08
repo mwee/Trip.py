@@ -27,4 +27,14 @@ three:
   email: yuqi@mit.edu
   gender: female
   oauth_token: MyString
-  oauth_expires_at: 2013-11-12 23:34:48
+  oauth_expires_at: 2013-11-12 23:34:58
+four:
+  id: 4
+  provider: facebook
+  uid: '10000183947345'
+  name: Yunzhi
+  gender: female
+  email: yunzhi@mit.edu
+  gender: female
+  oauth_token: MyString
+  oauth_expires_at: 2013-11-14 11:24:00
