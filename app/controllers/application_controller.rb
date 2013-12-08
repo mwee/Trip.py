@@ -9,15 +9,15 @@ class ApplicationController < ActionController::Base
 
   private
   def current_user
-
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+
+  #check if user has logged in. If so, set current_user
   def require_login
     unless session[:user_id]
         redirect_to root_path
     end
-
     current_user
   end
 

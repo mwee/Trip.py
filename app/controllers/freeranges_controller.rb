@@ -1,17 +1,23 @@
 class FreerangesController < ApplicationController
-  before_action :set_freerange, only: [:show, :edit, :update, :destroy]
+  before_filter :require_login
+  before_action :set_freerange, only: [:edit, :update, :destroy]
+  
+  # Check if a user has the permission to do certain action
+  before_action :user_owns, only: [:edit, :update, :destroy]
 
   # GET /freeranges
   # GET /freeranges.json
   def index
-    @freeranges = current_user.freeranges
+    @user = current_user
+    freeranges = @usershown.freeranges
   end
 
-  # GET /freeranges/1
-  # GET /freeranges/1.json
-  def show
+  
+  # Given a set of user ids, return @freedates.
+  def commonranges
+	 @freedates=Freerange.get_common_free_dates(params[:id])
   end
-
+  
   # GET /freeranges/new
   def new
     @freerange = Freerange.new
@@ -27,7 +33,7 @@ class FreerangesController < ApplicationController
     @freerange = current_user.freeranges.build(freerange_params) 
     respond_to do |format|
       if @freerange.save
-        format.html { redirect_to current_user, notice: 'Range was successfully created.' }
+        format.html { redirect_to current_user}
         format.json { render action: 'show', status: :created, location: @freerange }
       else
         format.html { render action: 'new' }
@@ -41,7 +47,7 @@ class FreerangesController < ApplicationController
   def update
     respond_to do |format|
       if @freerange.update(freerange_params)
-        format.html { redirect_to current_user, notice: 'Freerange was successfully updated.' }
+        format.html { redirect_to current_user }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -55,7 +61,7 @@ class FreerangesController < ApplicationController
   def destroy
     @freerange.destroy
     respond_to do |format|
-      format.html { redirect_to current_user, notice: 'Range was successfully deleted.'  }
+      format.html { redirect_to current_user}
       format.json { head :no_content }
     end
   end
@@ -67,8 +73,14 @@ class FreerangesController < ApplicationController
 	  @user=current_user
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def freerange_params
       params.require(:freerange).permit(:start_date, :end_date)
     end
+	
+	# Redirects the user if he is not the owner of a freerange.
+	def user_owns
+		if !@freerange.owns_range(@user)
+            redirect_to @user
+	    end
+	end
 end

@@ -1,4 +1,11 @@
-<div class="right_title"> Your Profile</div>
+<div class="right_title"> 
+    <% if @user.id==current_user.id %>
+       Your Profile
+	<% else %>  
+	   <% @user.name %>
+	<% end %>
+</div>
+	   
 <div class="right_body">
 
 <div class="right_section">
@@ -50,15 +57,12 @@
     </div>
 
     <div class="right_changes">
-	<% if @user.id==current_user.id %>
-	     <div id ="updateBudget"class="btn btn-medium ">Update Budget
-         </div>
-	<% end %>
+	     <div id ="updateBudget"class="btn btn-medium ">Update Budget</div>
     </div>
     <br>
     
     <div id="updatingBudget" class="popUp" style="display: none;">
-            <%= render :template => 'users/edit_budget' -%>
+         <%= render :template => 'users/edit_budget' -%>
     </div>
 
 
@@ -70,7 +74,8 @@
   <h3 class="right_label">Availability: </h3>
     <div class="right_answers">
    	<% if !@user.freeranges.nil? %>
-	    <p class="right_answers_p"> <%= render :template => 'freeranges/index', locals:{freeranges: @user.freeranges} %> </p>
+	    <p class="right_answers_p"> <%= render :template => 'freeranges/index', :locals => { :freeranges => @freeranges}  %> </p>
+		 <%= render partial: "freeranges/showcalendar", locals: {freedates: Freerange.get_all_free_date(@user)} %>	
 	<% else %>
 	    <p class="right_answers_p"> No free ranges.</p>	
 	<% end %>
@@ -80,7 +85,9 @@
 		<% if @user.id==current_user.id %>	    
                <%= button_to "Add a free range", new_freerange_path, :id => "addRange", :class => "btn btn-medium" %>   
 		<% end %>
-	</div>
-  
+
+	
+
+        
 </div>
 </div>

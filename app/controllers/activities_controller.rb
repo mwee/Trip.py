@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
   def index
     @user = current_user
     @trips = current_user.created_trips  + current_user.trips 
-    @activities = Activity.all 
+    @activities = Activity.find(:all).sort{|a1, a2| a1.likes.size <=> a2.likes.size}
   end
 
   # GET /activities/1
@@ -15,7 +15,7 @@ class ActivitiesController < ApplicationController
   def new
     @trip=Trip.find(params[:id])
     
-	@activity = Activity.new
+	  @activity = Activity.new
   end
 
   # GET /activities/1/edit
@@ -68,17 +68,17 @@ class ActivitiesController < ApplicationController
   end
 
   def like
-	@activity = Activity.find(params[:id])
+  	@activity = Activity.find(params[:id])
   	@user = current_user
   	@activity.liked_by @user
   	render action: 'show'
   end
 
   def unlike
-	@activity = Activity.find(params[:id])
-	@user = current_user
-  @activity.unliked_by @user
-	render action: 'show'
+  	@activity = Activity.find(params[:id])
+  	@user = current_user
+    @activity.unliked_by @user
+  	render action: 'show'
   end
 
   private
@@ -89,7 +89,7 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:topic)
+      params.require(:activity).permit(:topic, :cost)
     end
 
 end

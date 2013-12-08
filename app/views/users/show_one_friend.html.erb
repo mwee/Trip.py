@@ -1,0 +1,53 @@
+<div class="right_title"> 
+    <% if usershown.id==current_user.id %>
+       Your Profile
+	<% else %>  
+	   <%= usershown.name %>
+	<% end %>
+</div>
+	   
+<div class="right_body">
+
+	<div class="right_section">
+		<div class="user_info>">
+			<h3 class="right_label">Dream Destinations:</h3>
+			<div class="right_answers">
+				<% if !usershown.destination.nil? %>
+				  <p   class="right_answers_p"> <%= usershown.destination %>  </p>
+				<% else %>
+				   <p   class="right_answers_p"> No destinations.</p>
+				<% end%>
+				</h3>
+			</div>	
+		</div>  
+	 </div>
+
+
+	<div class="right_section">
+		<div class="user_info>">
+				<h3 class="right_label">Budget range: </h3>
+				<div class="right_answers">
+				<% if (!usershown.budget_in_min.nil?) || (!usershown.budget_in_max.nil?) %>
+					<p class="right_answers_p"> In country : $ <%= usershown.budget_in_min %> to $ <%= usershown.budget_in_max %>  </p>
+					<p class="right_answers_p"> Out of country : $ <%= usershown.budget_out_min %> to $ <%= usershown.budget_out_max %>  </p>
+				<% else %>
+					   <p class="right_answers_p"> No budget.</p>	
+				<% end %>
+				</div>
+		</div>
+	</div>
+
+	<div class="right_section">	
+	  <h3 class="right_label">Availability: </h3>
+		<div class="right_answers">
+		<% if !usershown.freeranges.nil? %>
+			<p class="right_answers_p">
+			<%= render partial: "freeranges/showcalendar", locals: {freedates: Freerange.get_all_free_date(usershown)} %>          			
+			</p>	
+		<% else %>
+			<p class="right_answers_p"> No free ranges.</p>	
+		<% end %>
+		</div>        
+	</div>
+
+</div>

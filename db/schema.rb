@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131130043110) do
+ActiveRecord::Schema.define(version: 20131208012920) do
 
   create_table "activities", force: true do |t|
     t.datetime "created_at"
@@ -19,12 +19,7 @@ ActiveRecord::Schema.define(version: 20131130043110) do
     t.integer  "user_id"
     t.text     "topic"
     t.integer  "trip_id"
-  end
-
-  create_table "calendars", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
+    t.decimal  "cost"
   end
 
   create_table "freeranges", force: true do |t|
@@ -41,6 +36,7 @@ ActiveRecord::Schema.define(version: 20131130043110) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "friend_uid"
   end
 
   create_table "trip_invitations", force: true do |t|

@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   validates :budget_in_max, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => :budget_in_min, :less_than => 1000000},:allow_nil => true
   validates :budget_out_min, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000},:allow_nil => true
   validates :budget_out_max, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => :budget_out_min, :less_than => 1000000},:allow_nil => true
+  
   # Authentification
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
@@ -35,7 +36,7 @@ class User < ActiveRecord::Base
   end
 
   #return the number of the trips that the user created or is a member of the cabal
-  def get_trip_num()
+  def get_trip_num
     user= User.find(self.id)
     num =(user.trips+user.created_trips).length
     return num
@@ -47,34 +48,31 @@ class User < ActiveRecord::Base
     num = user.friends.length
     return num
   end
-
+  
+  #
   def get_invitation_num
     user = User.find(self.id)
     num = user.invitations.length
     return num
   end
 
-  #Return true if the user is the creator of the trip
-  def is_trip_creator(trip)
-    return self.id==trip.creator.id
-  end
 
+  #return the user with particular email
   def self.get_user(email)
     if EMAIL_REGEX.match(email)
       user = User.find_by_email(email)
     end
     if user
-    return user
+      return user
     end
-
   end
 
+  #return user with particular facebook uid
   def self.get_facebook_user(uid)
       user = User.find_by_uid(uid)
     if user
-    return user
+       return user
     end
-
   end
 
 end

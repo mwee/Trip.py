@@ -4,7 +4,7 @@ class CreateFriendships < ActiveRecord::Migration
       t.integer :user_id
       t.integer :friend_id
       t.integer :request_id
-      t.string :status
+      t.string :status, :default => "pending"
 
       t.timestamps
     end

@@ -7,4 +7,5 @@ class WelcomeController < ApplicationController
 			render #home
 		end
 	end
+	
 end

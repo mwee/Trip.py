@@ -14,24 +14,27 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require_tree
 
 // code to update the vote counts
 $(document).ready(function() {
-	$('.' + 'like_link').click(function() {
+	$('.like_link').click(function() {
 		var activity_id = $(this).attr('activity_id')
 		var num_likes = $('#like_' + activity_id).html()
 		$('#like_' + activity_id).html(parseInt(num_likes) + 1)
-		$(this).remove()
+		$('#like_link' + activity_id).hide()
+		$('#unlike_link' + activity_id).show()
 	});
 
 
-	$('.' + 'unlike_link').click(function() {
+	$('.unlike_link').click(function() {
 		var activity_id = $(this).attr('activity_id')
 		var num_likes = $('#like_' + activity_id).html()
 		$('#like_' + activity_id).html(parseInt(num_likes) - 1)
-		location.reload()
+		$('#unlike_link' + activity_id).hide()
+		$('#like_link' + activity_id).show()
 	});
+
 
     $("#updateDestination").click(function(){
      $("#updatingDestinations").slideToggle();
@@ -44,4 +47,9 @@ $(document).ready(function() {
      $("#addRange").click(function(){
     $("#addingRange").slideToggle();
      });
+
+   
+
+   
+   
 });
