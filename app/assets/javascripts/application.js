@@ -14,7 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require_tree
 
 // code to update the vote counts
 $(document).ready(function() {

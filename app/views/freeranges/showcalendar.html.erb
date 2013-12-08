@@ -1,8 +1,9 @@
 <div>
 	<% if freedates.any? %>
 		<%= javascript_tag do %>
-		  window.products = <%= raw freedates.to_json %>
+		  freedates = <%= raw freedates.to_json %>
 		<% end %>
 		<div class="datepicker"> </div>
+		<%= javascript_include_tag('calendar.js') %>
 	<% end %>
 </div>
