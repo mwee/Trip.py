@@ -1,0 +1,97 @@
+<div class="right_title"> 
+    <% if usershown.id==current_user.id %>
+       Your Profile
+	<% else %>  
+	   <%= usershown.name %>
+	<% end %>
+</div>
+	   
+<div class="right_body">
+
+<div class="right_section">
+	<div>
+	<div class="user_info>">
+		<h3 class="right_label">Dream Destinations:</h3>
+
+		<div class="right_answers">
+				<% if !usershown.destination.nil? %>
+				  <p   class="right_answers_p"> <%= usershown.destination %>  </p>
+				<% else %>
+				   <p   class="right_answers_p"> No destinations.</p>
+				<% end%>
+				</h3>
+	    </div>	
+	</div>
+
+
+    <div class="right_changes">
+	<% if usershown.id==current_user.id %>
+	     <div id ="updateDestination"class="btn btn-medium ">Update Destinations
+         </div>
+	<% end %>
+   </div>
+   </div>
+   
+   <br>
+   
+    <div id="updatingDestinations" class="popUp" style="display: none;">
+            <%= render :template => 'users/edit_destination' -%>
+    </div>
+
+ </div>
+
+
+<div class="right_section">
+	
+	<div class="user_info>">
+			<h3 class="right_label">Budget range: </h3>
+
+		    <div class="right_answers">
+			<% if (!usershown.budget_in_min.nil?) || (!usershown.budget_in_max.nil?) %>
+				<p class="right_answers_p"> In country : $ <%= usershown.budget_in_min %> to $ <%= usershown.budget_in_max %>  </p>
+				<p class="right_answers_p"> Out of country : $ <%= usershown.budget_out_min %> to $ <%= usershown.budget_out_max %>  </p>
+			<% else %>
+				   <p class="right_answers_p"> No budget.</p>	
+			<% end %>
+		    </div>
+    </div>
+
+    <div class="right_changes">
+	<% if usershown.id==current_user.id %>
+	     <div id ="updateBudget"class="btn btn-medium ">Update Budget
+         </div>
+	<% end %>
+    </div>
+    <br>
+    
+    <div id="updatingBudget" class="popUp" style="display: none;">
+            <%= render :template => 'users/edit_budget' -%>
+    </div>
+
+
+</div>
+
+
+<div class="right_section">
+	
+  <h3 class="right_label">Availability: </h3>
+    <div class="right_answers">
+   	<% if !usershown.freeranges.nil? %>
+	    <p class="right_answers_p"> <%= render :template => 'freeranges/index', :locals => { :freeranges => usershown.freeranges}  %> </p>
+		<%= render :template => 'freeranges/showcalendar',:locals => { :freedates => Freerange.get_all_free_date(usershown) } %> </p>
+ 
+	
+	<% else %>
+	    <p class="right_answers_p"> No free ranges.</p>	
+	<% end %>
+    </div>
+
+	<div class="right_changes">
+		<% if usershown.id==current_user.id %>	    
+              <div id ="addRange"class="btn btn-medium "><%= link_to "Add a free range", new_freerange_path%> </div>
+		<% end %>
+	</div>
+
+        
+</div>
+</div>
