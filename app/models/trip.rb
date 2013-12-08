@@ -49,11 +49,10 @@ class Trip < ActiveRecord::Base
     end
   end
 
-  #return a list of friends that is not in the cabal of trip and not yet get an invitation to join the trip
+  #return a list of user's friends that is not in the cabal of trip and not yet get an invitation to join the trip
   def get_uninvited_friends(user)
     trip= Trip.find(self.id)
-    users= user.friends
-    uninvited = users-trip.users
+    uninvited = user.friends-trip.users-[trip.creator]
     for invi in trip.trip_invitations
       uninvited -= [invi.invitee]
     end
