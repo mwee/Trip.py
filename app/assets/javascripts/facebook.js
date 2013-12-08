@@ -47,7 +47,7 @@ $(document).ready(function() {
 			alert("finished");
 			
 			var request = response.request;
-			var from = $("#user_data").attr("data_user-id");
+			var from = $("#user_data").attr("data_user_id");
 			$.ajaxSetup({
 				headers : {	'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')}
 			});

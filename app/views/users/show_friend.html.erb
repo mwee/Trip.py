@@ -29,7 +29,7 @@
 	<% end %>
 	
 	<!-- shows the information for each friend -->	
-	<h3 id="user_data" data_user-id="<%= @user.id %>">Your friends </h3>	
+	<h3 id="user_data" data_user_id="<%= @user.id %>">Your friends </h3>	
 	<% @friends.each do |friend| %>
 		<%= render :template => 'users/show_one_friend', :locals => { :usershown => friend  }%>
 	<% end %>

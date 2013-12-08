@@ -1,5 +1,7 @@
+
 <div>
 	<% if freedates.any? %>
+	<%= raw freedates.to_json %>
 		<%= javascript_tag do %>
 		  freedates = <%= raw freedates.to_json %>
 		<% end %>
