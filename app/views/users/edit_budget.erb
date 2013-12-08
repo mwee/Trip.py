@@ -2,44 +2,48 @@
 <br>
 <br>
 <div class="font">
-<%= form_for @user do |f| %>
-  	<!--shows the relevant feedback message!-->
-		<% if @user.errors.any? %>
-			    <%- for error in @user.errors.full_messages do %>
-				    <li><%= error %></li>
-				<%- end %>
-			    </p>
-			
-		    </div>
-		<% end %>
-
-	 <div> In country: </div>
-	 <div>
-	  <div class="field left_div">
-		<%= f.label :from %>
-		$ <%= f.text_field :budget_in_min %>
-	  </div>
-	  <div class="field right_div">
-		<%= f.label :_to %>
-		$ <%= f.text_field :budget_in_max %>
-	  </div>
+	<%= form_for @current_user do |f| %>
+	<!--shows the relevant feedback message!-->
+	<% if @current_user.errors.any? %>
+		<%- for error in @current_user.errors.full_messages do %>
+			<li><%= error %></li>
+		<%- end %>
+		</p>
+	
 	</div>
-	  
-	  <div class='next_field'>Out of country:</div>
-	  <div>
-	 <div class="field left_div">
-		<%= f.label :from %>
-		$ <%= f.text_field :budget_out_min %>
-	  </div>
-	 <div class="field right_div">
-		<%= f.label :_to %>
-		$ <%= f.text_field :budget_out_max %>
-	  </div>
-	</div>
+	<% end %>
 
-	 <div>
+	<div>
+		In country:
+	</div>
+	<div>
+		<div class="field left_div">
+			<%= f.label :from %>
+			$ <%= f.text_field :budget_in_min %>
+		</div>
+		<div class="field right_div">
+			<%= f.label :_to %>
+			$ <%= f.text_field :budget_in_max %>
+		</div>
+	</div>
+	
+	<div class='next_field'>
+		Out of country:
+	</div>
+	<div>
+		<div class="field left_div">
+			<%= f.label :from %>
+			$ <%= f.text_field :budget_out_min %>
+		</div>
+		<div class="field right_div">
+			<%= f.label :_to %>
+			$ <%= f.text_field :budget_out_max %>
+		</div>
+	</div>
+	
+	<div>
 		<%= f.submit "Update" %>
-	 </div>
- <% end %>
+	</div>
+	<% end %>
 
 </div>

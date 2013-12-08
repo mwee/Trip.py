@@ -1,4 +1,3 @@
-
 <div class="right_body">
     <div class="right_section">
         <div>
@@ -8,7 +7,7 @@
     </div>
 </div>
 
-<%if current_user.get_trip_num()>0 %>
+<%if @current_user.get_trip_num()>0 %>
 
         <div class="right_title"> Your Trips</div>
         <div class="right_body">
@@ -44,16 +43,10 @@
                              <%else%>
                                    <%= button_to ' Leave cabal ', trip, method: :delete, data: { confirm: 'Are you sure that you want to leave the cabal?' },:class => "btn btn-primary" %>
 
-                             <%end%>
-
-
-                        
-                           
+                             <%end%>          
                              
                       </div>
-                      </div>
-                       
-                    
+                      </div>             
 
                 </div>
                <%end%>
