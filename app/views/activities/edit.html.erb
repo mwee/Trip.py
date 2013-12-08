@@ -15,6 +15,11 @@
     <%= f.label :topic %><br>
     <%= f.text_field :topic %>
   </div>
+
+    <div class="field">
+    <%= f.label :cost%><br>
+    <%= f.text_field :cost, :class => 'text_field', :value => (number_with_precision(f.object.cost, :precision => 2) || 0) %>
+    
     <div class="actions">
     <%= f.submit %>
   </div>
