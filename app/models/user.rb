@@ -58,7 +58,6 @@ class User < ActiveRecord::Base
 
 
   #return the user with particular email
-
   def self.get_user(email)
     if EMAIL_REGEX.match(email)
       user = User.find_by_email(email)

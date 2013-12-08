@@ -1,5 +1,4 @@
 class FriendshipsController < ApplicationController
-
   before_filter :require_login
   before_action :set_friendship, only: [:accept, :decline]
   #GET
@@ -24,14 +23,10 @@ class FriendshipsController < ApplicationController
     respond_to do |format|
       if @friend.nil?
         @friendship = @current_user.friendships.build(:friend_uid=> params[:friend_uid])
-        @friendship.save
-        format.html { redirect_to user_show_friend_path(@current_user.id), success: 'friend invitation send' }
+      @friendship.save
       elsif !Friendship.is_friend?(@current_user.id,@friend.id)
         @friendship = @current_user.friendships.build(:friend_id=>@friend.id)
-        @friendship.save
-        format.html { redirect_to user_show_friend_path(@current_user.id), success: 'friend invitation send' }
-      else
-        format.html { redirect_to user_show_friend_path(@current_user.id), notice:@friend.name+" is already your friends or invitations already sent." }
+      @friendship.save
       end
       format.json { render json: @friendship.to_json }
     end

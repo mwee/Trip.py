@@ -1,20 +1,19 @@
 class Friendship < ActiveRecord::Base
   belongs_to :user
   belongs_to :friend, :class_name=> 'User'
-  #validates :friend_id, uniqueness: { scope: :user_id }
   
-  #check if the user is already the friend of or send frind invitation to user with friend_id
+  #return true if the user is already the friend of or send frind invitation to user with friend_id
   def self.is_friend?(user_id, friend_id)
     return Friendship.where(user_id: user_id,friend_id:friend_id).exists?  || (user_id==friend_id)
   end
 
 
-  #check if the user with friend_id is being invited
+  #return true if the user with friend_id is being invited
   def is_invited?(friend_id)
     return (self.friend_id==friend_id)
   end
   
-  #get the friend invitations received
+  #get the friend invitations one receives
   def self.getReceivedInvitation(friend_id)
     return Friendship.where(friend_id:friend_id,status:"pending")
   end
@@ -30,7 +29,7 @@ class Friendship < ActiveRecord::Base
     end
   end
   
-    #finalize the friendship
+  #finalize the friendship
   def update
     self.status='finalized'
     self.save!
