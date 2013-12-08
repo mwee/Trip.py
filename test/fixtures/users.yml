@@ -1,15 +1,30 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
 one:
-  provider: MyString
-  uid: MyString
-  name: MyString
-  oauth_token: MyString
-  oauth_expires_at: 2013-11-13 23:34:48
-
+  id: 1
+  provider: facebook
+  uid: '100001773732177'
+  name: Yihua
+  gender: female
+  email: liyihuaxin@126.com
+  oauth_token: fdsadsadsa
+  oauth_expires_at: 2013-12-13 23:34:48  
 two:
-  provider: MyString
-  uid: MyString
-  name: MyString
+  id: 2
+  provider: facebook
+  uid: '100001945367824'
+  name: Yixin
+  gender: female
+  email: liyixinhua@126.com
+  gender: female
   oauth_token: MyString
-  oauth_expires_at: 2013-11-13 23:34:48
+  oauth_expires_at: 2013-11-12 23:34:48
+three:
+  id: 3
+  provider: facebook
+  uid: '100001438539283'
+  name: Yuqi
+  gender: female
+  email: yuqi@mit.edu
+  gender: female
+  oauth_token: MyString
+  oauth_expires_at: 2013-11-12 23:34:48

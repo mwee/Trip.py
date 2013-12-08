@@ -55,6 +55,7 @@ class User < ActiveRecord::Base
     return num
   end
 
+  #return the user with particular email
   def self.get_user(email)
     if EMAIL_REGEX.match(email)
       user = User.find_by_email(email)
@@ -64,6 +65,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  #return user with particular facebook uid
   def self.get_facebook_user(uid)
       user = User.find_by_uid(uid)
     if user

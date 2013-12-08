@@ -39,7 +39,7 @@ $(document).ready(function() {
 
 
 	$("#invite").click(function() {
-		alert("jere");
+		
 	
 		FB.ui({
 			method : 'apprequests',

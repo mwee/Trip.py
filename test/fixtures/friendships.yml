@@ -2,12 +2,14 @@
 
 one:
   user_id: 1
-  friend_id: 1
-  request_id: 1
-  status: MyString
+  friend_id: 2
+  status: pending
 
 two:
-  user_id: 1
-  friend_id: 1
-  request_id: 1
-  status: MyString
+  user_id: 2
+  friend_id: 3
+  status: finalized
+three:
+  user_id: 3
+  friend_id: 2
+  status: finalized
