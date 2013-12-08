@@ -8,6 +8,7 @@
 <% end %>
 
 <div class="right_body">
+	<br>
 	<div class="right_section">
 		<h3 class="right_label">Invite New Friends!</h3>
 		<div>
@@ -38,11 +39,15 @@
 	<% end %>
 </div>
 <% end %>
-</br>
+
 
 <!-- shows the information for each friend -->
-<h3 id="user_data" data_user_id="<%= @current_user.id %>">Your friends </h3>
-<% @friends.each do |friend| %>
-<%= render :template => 'users/show_one_friend', :locals => { :usershown => friend  }%>
-<% end %>
+<%if @friends.any?%> 
 
+            <!-- <div class="right_title">Your Profile</div> -->
+			<h3 class="right_title" id="user_data" data_user_id="<%= @current_user.id %>">Your friends </h3>
+			<% @friends.each do |friend| %>
+			<%= render :template => 'users/show_one_friend', :locals => { :usershown => friend  }%>
+			<% end %>
+
+<%end%>
