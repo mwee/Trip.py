@@ -28,13 +28,3 @@ three:
   gender: female
   oauth_token: MyString
   oauth_expires_at: 2013-11-12 23:34:48
-four:
-  id: 4
-  provider: facebook
-  uid: '100001837462039'
-  name: Yunzhi
-  gender: female
-  email: yunzhi@mit.edu
-  gender: female
-  oauth_token: sdEfedwEFo32nd
-  oauth_expires_at: 2013-11-12 23:34:48
