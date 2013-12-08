@@ -44,7 +44,7 @@ $(document).ready(function() {
 			method : 'apprequests',
 			message : 'I am already using Trippy. Please join me.'
 		}, function(response) {
-			alert("finished");
+			console.log("finished");
 
 			var request = response.request;
 			var from = $("#user_data").attr("data_user_id");

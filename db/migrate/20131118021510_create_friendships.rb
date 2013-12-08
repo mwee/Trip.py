@@ -5,7 +5,6 @@ class CreateFriendships < ActiveRecord::Migration
       t.integer :friend_id
       t.integer :request_id
       t.string :status, :default => "pending"
-
       t.timestamps
     end
     
