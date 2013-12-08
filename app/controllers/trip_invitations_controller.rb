@@ -25,7 +25,7 @@ class TripInvitationsController < ApplicationController
   # POST /trip_invitations.json
   def create	
   	@trip=Trip.find(params[:id])
-      @friends=@trip.get_uninvited_friends(current_user)
+    @friends=@trip.get_uninvited_friends(current_user)
   	count=0
   	params[:friends].each do |f|	
   		if f
