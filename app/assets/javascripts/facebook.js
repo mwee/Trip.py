@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     if (window.location.hash && window.location.hash == '#_=_') {
         if (window.history && history.pushState) {
             window.history.pushState("", document.title, window.location.pathname);

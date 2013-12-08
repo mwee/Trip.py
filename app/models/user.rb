@@ -48,14 +48,17 @@ class User < ActiveRecord::Base
     num = user.friends.length
     return num
   end
-
+  
+  #
   def get_invitation_num
     user = User.find(self.id)
     num = user.invitations.length
     return num
   end
 
+
   #return the user with particular email
+
   def self.get_user(email)
     if EMAIL_REGEX.match(email)
       user = User.find_by_email(email)
