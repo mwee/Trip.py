@@ -12,6 +12,8 @@
  *= require_tree .
  */
 
+@import "bootstrap";
+
  .freeRangeSub input{
      background: inherit;
      border: none;
