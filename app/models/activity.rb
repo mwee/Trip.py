@@ -11,6 +11,4 @@ class Activity < ActiveRecord::Base
 		self.likes.size
 	end
 
-
-
 end
