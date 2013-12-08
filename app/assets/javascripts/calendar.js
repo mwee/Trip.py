@@ -1,10 +1,8 @@
 $(document).ready(function() {
   // alert( "window.products are "+ window.products );
-	$( "#datepicker" ).datepicker(
+	$( ".datepicker" ).datepicker(
 	{beforeShowDay: highlightOdds} 
-	);
-// , beforeShowDay: function (date) {return [false, ''];}
-	
+	);	
     function highlightOdds(date) {
 	     var year= date.getFullYear().toString();
 		 var month= (date.getMonth()+1).toString();
@@ -18,6 +16,5 @@ $(document).ready(function() {
 			}	     
         return [true, contain? 'free' : ''];
     }
-	//date.getDate()
 });
 

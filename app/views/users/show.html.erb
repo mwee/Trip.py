@@ -57,15 +57,12 @@
     </div>
 
     <div class="right_changes">
-	<% if @user.id==current_user.id %>
-	     <div id ="updateBudget"class="btn btn-medium ">Update Budget
-         </div>
-	<% end %>
+	     <div id ="updateBudget"class="btn btn-medium ">Update Budget</div>
     </div>
     <br>
     
     <div id="updatingBudget" class="popUp" style="display: none;">
-            <%= render :template => 'users/edit_budget' -%>
+         <%= render :template => 'users/edit_budget' -%>
     </div>
 
 
@@ -86,10 +83,8 @@
 	<% end %>
     </div>
 
-	<div class="right_changes">
-		<% if @user.id==current_user.id %>	    
-              <div id ="addRange"class="btn btn-medium "><%= link_to "Add a free range", new_freerange_path%> </div>
-		<% end %>
+	<div class="right_changes">   
+        <div id ="addRange"class="btn btn-medium "><%= link_to "Add a free range", new_freerange_path%> </div>
 	</div>
 
         
