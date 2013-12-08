@@ -1,9 +1,48 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
 one:
-  title: MyString
-  destination: MyString
-
+  title: Hp
+  destination: Orlando
+  description: The description of the trip...
+  cost_min: 400
+  cost_max: 500
+  start_date: 2013-12-11
+  end_date:  2013-12-12
+  creator_id: 1
+  link: http://www.visitorlando.com/
+  active: 1
+	
 two:
-  title: MyString
-  destination: MyString
+  title: London trip
+  destination: London, and the around
+  description: The description of the trip is ...
+  cost_min: 800
+  cost_max: 1000
+  start_date: 2014-2-11
+  end_date:  2014-2-17
+  creator_id: 1
+  link: http://www.visitorlando.com/
+  active: 0
+  
+ three:
+  title: Studio
+  destination: Near London
+  description: The description of the trip...
+  cost_min: 40
+  cost_max: 100
+  start_date: 2014-5-28
+  end_date:  2014-5-29
+  creator_id: 1
+  link: http://www.visitorlando.com/
+  active: 1 
+  
+  four:
+  title: Arcadia
+  destination: North
+  description: The description of the trip...
+  cost_min: 40
+  cost_max: 100
+  start_date: 2014-7-28
+  end_date:  2014-7-29
+  creator_id: 2
+  link: http://www.visitorlando.com/
+  active: 1 
