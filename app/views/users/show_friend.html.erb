@@ -1,37 +1,129 @@
-<div>
-    <!-- show the invite friend feedback message -->
-	<% flash.each do |key, value| %>
-		<div class="alert alert-<%= key %>">
-			<button type="button" class="close" data-dismiss="alert">
-				&times;
-			</button>
-			<%= value %>
-		</div>
-	<% end %>
+<<<<<<< HEAD
 
-	<button id="invite" type="button">
-		  Invite Your Facebook friends
-	</button>
-	<p>or</p>
-	<%= render :template => 'friendships/new' %>
+<% flash.each do |key, value| %>
+	<div class="alert alert-<%= key %>">
+		<button type="button" class="close" data-dismiss="alert">
+			&times;
+		</button>
+		<%= value %>
+	</div>
+<% end %>
+
+<div class="right_body">
+	  <div class="right_section">
+	  	  <h3 class="right_label">Invite New Friends!</h3>
+	  	  <div>
+		  <button id="invite" type="button">Facebook Invites</button>
+		  
+          <div id="templateInvite"><%= render :template => 'friendships/new'%></div>
+          </div>
+	  </div>
+</div>
+
+<br>
+<% if @invitations.any? %>
+  <div class="right_body">
+  	
+	<h3  class="right_label">You Have <%= pluralize(@invitations.count, "Friend Invitations")  %>  </h3>
+	<% @invitations.zip(@invitations_users).each do |invitation, invitation_user| %>
+	<div class="right_section">
+	<p>
+		<%= invitation_user.name%> wants to be your friend
+		<%= button_to 'Accept', :controller => 'friendships', :action => "accept", :id => invitation.id,:class => "btn" %>
+		<%= button_to 'Decline', decline_invitation_path(id: invitation.id), {:method => :delete, :style => "float:left;",:class => "btn"}%>
+
+	</p>
+    </div>
+	<% end %>
+      
+   </div>
+
+<% end %>
+
+
+<%if @friends.any? %>
+   <div class="right_title"> Your Friends</div>
+   <div class="right_body">
+
+    <% @friends.each do |friend| %>
+	<div class="right_title">
+		<%= friend.name %>
+	</div>
+	<div class="right_body">
+
+		<div class="right_section">
+			<div class="user_info>">
+				<h3 class="right_label">Dream Destinations:</h3>
+
+				<div class="right_answers">
+					<% if !friend.destination.nil? %>
+					<p   class="right_answers_p">
+						<%= friend.destination %>
+					</p>
+					<% else %>
+					<p   class="right_answers_p">
+						No destinations.
+					</p>
+					<% end%>
+					</h3>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="right_section">
+			<h3 class="right_label">Budget range: </h3>
+
+			<div class="right_answers">
+				<% if (!friend.budget_in_min.nil?) || (!friend.budget_in_max.nil?) %>
+				<p class="right_answers_p">
+					In country : $ <%= friend.budget_in_min %> to $ <%= friend.budget_in_max %>
+				</p>
+				<p class="right_answers_p">
+					Out of country : $ <%= friend.budget_out_min %> to $ <%= friend.budget_out_max %>
+				</p>
+				<% else %>
+				<p class="right_answers_p">
+					No budget.
+				</p>
+				<% end %>
+			</div>
+		</div>
+
+		<div class="right_section">
+			<h3 class="right_label">Availability: </h3>
+			<div class="right_answers">
+				<% if !friend.freeranges.nil? %>
+				<% @freeranges=friend.freeranges %>
+				<p class="right_answers_p">
+					<%= render :template => 'freeranges/index', :freeranges => friend.freeranges %>
+				</p>
+				<% else %>
+				<p class="right_answers_p">
+					No free dates.
+				</p>
+				<% end %>
+			</div>
+		</div>
+	</div>
 	</br>
 
-	<!-- show the friend invitation -->
-	<% if @invitations.any? %>
-		<h3>You Have <%= pluralize(@invitations.count, "Friend Invitations")  %>  </h3>
-		<% @invitations.zip(@invitations_users).each do |invitation, invitation_user| %>
-			<p>
-				<%= invitation_user.name%> wants to be your friend
-				<%= button_to 'Accept', :controller => 'friendships', :action => "accept", :id => invitation.id,:class => "btn" %>
-				<%= button_to 'Decline', decline_invitation_path(id: invitation.id), {:method => :delete, :style => "float:left;",:class => "btn"}%>
-			</p>
-		<% end %>
-	<% end %>
-	
-	<!-- shows the information for each friend -->	
-	<h3 id="user_data" data_user_id="<%= @user.id %>">Your friends </h3>	
-	<% @friends.each do |friend| %>
-		<%= render :template => 'users/show_one_friend', :locals => { :usershown => friend  }%>
-	<% end %>
-</div>
+   </div>
+   <%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
