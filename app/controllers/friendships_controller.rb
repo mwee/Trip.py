@@ -1,6 +1,7 @@
 class FriendshipsController < ApplicationController
   before_filter :require_login
   before_action :set_friendship, only: [:accept, :decline]
+  
   #GET
   def new
     @friend= User.get_user(params[:email])
@@ -16,38 +17,19 @@ class FriendshipsController < ApplicationController
     redirect_to  user_show_friend_path(@current_user.id)
   end
 
-
-
   #POST, used for facebook invitation request
   def create
-    puts "friendship creating";
     #first check if user exists
     @friend=User.get_facebook_user(params[:friend_id])
     respond_to do |format|
       if @friend.nil?
         @friendship = @current_user.friendships.build(:friend_uid=> params[:friend_uid])
-<<<<<<< HEAD
-      @friendship.save
-=======
         @friendship.save
-        format.html { redirect_to user_show_friend_path(@current_user.id), success: 'friend invitation send' }
-        format.json { render json: @friendship.to_json }
->>>>>>> parent of fcaebf7... add user test
       elsif !Friendship.is_friend?(@current_user.id,@friend.id)
-        puts "chaning id";
         @friendship = @current_user.friendships.build(:friend_id=>@friend.id)
-<<<<<<< HEAD
-      @friendship.save
-=======
         @friendship.save
-        format.html { redirect_to user_show_friend_path(@current_user.id), success: 'friend invitation send' }
-        format.json { render json: @friendship.to_json }
-      else
-        format.html { redirect_to user_show_friend_path(@current_user.id), notice:  @friend.name+" is already your friends or invitations already sent." }
-        format.json { render json: @friendship.to_json }
->>>>>>> parent of fcaebf7... add user test
       end
-
+      format.json { render json: @friendship.to_json }
     end
   end
 
@@ -56,11 +38,10 @@ class FriendshipsController < ApplicationController
     # Prevents unauthorized access by other users
     if !@friendship.is_invited?(@current_user.id)
       flash[:notice] = "This friend invitation is not for you!"
-      redirect_to user_show_friend_path(@current_user.id)
-    return
+    else
+      @friendship.update()
+      @friendship.createInverse()
     end
-    @friendship.update()
-    @friendship.createInverse()
     redirect_to user_show_friend_path(@current_user.id)
   end
 
@@ -69,11 +50,10 @@ class FriendshipsController < ApplicationController
     # Prevents unauthorized access by other users
     if !@friendship.is_invited?(@current_user.id)
       flash[:notice] = "This friend invitation is not for you!"
-      redirect_to user_show_friend_path(@current_user.id)
-    return
+    else
+      @friendship.destroy
+      flash[:success] = "Invitation declined"
     end
-    @friendship.destroy
-    flash[:success] = "Invitation declined"
     redirect_to user_show_friend_path(@current_user.id)
   end
 
