@@ -93,9 +93,7 @@
 			</div>
 		</div>
 
-	<div class="right_changes">
-		<% if @user.id==current_user.id %>	    
-               <%= button_to "Add a free range", new_freerange_path, :id => "addRange", :class => "btn btn-medium" %>   
-		<% end %>     
+	<div class="right_changes">   
+               <%= button_to "Add a free range", new_freerange_path, :id => "addRange", :class => "btn btn-medium" %>     
 	</div>
 </div>
