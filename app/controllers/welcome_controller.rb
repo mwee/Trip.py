@@ -8,9 +8,4 @@ class WelcomeController < ApplicationController
 		end
 	end
 	
-	def fbchannel
-	  
-	end
-	
-	
 end

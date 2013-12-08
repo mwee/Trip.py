@@ -11,11 +11,7 @@ class FreerangesController < ApplicationController
     @user = current_user
     freeranges = @usershown.freeranges
   end
-  
-  #just show the calendar with free dates
-  def showcalendar
-    #@freedates=Freerange.get_all_free_date(@user) #(common free dates),@users(all possible users)
-  end
+
   
   # Given a set of user ids, return @freedates.
   def commonranges
