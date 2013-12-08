@@ -1,0 +1,32 @@
+<%= form_for @trip, url: trip_add_invitations_create_path(:id => @trip.id) do |f| %>
+  <% if @trip_invitation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trip_invitation.errors.count, "error") %> prohibited this trip_invitation from being saved:</h2>
+
+      <ul>
+      <% @trip_invitation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+    <% if @friends.length==0 %>
+         All your friends are invited.
+        <% else %>
+                Friends who are free during <%= @trip.start_date %> to <%= @trip.end_date %>:
+                <% @free_friends.length.times do |i| %>
+                 <%= label_tag @free_friends[i].name %>:
+                 <%= check_box_tag "friends[#{i}]" %> <br />
+                <% end %>
+                <br>
+                Friends who are not free:
+                <% @no_free_friends.length.times do |i| %>
+                 <%= label_tag @no_free_friends[i].name %>:
+                 <%= check_box_tag "friends[#{i+@num_free_friends}]" %> <br />
+                <% end %>                
+                <div class="actions">
+                        <%= f.submit 'Invite' %>
+                </div>
+    <% end %>
+<% end %>

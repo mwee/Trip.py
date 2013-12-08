@@ -12,6 +12,9 @@
  *= require_tree .
  */
 
+.right_div a:visited{
+	color: white;
+}
 
  .freeRangeSub input{
      background: inherit;

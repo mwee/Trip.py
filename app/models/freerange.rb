@@ -9,7 +9,7 @@ class Freerange < ActiveRecord::Base
   end
 
   #return a set of free dates for a user.
-  def self.get_all_free_date(user)
+  def self.get_all_free_dates(user)
     free_dates = Set.new []
     for range in user.freeranges
       start=range.start_date
