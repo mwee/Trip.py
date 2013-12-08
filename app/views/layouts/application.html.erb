@@ -6,30 +6,32 @@
 		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 		<%= csrf_meta_tags %>
 
-		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-		<script src = "https://raw.github.com/jschr/bootstrap-modal/master/js/bootstrap-modal.js"></script>
-		<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="http://railsgirls.com/assets/bootstrap.css">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<script src = "//raw.github.com/jschr/bootstrap-modal/master/js/bootstrap-modal.js"></script>
+		<link href='//fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="//railsgirls.com/assets/bootstrap.css">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 		<script src = "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-		<script src = "http://qtip2.com/v/nightly/jquery.qtip.js"></script>
-		<link rel="stylesheet" href="http://qtip2.com/v/nightly/jquery.qtip.css">
-		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 	</head>
+
 	<body>
 		<div class="mainbody">
 			<!-- There is a user. So a new navbar and left profile handle-->
 			<% if current_user %>
-			<!-- navbar header -->
-			<header class="navbar navbar-default navbar-fixed-top">
-				<div class="float-left navbar-header">
-					<span href="/" class="navbar-brand"> <img id="logoIcon" src="http://www.iconsdb.com/icons/preview/F49D1E/airplane-57-xxl.png"> </span>
-					<span id="logoName"> TRIP.PY</span>
-				</div>
-				<div id="rightButtons" class="pull-right">
-					<%= link_to "Sign out", signout_path, id: "sign_out",class: "btn" %>
-				</div>
+			  <!-- navbar header -->
+			  <header class="navbar navbar-default navbar-fixed-top">
+			  	<div class="float-left navbar-header">
+			  		<span href="/" class="navbar-brand">
+		               <img id="logoIcon" src="http://www.iconsdb.com/icons/preview/F49D1E/airplane-57-xxl.png">
+		            </span>
+		            <span id="logoName"> TRIP.PY</span>
+			  	</div>
+			  	<div id="rightButtons" class="pull-right">
+			  		<%= link_to "Sign out", signout_path, id: "sign_out",class: "btn" %>
+			 
+			  	</div>
 			</header>
 
 			<div class="main_section row">

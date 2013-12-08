@@ -41,6 +41,7 @@ class FriendshipsController < ApplicationController
     else
       @friendship.update()
       @friendship.createInverse()
+      flash[:success] = "Invitation accepted"
     end
     redirect_to user_show_friend_path(@current_user.id)
   end

@@ -1,39 +1,55 @@
-<h1>Your trips</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Destination</th>
-	  <th>Status</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="right_body">
+    <div class="right_section">
+        <div>
+        <h3 class="right_label" id="left">Create New Trip!</h3>
+        <%= button_to "Create a new trip", new_trip_path, :method => "get", :id => "right"%>
+        </div>
+    </div>
+</div>
 
-  <tbody>
-    <% @trips.each do |trip| %>
-      <tr>
-        <td><%= trip.title %></td>
-        <td><%= trip.destination %></td>
-		<td><%= trip.get_status() %></td>
-        <td><%= link_to 'View', trip %></td> 	
-        <% if trip.is_active %>		
-			<% if trip.user_is_creator(@current_user) %>
-				<td><%= link_to 'Edit', edit_trip_path(trip) %></td>		
-				<td><%= link_to 'Finalize', :controller  => 'trips' , :action => 'finalize', :id => trip.id, data: { confirm: 'Are you sure that you want to end any modification or discussion for this trip?' } %></td>
-				<td><%= link_to 'Delete', trip, method: :delete, data: { confirm: 'Are you sure that you want to delete this trip?' } %></td>
-			<% else %>
-				<td><%= link_to ' Leave cabal ', trip, method: :leavecabal, data: { confirm: 'Are you sure that you want to leave the cabal?' } %></td>
-			<% end %>
-         <% end %>
-		 
-	 </tr>
-    <% end %>
-  </tbody>
-</table>
+<%if @current_user.get_trip_num()>0 %>
 
-<br>
+        <div class="right_title"> Your Trips</div>
+        <div class="right_body">
 
-<%= button_to "Create a new trip", new_trip_path, :method => "get" %>
+            <% @trips.each do |trip| %>
+             
+                 <div class="right_section">
+                      <div>
+                      <div class="user_info>">
+                        <h3 class="right_label"><%= trip.title %></h3>
 
+                        <div class="right_answers">
+                              <p   class="right_answers_p"> To <%= trip.destination %> </p>
+                              <p   class="right_answers_p"> Status : <%= trip.get_status() %> </p>
+                            
+                            </h3>
+                        </div>  
+                      </div>
+
+
+                      <div class="buttonDiv">
+                       
+                            <%= button_to 'View', trip , :class => "btn btn-primary" %>
+                             <% if @current_user.is_trip_creator(trip) %>
+
+                                   <% if trip.active %>
+                                         <%= button_to 'Edit', edit_trip_path(trip), :class => "btn btn-primary" %>
+
+                                         <%= button_to 'Finalize' , :controller  => 'trips' , :action => 'finalize', :id => trip.id,  data: { confirm: 'Are you sure that you want to end any modification or discussion for this trip?' }%>
+
+                                   <%end%>  
+                                    <%= button_to 'Delete', trip, method: :delete, data: { confirm: 'Are you sure that you want to delete this trip?' }, :class => "btn btn-primary" %>
+                             <%else%>
+                                   <%= button_to ' Leave cabal ', trip, method: :delete, data: { confirm: 'Are you sure that you want to leave the cabal?' },:class => "btn btn-primary" %>
+
+                             <%end%>          
+                             
+                      </div>
+                      </div>             
+
+                </div>
+               <%end%>
+
+        </div>
+<%end%>

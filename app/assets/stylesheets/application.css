@@ -12,6 +12,74 @@
  *= require_tree .
  */
 
+
+ .freeRangeSub input{
+     background: inherit;
+     border: none;
+     color: white
+
+ }
+ .freeRangeSub{
+ 	height: 24px;
+ }
+
+.right_changes #addRange{
+	width: 116px;
+}
+.buttonDiv{
+	margin-top: 55px;
+}
+ .buttonDiv form{
+ 	float:left;
+ }
+
+ .btn a:visited{
+ 	color:white;
+ }
+
+#left{
+	float:left;
+}
+
+#right{
+	float: right;
+	background:  #0074cc;
+	color: white;
+	margin-left: -20px;
+	position: relative;
+	left: -30px;
+}
+.sendBtn{
+	background: #0074cc;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	margin-top: 3px;
+	margin-left: 5px;
+	
+}
+
+#invite{
+	background: #0074cc;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	margin-top: 5px;
+	float:left;
+
+	
+
+}
+#templateInvite{
+	float: right;
+}
+#emailInput{
+	float:left;
+}
+#sendButton{
+	float:right;
+}
+
 .trip_buttons{
 	margin-top: 10px;
 }
@@ -243,8 +311,8 @@ h1 span{
 
 }
 
-body{
-	background: url("https://d23ksy42n131jj.cloudfront.net/assets/textures/lifeisgood-bf38ca0b43dcc50007a7203f64137529.jpg");
+body {
+	background-image: url("/images/background.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
