@@ -9,12 +9,12 @@ class FreerangesController < ApplicationController
   # GET /freeranges.json
   def index
     @user = current_user
-    @freeranges = @user.freeranges
+    freeranges = @usershown.freeranges
   end
   
   #just show the calendar with free dates
   def showcalendar
-     #@freedates(common free dates),@users(all possible users)
+    @freedates=Freerange.get_all_free_date(@user) #(common free dates),@users(all possible users)
   end
   
   # Given a set of user ids, return @freedates.
