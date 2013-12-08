@@ -17,20 +17,11 @@
 		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 	</head>
+
 	<body>
 		<div class="mainbody">
 			<!-- There is a user. So a new navbar and left profile handle-->
 			<% if current_user %>
-<<<<<<< Updated upstream
-			<!-- navbar header -->
-			<header class="navbar navbar-default navbar-fixed-top">
-				<div class="float-left navbar-header">
-					<span href="/" class="navbar-brand"> <img id="logoIcon" src="http://www.iconsdb.com/icons/preview/F49D1E/airplane-57-xxl.png"> </span>
-					<span id="logoName"> TRIP.PY</span>
-				</div>
-				<div id="rightButtons" class="pull-right">
-					<%= link_to "Sign out", signout_path, id: "sign_out",class: "btn" %>
-=======
 			  <!-- navbar header -->
 			  <header class="navbar navbar-default navbar-fixed-top">
 			  	<div class="float-left navbar-header">
@@ -41,26 +32,8 @@
 			  	</div>
 			  	<div id="rightButtons" class="pull-right">
 			  		<%= link_to "Sign out", signout_path, id: "sign_out",class: "btn" %>
-			  	
-			  	</div>
-			  </header>
 			 
-			  <div class="main_section row">
-					  <div class="left_fields">
-					  	  <div class="panel_icon">
-                              <img class="profile_pic" src="https://cdn0.iconfinder.com/data/icons/vector-people-icons-for-ios/400/lady-512.png">
-                          </div>
-					  	  <div class="panel_name" href="/">
-					  	  	    <%= current_user.name.split(" ").first %>	
-					  	  	    <h4 class="title"><%= link_to "Your Profile", user_show_path(current_user.id) , :id => current_user.id  %></h4>	  	  	    
-					  	  </div>
-					  	  <div class="panel_links"> 
-					  	  	   
-					  	  	   <h4 class="title"><span class="label color1"><%=current_user.get_friend_num()%></span>
-					  	  	   	<%= link_to "Your Friends", user_show_friend_path(current_user.id) , :id => current_user.id %></h4>
->>>>>>> Stashed changes
-
-				</div>
+			  	</div>
 			</header>
 
 			<div class="main_section row">

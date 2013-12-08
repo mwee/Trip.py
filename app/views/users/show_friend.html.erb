@@ -1,46 +1,50 @@
-<div>
 
-
-	<% flash.each do |key, value| %>
+<% flash.each do |key, value| %>
 	<div class="alert alert-<%= key %>">
 		<button type="button" class="close" data-dismiss="alert">
 			&times;
 		</button>
 		<%= value %>
 	</div>
-	<% end %>
+<% end %>
 
-	<button id="invite" type="button">
-		Invite Your Facebook friends
-	</button>
-	<p>
-		or
-	</p>
+<div class="right_body">
+	  <div class="right_section">
+	  	  <h3 class="right_label">Invite New Friends!</h3>
+	  	  <div>
+		  <button id="invite" type="button">Facebook Invites</button>
+		  
+          <div id="templateInvite"><%= render :template => 'friendships/new'%></div>
+          </div>
+	  </div>
+</div>
 
-	<%= render :template => 'friendships/new' %>
-
-	</br>
-	</br>
-
-
-
-	<% if @invitations.any? %>
-	<h3>You Have <%= pluralize(@invitations.count, "Friend Invitations")  %>  </h3>
+<br>
+<% if @invitations.any? %>
+  <div class="right_body">
+  	
+	<h3  class="right_label">You Have <%= pluralize(@invitations.count, "Friend Invitations")  %>  </h3>
 	<% @invitations.zip(@invitations_users).each do |invitation, invitation_user| %>
+	<div class="right_section">
 	<p>
 		<%= invitation_user.name%> wants to be your friend
 		<%= button_to 'Accept', :controller => 'friendships', :action => "accept", :id => invitation.id,:class => "btn" %>
 		<%= button_to 'Decline', decline_invitation_path(id: invitation.id), {:method => :delete, :style => "float:left;",:class => "btn"}%>
 
 	</p>
+    </div>
 	<% end %>
+      
+   </div>
 
-	<% end %>
-	<!-- shows the information for each friend -->
-	
-	<h3 id="user_data" data_user-id="<%= @user.id %>">Your friends </h3>
-	
-	<% @friends.each do |friend| %>
+<% end %>
+
+
+<%if @friends.any? %>
+   <div class="right_title"> Your Friends</div>
+   <div class="right_body">
+
+    <% @friends.each do |friend| %>
 	<div class="right_title">
 		<%= friend.name %>
 	</div>
@@ -103,5 +107,23 @@
 	</div>
 	</br>
 	<% end %>
-</div>
+
+   </div>
+   <%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

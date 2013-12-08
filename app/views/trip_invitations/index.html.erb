@@ -1,4 +1,8 @@
-<h1>Invitation to join the trip </h1>
+
+
+
+<%if @trip_invitations.any?%>
+<div class="right_title">Invitations to join the trip</div>
   <tbody>
     <% @trip_invitations.each do |trip_invitation| %>
 	        <% @trip=trip_invitation.trip %>
@@ -27,6 +31,14 @@
       </br>
     <% end %>
   </tbody>
+
+<%else%>
+ <div class="right_body">
+   <div class="right_section">
+     <h3 class="right_label" id="left">You currently have no trip Invitations</h3>
+   </div>
+ </div>
+<%end%>
 
 
 
