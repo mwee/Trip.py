@@ -19,7 +19,7 @@
 		<td><%= trip.get_status() %></td>
         <td><%= link_to 'View', trip %></td> 	
         <% if trip.is_active %>		
-			<% if trip.user_is_creator(@user) %>
+			<% if trip.user_is_creator(@current_user) %>
 				<td><%= link_to 'Edit', edit_trip_path(trip) %></td>		
 				<td><%= link_to 'Finalize', :controller  => 'trips' , :action => 'finalize', :id => trip.id, data: { confirm: 'Are you sure that you want to end any modification or discussion for this trip?' } %></td>
 				<td><%= link_to 'Delete', trip, method: :delete, data: { confirm: 'Are you sure that you want to delete this trip?' } %></td>

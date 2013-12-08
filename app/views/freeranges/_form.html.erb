@@ -1,5 +1,5 @@
-
 <%= form_for(@freerange) do |f| %>
+
   <% if @freerange.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@freerange.errors.count, "error") %> prohibited this freerange from being saved:</h2>
@@ -22,4 +22,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+  
 <% end %>

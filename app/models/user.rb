@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
   has_many :friends, :conditions => "status = 'finalized'", :through => :friendships
 
   EMAIL_REGEX =  /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+/i
-
   AMOUNT_REGEX= ( /\d+\.?\d{0,2}+/i)
   validates :budget_in_min, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}, :allow_nil => true
   validates :budget_in_max, :format => AMOUNT_REGEX, :numericality => {:greater_than_or_equal_to => :budget_in_min, :less_than => 1000000},:allow_nil => true
@@ -49,7 +48,7 @@ class User < ActiveRecord::Base
     return num
   end
   
-  #
+  #return the number of trip inviations received
   def get_invitation_num
     user = User.find(self.id)
     num = user.invitations.length

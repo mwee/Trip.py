@@ -1,32 +1,26 @@
 class UsersController < ApplicationController
-  #before_action :signed_in_user, :only => [:show,:profile]
-  
-  
+  before_filter :require_login
   def show
-     @user= current_user
-	 @freeranges=@user.freeranges
+    @freeranges=@current_user.freeranges
   end
 
   def show_friend
-     @user=current_user
-     @friends= @user.friends.all
-     @invitations=Friendship.getReceivedInvitation(@user.id)
-     @invitations_users=@invitations.map { |invitation| User.find(invitation.user_id) }
+    @friends= @current_user.friends.all
+    @invitations=Friendship.getReceivedInvitation(@current_user.id)
+    @invitations_users=@invitations.map { |invitation| User.find(invitation.user_id) }
   end
-  
+
   def edit_destination
-     @user = current_user
   end
-  
+
   def edit_budget
-     @user = current_user
   end
-  
-   def update
+
+  def update
     @user = current_user
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user}
         format.json { head :no_content }
       else
         format.html { render action: 'edit_budget'}
@@ -34,14 +28,9 @@ class UsersController < ApplicationController
       end
     end
   end
-  
-  
-  private
 
-# Never trust parameters from the scary internet, only allow the white list through.
- def user_params
-    params.require(:user).permit(:name, :email, :password, :destination, :budget_in_min, :budget_in_max, :budget_out_min, :budget_out_max)
- end
- 
-#
+  private
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :destination, :budget_in_min, :budget_in_max, :budget_out_min, :budget_out_max)
+    end
 end

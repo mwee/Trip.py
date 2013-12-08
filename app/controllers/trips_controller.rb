@@ -10,8 +10,7 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @user = current_user
-    @trips = Trip.get_all_trips(@user)
+    @trips = Trip.get_all_trips(@current_user)
   end
 
   # GET /trips/1
@@ -32,7 +31,7 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.json
   def create
-	@trip  = current_user.created_trips.create(trip_params) 
+	  @trip  = @current_user.created_trips.create(trip_params) 
     respond_to do |format|
       if @trip.save
 	    flash[:notice] ='Trip was successfully created.'
@@ -63,26 +62,25 @@ class TripsController < ApplicationController
   #Finalizing a trip change active status from true to false
   def finalize
      @trip.finalize
-	 redirect_to trips_path
+	   redirect_to trips_path
   end
   
   # DELETE /trips/1
   # DELETE /trips/1.json
   def destroy
-	 @trip.destroy
+	   @trip.destroy
      respond_to do |format|
        format.html { redirect_to trips_url }
        format.json { head :no_content }
-	 end
+	   end
   end
   
   #leave the cabal
-   def leavecabal
-     @user = current_user
-	 @trip.users.find (@user.id).delete
+  def leavecabal
+	   @trip.users.find (@current_user.id).delete
      respond_to do |format|
-      format.html { redirect_to trips_url }
-      format.json { head :no_content }
+       format.html { redirect_to trips_url }
+       format.json { head :no_content }
      end
   end
   
@@ -90,7 +88,6 @@ class TripsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_trip
       @trip = Trip.find(params[:id])
-	  @user=current_user
     end
 
     def trip_params
@@ -99,21 +96,21 @@ class TripsController < ApplicationController
 	
 	#Redirect to user trip index page if the user is not the creator of the trip
 	def user_is_creator
-	    if ! @trip.user_is_creator(@user)
+	    if ! @trip.user_is_creator(@current_user)
 		    redirect_to(:controller => 'trips', :action => 'index')  
        end
 	end
 	
 	#Redirect to user trip index page if the user is not in the cabal of the trip
 	def user_in_cabal
-	    if ! @trip.user_in_cabal(@user)
+	    if ! @trip.user_in_cabal(@current_user)
 			redirect_to(:controller => 'trips', :action => 'index')  
        end
 	end
 	
 	#Redirect to user trips page if the user is not a member of the trip
 	def user_is_member
-	   if !@trip.user_is_member(@user)
+	   if !@trip.user_is_member(@current_user)
 	   		redirect_to(:controller => 'trips', :action => 'index')  
        end
 	end
