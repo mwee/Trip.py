@@ -22,7 +22,7 @@ $(document).ready(function() {
 			appId : '1375015546079605', // App ID
 			status : false, // check login status
 			cookie : true, // enable cookies to allow the server to access the session
-			xfbml : false, // parse XFBML
+			xfbml : true, // parse XFBML
 			channelUrl : 'https://infinite-beyond-7744.herokuapp.com/home/fbchannel',
 			oauth : true
 		});
@@ -41,6 +41,7 @@ $(document).ready(function() {
 
 	$("#invite").click(function() {
 		FB.ui({
+			display: 'popup',
 			method : 'apprequests',
 			message : 'I am already using Trippy. Please join me.'
 		}, function(response) {
