@@ -19,7 +19,7 @@ class UserTest < ActiveSupport::TestCase
     user=User.get_facebook_user('100001945367824')
     assert_equal(user.id,2)
     assert_equal(user.name,'Yixin')
-    assert_equal(user.email,'lixinhua@126.com')
+    assert_equal(user.email,'liyixinhua@126.com')
     assert_equal(user.gender,'female')
     assert_equal(user.provider,'facebook')
   end
@@ -29,4 +29,5 @@ class UserTest < ActiveSupport::TestCase
     assert_nil(user)
   end
 
+  def test_get_friend_num
 end

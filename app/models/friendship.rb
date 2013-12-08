@@ -23,8 +23,7 @@ class Friendship < ActiveRecord::Base
     inverseFriendship= Friendship.find_by(user_id:self.friend_id, friend_id:self.user_id)
     if inverseFriendship.nil?
       newFriendship=Friendship.new(user_id:self.friend_id, friend_id:self.user_id,status:"finalized")
-      newFriendship.save!
-      
+      newFriendship.save!    
     else
       inverseFriendship.update
     end
