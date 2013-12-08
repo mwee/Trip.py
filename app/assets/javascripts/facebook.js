@@ -22,7 +22,7 @@ $(document).ready(function() {
 			appId : '1375015546079605', // App ID
 			status : false, // check login status
 			cookie : true, // enable cookies to allow the server to access the session
-			xfbml : true, // parse XFBML
+			xfbml : false, // parse XFBML
 			channelUrl : 'https://infinite-beyond-7744.herokuapp.com/home/fbchannel',
 			oauth : true
 		});
