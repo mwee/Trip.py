@@ -44,7 +44,7 @@ $(document).ready(function() {
 			
 			method : 'apprequests',
 			message : 'I am already using Trippy. Please join me.',
-			display: 'iframe',
+			display: 'popup',
 		}, function(response) {
 			console.log("finished");
 
