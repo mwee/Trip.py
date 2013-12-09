@@ -19,46 +19,46 @@ class TripTest < ActiveSupport::TestCase
 	assert_equal(Trip.get_all_trips(user3),[trip2])
   end
   
-  test "user_is_creator" do
+  test "created_by" do
     user1=users(:one)
 	user2=users(:two)
 	user3=users(:three)
 	trip1=trips(:one)
 	trip4=trips(:four)	
-	assert(trip1.user_is_creator(user1))
-	assert_not(trip1.user_is_creator(user2))
-	assert_not(trip1.user_is_creator(user3))			
-	assert_not(trip4.user_is_creator(user1))
-	assert(trip4.user_is_creator(user2))
-	assert_not(trip4.user_is_creator(user3))
+	assert(trip1.created_by(user1))
+	assert_not(trip1.created_by(user2))
+	assert_not(trip1.created_by(user3))			
+	assert_not(trip4.created_by(user1))
+	assert(trip4.created_by(user2))
+	assert_not(trip4.created_by(user3))
   end
   
-  test "user_in_cabal" do
+  test "cabal_has" do
     user1=users(:one)
 	user2=users(:two)
 	user3=users(:three)
 	trip1=trips(:one)
-	assert(trip1.user_is_member(user1))
-	assert_not(trip1.user_is_member(user2))
+	assert(trip1.cabal_has(user1))
+	assert_not(trip1.cabal_has(user2))
 	trip1.users << user2
-	assert(trip1.user_is_member(user1))
-	assert(trip1.user_is_member(user2))
-	assert_not(trip1.user_is_member(user3))
+	assert(trip1.cabal_has(user1))
+	assert(trip1.cabal_has(user2))
+	assert_not(trip1.cabal_has(user3))
   end
   
- test "user_is_member" do
+ test "has_member" do
     user1=users(:one)
 	user2=users(:two)
 	user3=users(:three)
 	user4=users(:four)
-	assert(trips(:one).user_is_member(user1))
-	assert_not(Trip.find(1).user_is_member(user2))
+	assert(trips(:one).has_member(user1))
+	assert_not(Trip.find(1).has_member(user2))
 	trips(:one).users << user2
-	Trip.find(1).users << user3
-	assert(trips(:one).user_is_member(user1))
-	assert(trips(:one).user_is_member(user2))
-	assert(trips(:one).user_is_member(user3))
-	assert_not(trips(:one).user_is_member(user4))
+	trips(:one).users << user3
+	assert(trips(:one).has_member(user1))
+	assert(trips(:one).has_member(user2))
+	assert(trips(:one).has_member(user3))
+	assert_not(trips(:one).has_member(user4))
   end
   
   test "get_status" do
@@ -87,7 +87,7 @@ class TripTest < ActiveSupport::TestCase
 	trip2= trips(:two)
   	assert(trip1.active)
 	assert_not(trip2.active)
-	trip1.finalize
+	trip1.finalize()
 	assert_not(trip1.active)
 	assert_not(trip2.active)
   end

@@ -10,21 +10,18 @@ class TripInvitation < ActiveRecord::Base
     end
 	
 	#delete the invitation and add the invitee to the cabal of the trip
-	def accept
-	    invi= TripInvitation.find(self.id) 
-		invi.trip.users << invi.invitee
-		invi.destroy		
+	def accept()
+		self.trip.users << self.invitee
+		self.destroy		
 	end
 	
 	#delete the invitation
-	def decline
-		invi= TripInvitation.find(self.id) 
-		invi.destroy
+	def decline()
+		self.destroy
 	end
 	
 	#Return true if the user is the invitee for the invitation
 	def is_invitee(user)
-	    invi= TripInvitation.find(self.id) 
-		return invi.invitee.id==user.id
+		return self.invitee.id==user.id
 	end
 end
