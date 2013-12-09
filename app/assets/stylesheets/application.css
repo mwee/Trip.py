@@ -85,13 +85,13 @@
 	padding:7px;
 }
 .sendBtn{
-	background: #0074cc;
+	background: inherit;
 	color: white;
 	border: none;
 	border-radius: 4px;
 	margin-top: 3px;
 	margin-left: 5px;
-	
+	height: 24px;
 }
 
 #invite{

@@ -7,7 +7,7 @@
 			<td><%= freerange.start_date %></td>
 			<td>to </td>
 			<td><%= freerange.end_date %></td>
-			<td class ="btn btn-small btn-primary"><%= link_to 'Edit', edit_freerange_path(freerange) %></td> 
+			
 			<td class ="btn btn-small btn-primary"><%= link_to 'Delete', freerange, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 		  </tr>
 		<% end %>

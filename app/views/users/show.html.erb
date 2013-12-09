@@ -65,12 +65,18 @@
 
 	<div class="right_section">
 		<h3 class="right_label">Availability: </h3>
+		<br>
 		<div class="right_answers">
 			<% if !@freeranges.nil? %>
+			
+			<%= render partial: "freeranges/showcalendar", locals: {freedates: Freerange.get_all_free_dates(@current_user)} %>
+            <br>
+
 			<p class="right_answers_p">
 				<%= render :template => 'freeranges/index', :locals => { :freeranges => @freeranges}  %>
-			</p>
-			<%= render partial: "freeranges/showcalendar", locals: {freedates: Freerange.get_all_free_dates(@current_user)} %>
+
+			</p> 
+
 			<% else %>
 			<p class="right_answers_p">
 				No free ranges.
