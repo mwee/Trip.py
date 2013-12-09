@@ -39,6 +39,9 @@ ActiveRecord::Schema.define(version: 20131208012920) do
     t.string   "friend_uid"
   end
 
+  add_index "friendships", ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
+  add_index "friendships", ["user_id", "friend_uid"], name: "index_friendships_on_user_id_and_friend_uid", unique: true
+
   create_table "trip_invitations", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
