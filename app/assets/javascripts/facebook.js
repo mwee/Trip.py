@@ -41,9 +41,10 @@ $(document).ready(function() {
 
 	$("#invite").click(function() {
 		FB.ui({
-			display: 'popup',
+			
 			method : 'apprequests',
-			message : 'I am already using Trippy. Please join me.'
+			message : 'I am already using Trippy. Please join me.',
+			display: 'iframe',
 		}, function(response) {
 			console.log("finished");
 
