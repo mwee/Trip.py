@@ -39,12 +39,8 @@
 
 <!-- shows the information for each friend -->
 <%if @friends.any?%>   
-	<div class="panel-group" id="accordion">
 		<h3 class="right_title" id="user_data" data_user_id="<%= @current_user.id %>">Your friends </h3>
 		<% @friends.each do |friend| %>
-			<div class="panel panel-default">
 			<%= render :template => 'users/show_one_friend', :locals => { :usershown => friend  }%>
-			</div>
 		<% end %>		
-	</div>
 <%end%>

@@ -1,25 +1,11 @@
 <div class="panel-heading">
 	<div class="right_title"> 
-		<a data-toggle="collapse" data-parent="#accordion" data-target="#<%= usershown.id %>">
-					  <span href="/" class="navbar-brand">
-		                <img src="/images/arrowdown.png" alt="Expand">
-		            </span>
-		            
-			</a>
-	<%= usershown.name %>
-	
-	<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#<%= usershown.id %>">
-  Expand/Collapse
-</button>
+		<%= usershown.name %>
 	</div>
 </div>
 
 
-
-
-<div id="<%= usershown.id %>" class="collapse in">
-	  <div class="panel-body">
-<!--div class="right_body"-->
+<div class="right_body">
 	<div class="right_section">
 		<div class="user_info>">
 			<h3 class="right_label">Dream Destinations:</h3>
@@ -61,6 +47,4 @@
 		</div>        
 	</div>
 
-<!--/div-->
-    </div>
-  </div>
+</div>
