@@ -23,8 +23,8 @@ $(document).ready(function() {
 			status : false, // check login status
 			cookie : true, // enable cookies to allow the server to access the session
 			xfbml : true, // parse XFBML
-			channelUrl : 'https://desolate-everglades-8674.herokuapp.com/home/fbchannel',
-			oauth : true
+			channelUrl : 'https://infinite-beyond-7744.herokuapp.com/home/fbchannel',
+			oauth : true,
 		});
 
 	}; ( function(d) {
@@ -41,6 +41,7 @@ $(document).ready(function() {
 
 	$("#invite").click(function() {
 		FB.ui({
+			display: 'popup',
 			method : 'apprequests',
 			message : 'I am already using Trippy. Please join me.'
 		}, function(response) {
