@@ -11,16 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :topic %><br>
+<div class="right_body">
+
+  <div class="field right_section">
+    <div class="right_label"><%= f.label :"Activity :" %></div>
     <%= f.text_field :topic %>
   </div>
 
-  <div class="field">
-    <%= f.label :cost%><br>
+  <div class="field right_section">
+    <div class="right_label"><%= f.label :"Cost of Activity :"%></div>
     <%= f.text_field :cost, :class => 'text_field', :value => (number_with_precision(f.object.cost, :precision => 2) || 0) %>
-
-    <div class="actions">
-    <%= f.submit %>
+   </div>
+    <div id="activitySubmit" class="btn btn-primary actions">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>

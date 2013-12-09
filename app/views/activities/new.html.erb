@@ -1,5 +1,7 @@
-<h1>New activity</h1>
+<h1 class="right_title">New activity</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', activities_path %>
+<div class="right_body">
+<%= link_to 'Back', activities_path, :class => "backBtn btn btn-primary" %>
+</div>

@@ -78,7 +78,7 @@
 			<% if !@freeranges.nil? %>
 			<p class="right_answers_p">
 				<%= render :template => 'freeranges/index', :locals => { :freeranges => @freeranges}  %>
-			</p>
+			</p> 
 			<%= render partial: "freeranges/showcalendar", locals: {freedates: Freerange.get_all_free_dates(@current_user)} %>
 			<% else %>
 			<p class="right_answers_p">
