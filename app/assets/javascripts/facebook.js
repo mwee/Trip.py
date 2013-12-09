@@ -24,7 +24,7 @@ $(document).ready(function() {
 			cookie : true, // enable cookies to allow the server to access the session
 			xfbml : true, // parse XFBML
 			channelUrl : 'https://infinite-beyond-7744.herokuapp.com/home/fbchannel',
-			oauth : true
+			oauth : true,
 		});
 
 	}; ( function(d) {
