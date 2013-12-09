@@ -53,6 +53,7 @@ class FriendshipTest < ActiveSupport::TestCase
       friendship.createInverse
       new_friendship=Friendship.where(user_id:3, friend_id:2,status:"finalized")
       assert_not_nil(new_friendship)
+      assert_equal(new_friendship.count,1)
       
   end
 
@@ -61,6 +62,7 @@ class FriendshipTest < ActiveSupport::TestCase
       friendship.createInverse
       new_friendship=Friendship.where(user_id:3, friend_id:1,status:"finalized")
       assert_not_nil(new_friendship)
+      assert_equal(new_friendship.count,1)
   end
 
   def test_updateId
