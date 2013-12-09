@@ -30,4 +30,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def test_get_friend_num
+    user=users(:one) 
+    assert_equal(user.get_friend_num, 1)
+  end
 end

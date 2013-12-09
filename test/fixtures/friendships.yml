@@ -29,3 +29,13 @@ six:
   user_id: 1
   friend_uid: '100001837462039'
   status: pending
+seven:
+  id: 7
+  user_id: 1
+  friend_id: 3
+  status: finalized
+eight:
+  id: 8
+  user_id: 3
+  friend_id: 1
+  status: finalized
