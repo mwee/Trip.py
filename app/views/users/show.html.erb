@@ -8,25 +8,20 @@
 			<div class="user_info>">
 				<h3 class="right_label">Dream Destinations:</h3>
 				<div class="right_answers">
-					<% if !@current_user.destination.nil? %>
-					<p   class="right_answers_p">
+				    <p class="right_answers_p">
+					<% if !@current_user.destination.nil? %>					
 						<%= @current_user.destination %>
-					</p>
 					<% else %>
-					<p   class="right_answers_p">
 						No destinations.
-					</p>
 					<% end%>
-					</h3>
+					</p>		
 				</div>
 			</div>
 
 			<div class="right_changes">
-				<% if @current_user.id==current_user.id %>
 				<div id ="updateDestination"class="btn btn-medium ">
 					Update Destinations
 				</div>
-				<% end %>
 			</div>
 		</div>
 
@@ -66,13 +61,11 @@
 		<br>
 
 		<div id="updatingBudget" class="popUp" style="display: none;">
-			<%= render :template => 'users/edit_budget' -%>
+			<%= render :template => 'users/edit_budget' %>
 		</div>
-
 	</div>
 
 	<div class="right_section">
-
 		<h3 class="right_label">Availability: </h3>
 		<div class="right_answers">
 			<% if !@freeranges.nil? %>
@@ -87,9 +80,7 @@
 			<% end %>
 		</div>
 
-
 		<div class="right_changes">   
-
-               <%= button_to "Add a free range", new_freerange_path, :id => "addRange", :class => "btn btn-medium" %>     
+            <%= button_to "Add a free range", new_freerange_path, :id => "addRange", :class => "btn btn-medium" %>     
 	   </div>
 </div>
