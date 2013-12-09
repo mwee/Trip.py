@@ -1,9 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
 one:
-  start_date: 2013-11-16
-  end_date: 2013-11-16
-
+  user_id: 4
+  start_date: 2013-12-10
+  end_date: 2013-12-13
 two:
-  start_date: 2013-11-16
-  end_date: 2013-11-16
+  user_id: 1
+  start_date: 2013-12-11
+  end_date: 2013-12-12
+three:
+  user_id: 1
+  start_date: 2013-12-11
+  end_date: 2013-12-13
+four:
+  user_id: 1
+  start_date: 2013-12-24
+  end_date: 2013-12-25
+five:
+  user_id: 3
+  start_date: 2013-12-28
+  end_date: 2013-12-29

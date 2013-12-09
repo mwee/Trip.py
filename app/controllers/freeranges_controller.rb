@@ -72,7 +72,7 @@ class FreerangesController < ApplicationController
 
   # Redirects the user if he is not the owner of a freerange.
   def user_owns
-    if !@freerange.owns_range(@user)
+    if !@freerange.has_owner(@user)
       redirect_to @user
     end
   end

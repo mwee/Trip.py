@@ -1,5 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 one:
+  id: 1
   title: Hp
   destination: Orlando
   description: The description of the trip...
@@ -9,9 +10,9 @@ one:
   end_date:  2013-12-12
   creator_id: 1
   link: http://www.visitorlando.com/
-  active: 1
-	
+  active: 1	
 two:
+  id: 2
   title: London trip
   destination: London, and the around
   description: The description of the trip is ...
@@ -22,8 +23,8 @@ two:
   creator_id: 1
   link: http://www.visitorlando.com/
   active: 0
-  
- three:
+three:
+  id: 3
   title: Studio
   destination: Near London
   description: The description of the trip...
@@ -34,8 +35,8 @@ two:
   creator_id: 1
   link: http://www.visitorlando.com/
   active: 1 
-  
-  four:
+four:
+  id: 4
   title: Arcadia
   destination: North
   description: The description of the trip...
