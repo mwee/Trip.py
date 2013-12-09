@@ -12,6 +12,10 @@
  *= require_tree .
  */
 
+ .finalizeBtn a{
+ 	color:white;
+ }
+
 .right_div a:visited{
 	color: white;
 }
@@ -34,6 +38,9 @@
 }
  .buttonDiv form{
  	float:left;
+ }
+ .buttonDiv a:visited{
+ 	color: white;
  }
 
  .btn a:visited{
@@ -315,7 +322,7 @@ h1 span{
 }
 
 body {
-	background-image: url("/images/background.jpg");
+	background: url("/images/background.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
