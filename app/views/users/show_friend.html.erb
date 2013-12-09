@@ -12,10 +12,7 @@
 	<div class="right_section">
 		<h3 class="right_label">Invite New Friends!</h3>
 		<div>
-			<button id="invite" type="button">
-				Facebook Invites
-			</button>
-
+			<button id="invite" type="button">Facebook Invites</button>
 			<div id="templateInvite">
 				<%= render :template => 'friendships/new'%>
 			</div>
@@ -26,7 +23,6 @@
 <br>
 <% if @invitations.any? %>
 <div class="right_body">
-
 	<h3  class="right_label">You Have <%= pluralize(@invitations.count, "Friend Invitations")  %> </h3>
 	<% @invitations.zip(@invitations_users).each do |invitation, invitation_user| %>
 	<div class="right_section">

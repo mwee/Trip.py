@@ -1,5 +1,5 @@
 == README
-Heroku link for mvp: http://fierce-reaches-8826.herokuapp.com
+Heroku link https://infinite-beyond-7744.herokuapp.com
 
 Since the app uses Facebook, we create two Facebook accounts that you could use:
 
@@ -8,20 +8,6 @@ Account 1: email: 591059716@qq.com, password: 3217132, name: Taone TA
 Account 2: email: 415493163@qq.com, password: 3217132, name: Christine Lin
 
 They are already each other's Facebook friend.
-
-MVP features:
-
-* 1. User authentification: Users could create an account and log in/out through Facebook.
-
-* 2. Profile sharing: All users of Trippy could see each other’s profile, including free dates, destinations
-interested in going and acceptable budget range.
-
-* 3. Trip creation: Users can create a trip and invite other users to join.
-
-* 4. Activity planning: Users suggest activities to do on a trip and vote for their desired
-activities. 
-
-Note that access control is not yet implemented. (For example, a user could see a trip that he does not create or join. )
 
 Ruby version 4.0
 

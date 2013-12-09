@@ -25,7 +25,7 @@
                  <%= label_tag @no_free_friends[i].name %>:
                  <%= check_box_tag "friends[#{i+@num_free_friends}]" %> <br />
                 <% end %>                
-                <div class="actions">
+                <div class="action">
                         <%= f.submit 'Invite' %>
                 </div>
     <% end %>

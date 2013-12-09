@@ -67,11 +67,11 @@ class Trip < ActiveRecord::Base
 
   #update the trip active status from true to false
   def finalize()
-    self.update_column(:active => false)
+    self.update_column(:active, false)
   end
 
   #return true if the trip is active, false otherwise
-  def is_active
+  def is_active()
     return self.active
   end
 end

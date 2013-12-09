@@ -6,18 +6,18 @@ class TripInvitation < ActiveRecord::Base
 	# Create an invitation
     def self.create(inviter, invitee, trip)
 		invitation=trip.trip_invitations.new("inviter_id" => inviter.id, "invitee_id" => invitee.id,)
-		invitation.save
+		invitation.save	  
     end
 	
 	#delete the invitation and add the invitee to the cabal of the trip
 	def accept()
 		self.trip.users << self.invitee
-		self.destroy		
+		self.destroy()	
 	end
 	
 	#delete the invitation
 	def decline()
-		self.destroy
+		self.destroy()
 	end
 	
 	#Return true if the user is the invitee for the invitation

@@ -19,10 +19,11 @@ class TripTest < ActiveSupport::TestCase
 	assert_equal(Trip.get_all_trips(user3),[trip2])
   end
   
-  test "created_by" do
+  test "test memebership relations: creator, cabal and members" do
     user1=users(:one)
 	user2=users(:two)
 	user3=users(:three)
+	user4=users(:four)
 	trip1=trips(:one)
 	trip4=trips(:four)	
 	assert(trip1.created_by(user1))
@@ -30,35 +31,20 @@ class TripTest < ActiveSupport::TestCase
 	assert_not(trip1.created_by(user3))			
 	assert_not(trip4.created_by(user1))
 	assert(trip4.created_by(user2))
-	assert_not(trip4.created_by(user3))
-  end
-  
-  test "cabal_has" do
-    user1=users(:one)
-	user2=users(:two)
-	user3=users(:three)
-	trip1=trips(:one)
-	assert(trip1.cabal_has(user1))
+	assert_not(trip4.created_by(user3))  
+	assert_not(trip1.cabal_has(user1))
 	assert_not(trip1.cabal_has(user2))
+	assert(trip1.has_member(user1))
+	assert_not(trip1.has_member(user2))
 	trip1.users << user2
-	assert(trip1.cabal_has(user1))
+	assert_not(trip1.cabal_has(user1))
 	assert(trip1.cabal_has(user2))
 	assert_not(trip1.cabal_has(user3))
-  end
-  
- test "has_member" do
-    user1=users(:one)
-	user2=users(:two)
-	user3=users(:three)
-	user4=users(:four)
-	assert(trips(:one).has_member(user1))
-	assert_not(Trip.find(1).has_member(user2))
-	trips(:one).users << user2
-	trips(:one).users << user3
-	assert(trips(:one).has_member(user1))
-	assert(trips(:one).has_member(user2))
-	assert(trips(:one).has_member(user3))
-	assert_not(trips(:one).has_member(user4))
+    trip1.users << user3
+    assert(trip1.has_member(user1))
+	assert(trip1.has_member(user2))
+	assert(trip1.has_member(user3))
+	assert_not(trip1.has_member(user4))
   end
   
   test "get_status" do
@@ -71,8 +57,6 @@ class TripTest < ActiveSupport::TestCase
 	user2=users(:two)
 	user3=users(:three)
 	user4=users(:four)	
-	user1.friends << user2
-	user1.friends << user3
 	user1.friends << user4
 	trip1=trips(:one)
 	assert_equal(trip1.get_uninvited_friends(user1),[user3,user4])

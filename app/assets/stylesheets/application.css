@@ -82,6 +82,7 @@
 	margin-left: -20px;
 	position: relative;
 	left: -30px;
+	padding:7px;
 }
 .sendBtn{
 	background: #0074cc;
@@ -100,10 +101,9 @@
 	border-radius: 4px;
 	margin-top: 5px;
 	float:left;
-
-	
-
+	padding: 6px;
 }
+
 #templateInvite{
 	float: right;
 }
@@ -167,6 +167,7 @@ td{
 .right_label{
     /*float:left;*/
     font-weight: 300;
+	font-size: 18px;
 }
 .right_answers{
 	float:left;
@@ -178,9 +179,8 @@ td{
 	margin-left: 20px;
 	margin-bottom: 20px;
 }
-.right_title{
-	
-	font-size: 35px;
+.right_title{	
+	font-size: 25px;
 	font-weight: 200;
 	text-align: center;
 	color:white;
@@ -346,7 +346,7 @@ h1 span{
 }
 
 body {
-	background: url("/images/background.jpg");
+	background: url("/assets/background.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
