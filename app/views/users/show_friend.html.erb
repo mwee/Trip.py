@@ -23,13 +23,13 @@
 <br>
 <% if @invitations.any? %>
 <div class="right_body">
-	<h3  class="right_label">You Have <%= pluralize(@invitations.count, "Friend Invitations")  %> </h3>
+	<h3  class="right_title">You Have <%= pluralize(@invitations.count, "Friend Invitations")  %> </h3>
 	<% @invitations.zip(@invitations_users).each do |invitation, invitation_user| %>
 	<div class="right_section">
 		<p>
-			<%= invitation_user.name%> wants to be your friend
-			<%= button_to 'Accept', :controller => 'friendships', :action => "accept", :id => invitation.id,:class => "btn" %>
-			<%= button_to 'Decline', decline_invitation_path(id: invitation.id), {:method => :delete, :style => "float:left;",:class => "btn"}%>
+			<h3 class="right_label"><%= invitation_user.name%> wants to be your friend</h3>
+			<%= button_to 'Accept', :controller => 'friendships', :action => "accept", :id => invitation.id,:class => "btn btn-primary" %>
+			<%= button_to 'Decline', decline_invitation_path(id: invitation.id), {:method => :delete, :style => "float:left;",:class => "btn danger"}%>
 		</p>
 	</div>
 	<% end %>
