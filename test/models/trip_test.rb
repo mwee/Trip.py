@@ -1,23 +1,100 @@
 require 'test_helper'
-
 class TripTest < ActiveSupport::TestCase
-  def test_get_all_trips
-    user=User.find(1)
-	trips=Trip.get_all_trips(user)
-	assert_equal(trips.length,3)
-	user4=User.find(4)
-	trips4=Trip.get_all_trips(user4)
-    assert_equal(trips4.length,0)
+
+  test "get_all_trips" do
+    user1=users(:one)
+	user2=users(:two)
+	user3=users(:three)
+	trip1=trips(:one)
+	trip2=trips(:two)	
+	trip3=trips(:three)
+	trip4=trips(:four)
+	assert_equal(Trip.get_all_trips(user1),[trip1,trip2,trip3])
+	assert_equal(Trip.get_all_trips(user2),[trip4])
+	assert_equal(Trip.get_all_trips(user3),[])
+	user1.created_trips << trip4
+	user3.created_trips << trip2
+	assert_equal(Trip.get_all_trips(user1),[trip1,trip2,trip3,trip4])
+	assert_equal(Trip.get_all_trips(user2),[trip4])
+	assert_equal(Trip.get_all_trips(user3),[trip2])
   end
   
-  def test_user_is_creator(user)
-     user1=User.find(1)
-     trip1=Trip.find(1)
-	 assert(trip1.user_is_creator(user1))
-	 user2=User.find(2)
-	 trip2=Trip.find(4)
-	 assert(trip2.user_is_creator(user2))
-	 assert_not(trip2.user_is_creator(user1))
+  test "created_by" do
+    user1=users(:one)
+	user2=users(:two)
+	user3=users(:three)
+	trip1=trips(:one)
+	trip4=trips(:four)	
+	assert(trip1.created_by(user1))
+	assert_not(trip1.created_by(user2))
+	assert_not(trip1.created_by(user3))			
+	assert_not(trip4.created_by(user1))
+	assert(trip4.created_by(user2))
+	assert_not(trip4.created_by(user3))
+  end
+  
+  test "cabal_has" do
+    user1=users(:one)
+	user2=users(:two)
+	user3=users(:three)
+	trip1=trips(:one)
+	assert(trip1.cabal_has(user1))
+	assert_not(trip1.cabal_has(user2))
+	trip1.users << user2
+	assert(trip1.cabal_has(user1))
+	assert(trip1.cabal_has(user2))
+	assert_not(trip1.cabal_has(user3))
+  end
+  
+ test "has_member" do
+    user1=users(:one)
+	user2=users(:two)
+	user3=users(:three)
+	user4=users(:four)
+	assert(trips(:one).has_member(user1))
+	assert_not(Trip.find(1).has_member(user2))
+	trips(:one).users << user2
+	trips(:one).users << user3
+	assert(trips(:one).has_member(user1))
+	assert(trips(:one).has_member(user2))
+	assert(trips(:one).has_member(user3))
+	assert_not(trips(:one).has_member(user4))
+  end
+  
+  test "get_status" do
+  	assert_equal(trips(:one).get_status, "Active")
+	assert_equal(trips(:two).get_status, "Finalized")
+  end
+	
+  test "get_uninvited_friends and get uninvited friends" do
+    user1=users(:one)
+	user2=users(:two)
+	user3=users(:three)
+	user4=users(:four)	
+	user1.friends << user2
+	user1.friends << user3
+	user1.friends << user4
+	trip1=trips(:one)
+	assert_equal(trip1.get_uninvited_friends(user1),[user3,user4])
+	assert_equal(trip1.get_free_uninvited_friends(user1),[user4])
+	TripInvitation.create(user2,user3, trip1)
+	assert_equal(trip1.get_uninvited_friends(user1),[user4])
+	assert_equal(trip1.get_free_uninvited_friends(user1),[user4])
+  end
+  
+  test "finalize" do
+    trip1= trips(:one)
+	trip2= trips(:two)
+  	assert(trip1.active)
+	assert_not(trip2.active)
+	trip1.finalize()
+	assert_not(trip1.active)
+	assert_not(trip2.active)
+  end
+  
+  test "is_active" do
+  	assert(trips(:one).is_active)
+	assert_not(trips(:two).is_active)
   end
   
 end

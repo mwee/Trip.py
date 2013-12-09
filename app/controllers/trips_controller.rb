@@ -96,21 +96,21 @@ class TripsController < ApplicationController
 	
 	#Redirect to user trip index page if the user is not the creator of the trip
 	def user_is_creator
-	    if ! @trip.user_is_creator(@current_user)
+	    if ! @trip.created_by(@current_user)
 		    redirect_to(:controller => 'trips', :action => 'index')  
        end
 	end
 	
 	#Redirect to user trip index page if the user is not in the cabal of the trip
 	def user_in_cabal
-	    if ! @trip.user_in_cabal(@current_user)
+	    if ! @trip.cabal_has(@current_user)
 			redirect_to(:controller => 'trips', :action => 'index')  
        end
 	end
 	
 	#Redirect to user trips page if the user is not a member of the trip
 	def user_is_member
-	   if !@trip.user_is_member(@current_user)
+	   if !@trip.has_member(@current_user)
 	   		redirect_to(:controller => 'trips', :action => 'index')  
        end
 	end
