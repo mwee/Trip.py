@@ -166,7 +166,8 @@ td{
 
 .right_label{
     /*float:left;*/
-    font-weight: 300;
+    font-weight: 200;
+	font-size: 17px;
 }
 .right_answers{
 	float:left;
@@ -178,9 +179,8 @@ td{
 	margin-left: 20px;
 	margin-bottom: 20px;
 }
-.right_title{
-	
-	font-size: 35px;
+.right_title{	
+	font-size: 25px;
 	font-weight: 200;
 	text-align: center;
 	color:white;

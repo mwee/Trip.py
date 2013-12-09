@@ -8,13 +8,13 @@
 			<div class="user_info>">
 				<h3 class="right_label">Dream Destinations:</h3>
 				<div class="right_answers">
-				    <p class="right_answers_p">
-					<% if !@current_user.destination.nil? %>					
+					<p class="right_answers_p">
+						<% if !@current_user.destination.nil? %>
 						<%= @current_user.destination %>
-					<% else %>
+						<% else %>
 						No destinations.
-					<% end%>
-					</p>		
+						<% end%>
+					</p>
 				</div>
 			</div>
 
@@ -24,9 +24,7 @@
 				</div>
 			</div>
 		</div>
-
 		<br>
-
 		<div id="updatingDestinations" class="popUp" style="display: none;">
 			<%= render :template => 'users/edit_destination' -%>
 		</div>
@@ -71,7 +69,7 @@
 			<% if !@freeranges.nil? %>
 			<p class="right_answers_p">
 				<%= render :template => 'freeranges/index', :locals => { :freeranges => @freeranges}  %>
-			</p> 
+			</p>
 			<%= render partial: "freeranges/showcalendar", locals: {freedates: Freerange.get_all_free_dates(@current_user)} %>
 			<% else %>
 			<p class="right_answers_p">
@@ -80,7 +78,7 @@
 			<% end %>
 		</div>
 
-		<div class="right_changes">   
-            <%= button_to "Add a free range", new_freerange_path, :id => "addRange", :class => "btn btn-medium" %>     
-	   </div>
-</div>
+		<div class="right_changes">
+			<%= button_to "Add a free range", new_freerange_path, :id => "addRange", :class => "btn btn-medium" %>
+		</div>
+	</div>
