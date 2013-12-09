@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   has_many :created_invitations, :class_name => "TripInvitation", :foreign_key => :inviter_id, :dependent => :destroy
 
   has_many :friendships
-  #has_many :friends, -> {"status = 'finalized'"}, :through => :friendships
   has_many :friends, :conditions => "status = 'finalized'", :through => :friendships
 
   EMAIL_REGEX =  /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+/i

@@ -345,7 +345,7 @@ h1 span{
 }
 
 body {
-	background: url("/images/background.jpg");
+	background: url("/assets/background.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
