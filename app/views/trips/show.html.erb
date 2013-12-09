@@ -61,8 +61,8 @@
     </div>
 	
     <div class="trip_buttons">
-      <%= link_to 'Invite Friends', trip_add_invitations_new_path(@trip.id) %>|
-      <%= link_to 'Add Activity', trip_activities_new_path(@trip.id) %>
+      <%= link_to 'Invite Friends', trip_add_invitations_new_path(@trip.id), :class => "btn btn-primary" %>
+      <%= link_to 'Add Activity', trip_activities_new_path(@trip.id), :class => "btn btn-primary" %>
     </div>
 		
 	</br>

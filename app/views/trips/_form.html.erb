@@ -11,43 +11,44 @@
 			
 		    </div>
 	<% end %>
-
-  <div class="field">
+<div class="right_body">
+  <div class="field right_section">
     <%= f.label :trip_title %><br>
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :destination %><br>
+  <div class="field right_section">
+    <div class="right_label"><%= f.label :destination %></div><br>
     <%= f.text_field :destination %>
   </div>
-    <div class="field">
+    <div class="field right_section">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
-    <div class="field">
+    <div class="field right_section">
     <%= f.label :start_date %><br>
     <%= f.date_select :start_date %>
   </div>
-    <div class="field">
+    <div class="field right_section">
     <%= f.label :end_date %><br>
     <%= f.date_select :end_date %>
   </div>
-  <div class="field">
+  <div class="field right_section">
     <%= f.label :picture_link %><br>
     <%= f.text_field :link %>
   </div>
   
-  Estimated cost per person
-  <div class="field">
+  
+  <div class="field right_section">
+    Estimated cost per person
     <%= f.label :_from %><br>
     $ <%= f.text_field :cost_min %>
-  </div>
-  <div class="field">
+ <!--  </div>
+  <div class="field right_section"> -->
     <%= f.label :_to %><br>
     $ <%= f.text_field :cost_max %>
   </div>
-  <div class="actions">
+  <div id="tripCreate" class="actions btn btn-primary">
     <%= f.submit %>
   </div>
-  
+</div>  
 <% end %>

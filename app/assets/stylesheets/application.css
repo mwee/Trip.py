@@ -12,6 +12,30 @@
  *= require_tree .
  */
 
+
+
+.backBtn{
+	width: 95px;
+	color:white;
+	height: 26px;
+}
+.right_body a:visited{
+	color:white;
+}
+
+.actions input{
+	background: inherit;
+
+	color: white;
+	border: none;
+}
+#activitySubmit{
+	height:26px;
+}
+#tripCreate{
+
+			height: 26px;
+}
  .finalizeBtn a{
  	color:white;
  }
