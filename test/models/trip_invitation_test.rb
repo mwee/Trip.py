@@ -1,8 +1,10 @@
 require 'test_helper'
 class TripInvitationTest < ActiveSupport::TestCase
   test "create(inviter, invitee, trip)" do
-      Tripinvitation.create(users(:two),users(:three), trips(:two))
-	  assert(Tripinvitations.where(:))
+      TripInvitation.create(users(:two),users(:three), trips(:two))
+	  new_invi = TripInvitation.where( inviter_id:1, invitee_id:2,trip_id:1)
+	  assert_not_nil(new_invi)
+	  assert_equal(new_invi.count,1)
   end
   
   test "accept" do
@@ -12,13 +14,6 @@ class TripInvitationTest < ActiveSupport::TestCase
 	  invi2 = trip_invitations(:two)
 	  invi2.accept()
 	  assert(invi2.trip.users.member? users(:three))
-	  assert_nil(invi2)
-  end
-  
-  test "decline" do
-      invi1 = trip_invitations(:one)
-	  invi1.decline()
-	  assert(invi1.nil?)
   end
   
   test "is_invitee(user)" do
