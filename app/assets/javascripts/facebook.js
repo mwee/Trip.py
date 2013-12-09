@@ -79,6 +79,8 @@ $(document).ready(function() {
 		});
 	});
 
+
+
 	$("#sign_out").click(function() {
 		FB.getLoginStatus(function(response) {
 			if (response.authResponse) {
