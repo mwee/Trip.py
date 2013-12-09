@@ -45,7 +45,7 @@ class Trip < ActiveRecord::Base
     if trip.active
       return "Active"
     else
-      return "finalized"
+      return "Finalized"
     end
   end
 
@@ -73,8 +73,8 @@ class Trip < ActiveRecord::Base
 
   #update the trip active status from true to false
   def finalize
-    trip= Trip.find(self.id)
-    trip.update_column(:active, false)
+    trip = Trip.find(self.id)
+    trip.update_column(:active => false)
   end
 
   #return true if the trip is active, false otherwise

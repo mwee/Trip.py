@@ -4,7 +4,7 @@ class Freerange < ActiveRecord::Base
   validates_date :end_date, :on_or_after => :start_date
   
   #return true if the user owns the free range
-  def owns_range(user)
+  def has_owner(user)
     return self.user.id==user.id
   end
 
@@ -23,15 +23,18 @@ class Freerange < ActiveRecord::Base
 
   #return a boolean indicating if the user is free during input_start_date to input_end_date
   def self.is_free_during(input_start_date,input_end_date,user)
-    if !user.freeranges.any?
+    if user.freeranges.nil?
       return false
+	end
+	if input_start_date > input_end_date
+	  return false
     end
-    test_date=input_start_date
-    all_free_dates=self.get_all_free_dates(user)
-    while test_date <= input_end_date
+	test_date=input_start_date
+    all_free_dates=Freerange.get_all_free_dates(user)
+    while (test_date <= input_end_date)
       if (all_free_dates.member? test_date)
         return false
-      end
+	  end
       test_date += 1
     end
     return true
