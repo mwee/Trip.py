@@ -70,7 +70,10 @@
  .btn a:visited{
  	color:white;
  }
-
+a:hover
+{text-decoration:none;
+}
+ 
 #left{
 	float:left;
 }
@@ -155,6 +158,12 @@ td{
   font-size: 14px;
   font-weight: 300;
 }
+
+.right_answers_a{
+  font-size: 14px;
+  font-weight: 300;
+}
+
 .right_section{
 	margin-top: 10px;
 	background-color: rgba(255,255,255,0.8);
