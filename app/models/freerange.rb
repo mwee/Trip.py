@@ -32,8 +32,8 @@ class Freerange < ActiveRecord::Base
 	test_date=input_start_date
     all_free_dates=Freerange.get_all_free_dates(user)
     while (test_date <= input_end_date)
-      if (all_free_dates.member? test_date)
-        return false
+      if !(all_free_dates.member? test_date)
+	    return false
 	  end
       test_date += 1
     end

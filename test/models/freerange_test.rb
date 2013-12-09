@@ -21,11 +21,12 @@ class FreerangeTest < ActiveSupport::TestCase
 
   test "is_free_during(input_start_date,input_end_date,user)" do
       assert_not( Freerange.is_free_during(DateTime.new(2013, 12, 11), DateTime.new(2013, 12, 10), users(:one)))
-      assert(Freerange.is_free_during(DateTime.new(2013, 12, 11), DateTime.new(2013, 12, 15), users(:one)) )
-	  assert(Freerange.is_free_during(DateTime.new(2013, 12, 12), DateTime.new(2013, 12, 15), users(:one)) )
-	  assert_not(Freerange.is_free_during(DateTime.new(2013, 12, 10), DateTime.new(2013, 12, 15), users(:one)) , "passed")
-	  assert_not(Freerange.is_free_during(DateTime.new(2013, 12, 11), DateTime.new(2013, 12, 11), users(:two)) , "passed")
-	  assert(Freerange.is_free_during(DateTime.new(2013, 12, 28), DateTime.new(2013, 12, 29), users(:three)), "passed" )
-	  assert_not(Freerange.is_free_during(DateTime.new(2013, 12, 28), DateTime.new(2013, 12, 30), users(:three)), "passed" )
+      assert_not(Freerange.is_free_during(DateTime.new(2013, 12, 11), DateTime.new(2013, 12, 15), users(:one)) )
+	  assert(Freerange.is_free_during(DateTime.new(2013, 12, 12), DateTime.new(2013, 12, 13), users(:one)) )
+	  assert_not(Freerange.is_free_during(DateTime.new(2013, 12, 10), DateTime.new(2013, 12, 15), users(:one)) )
+	  assert_not(Freerange.is_free_during(DateTime.new(2013, 12, 11), DateTime.new(2013, 12, 11), users(:two)) )
+	  assert(Freerange.is_free_during(DateTime.new(2013, 12, 28), DateTime.new(2013, 12, 29), users(:three)) )
+	  assert_not(Freerange.is_free_during(DateTime.new(2013, 12, 28), DateTime.new(2013, 12, 30), users(:three)) )		
   end
+  
 end
